@@ -27,7 +27,7 @@ const Navigation = () => {
           Nitin Mukul
         </Link>
         {/* Desktop inline nav */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden lg:flex items-center gap-6">
           {navItems.map((item) => (
             <Link
               key={item.path}
