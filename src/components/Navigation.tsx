@@ -5,11 +5,8 @@ import { Instagram, Mail, Menu, X } from "lucide-react";
 
 const navItems = [
   { label: "Artwork", path: "/work" },
-  { label: "Video", path: "/video" },
-  { label: "Projects", path: "/projects" },
   { label: "Collaborations", path: "/collaborations" },
   { label: "Curation", path: "/curation" },
-  { label: "Texts", path: "/texts" },
   { label: "News", path: "/news" },
   { label: "About", path: "/about" },
 ];
