@@ -8,7 +8,7 @@ const navItems = [
   { label: "Collaborations", path: "/collaborations" },
   { label: "Curation", path: "/curation" },
   { label: "News", path: "/news" },
-  { label: "About", path: "/about" },
+  { label: "Being", path: "/about" },
 ];
 
 const Navigation = () => {
