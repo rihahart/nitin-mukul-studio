@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Instagram, Mail, Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "Work", path: "/work" },
+  { label: "Artwork", path: "/work" },
   { label: "Video", path: "/video" },
   { label: "Projects", path: "/projects" },
   { label: "Collaborations", path: "/collaborations" },
