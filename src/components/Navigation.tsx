@@ -43,7 +43,7 @@ const Navigation = () => {
         {/* Mobile: still use hamburger */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden z-50 p-2 text-foreground hover:opacity-60 transition-opacity"
+          className="lg:hidden z-50 p-2 text-foreground hover:opacity-60 transition-opacity"
           aria-label="Toggle menu"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
