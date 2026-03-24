@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Instagram, Linkedin } from "lucide-react";
 import Layout from "@/components/Layout";
 import HeroCarousel from "@/components/HeroCarousel";
 
