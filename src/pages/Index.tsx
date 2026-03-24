@@ -1,21 +1,24 @@
-import { useState } from "react";
-import { Instagram, Linkedin } from "lucide-react";
+import { useState, useRef } from "react";
+import { Instagram, Linkedin, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import HeroCarousel from "@/components/HeroCarousel";
-import { exhibitions, projects } from "@/lib/artworkData";
+import { exhibitions, projects, artworks } from "@/lib/artworkData";
 
 const Index = () => {
   const [email, setEmail] = useState("");
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setEmail("");
   };
 
-  // Currently showing = first project, recent exhibitions = first 2
-  const currentlyShowing = projects[1]; // Ways of Showing Up
+  const currentlyShowing = projects[1];
   const recentExhibitions = exhibitions.slice(0, 2);
+  const prints = artworks.filter((a) => a.category === "prints").length > 0
+    ? artworks
+    : artworks;
 
   return (
     <Layout hideFooter>
@@ -77,14 +80,54 @@ const Index = () => {
             </div>
           </div>
 
-          {/* See All Button */}
-          <div className="mt-10 text-center">
+          {/* See All Exhibitions - right-aligned */}
+          <div className="mt-6 flex justify-end">
             <Link
               to="/curation"
-              className="inline-block font-body text-xs tracking-widest uppercase border border-foreground text-foreground px-8 py-3 hover:bg-foreground hover:text-background transition-colors"
+              className="inline-flex items-center gap-1 font-body text-sm tracking-wide text-foreground hover:opacity-60 transition-opacity"
             >
               See All Exhibitions
+              <ChevronRight size={16} />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Prints / Collection Section */}
+      <section className="bg-background px-6 md:px-12 pb-12 md:pb-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="font-display text-xl md:text-2xl font-bold tracking-wide text-foreground uppercase">
+              Dive Into the Collection
+            </h2>
+            <Link
+              to="/work"
+              className="inline-flex items-center gap-1 font-body text-sm tracking-wide text-foreground hover:opacity-60 transition-opacity shrink-0"
+            >
+              View all
+              <ChevronRight size={16} />
+            </Link>
+          </div>
+          <div
+            ref={scrollRef}
+            className="flex gap-4 overflow-x-auto scrollbar-hide pb-2"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {artworks.map((artwork) => (
+              <Link
+                key={artwork.id}
+                to={`/artwork/${artwork.id}`}
+                className="group shrink-0 w-[220px] md:w-[260px]"
+              >
+                <div className="aspect-[3/4] overflow-hidden">
+                  <img
+                    src={artwork.image}
+                    alt={artwork.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
