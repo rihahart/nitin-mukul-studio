@@ -7,7 +7,7 @@ const navItems = [
   { label: "Artwork", path: "/work" },
   { label: "Being", path: "/about" },
   { label: "Epicenter", path: "/epicenter" },
-  { label: "Publication", path: "/publication" },
+  { label: "Essays", path: "/publication" },
   { label: "Press", path: "/news" },
 ];
 
