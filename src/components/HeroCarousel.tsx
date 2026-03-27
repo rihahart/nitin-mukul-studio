@@ -1,12 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import artwork1 from "@/assets/artwork-1.jpg";
-import artwork2 from "@/assets/artwork-2.jpg";
-import artwork3 from "@/assets/artwork-3.jpg";
-import artwork4 from "@/assets/artwork-4.jpg";
 import artwork5 from "@/assets/artwork-5.jpg";
 import artwork6 from "@/assets/artwork-6.jpg";
-
 type Slide = {
   title: string;
   year: string;
