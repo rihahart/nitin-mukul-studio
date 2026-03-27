@@ -53,7 +53,7 @@ const Index = () => {
             </div>
 
             {/* Right Column - Recent Exhibitions (clipped & scrollable) */}
-            <div className="md:col-span-2 overflow-y-auto" style={{ maxHeight: 'calc(75vw * 3 / 4 + 3.5rem)', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <div className="md:col-span-2 overflow-y-auto md:overflow-hidden md:hover:overflow-y-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               <div className="flex flex-col gap-6">
                 {exhibitions.map((exhibition) => (
                   <Link
