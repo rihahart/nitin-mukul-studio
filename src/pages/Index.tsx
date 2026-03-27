@@ -27,7 +27,7 @@ const Index = () => {
       {/* Navigation Cards Section */}
       <section className="bg-background px-6 md:px-12 py-12 md:py-16">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:grid-rows-[1fr]">
             {/* Large Left Card - Currently Showing */}
             <div className="md:col-span-3">
               <Link to={`/projects/${currentlyShowing.id}`} className="group block">
