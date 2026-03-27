@@ -27,7 +27,7 @@ const Index = () => {
       {/* Navigation Cards Section */}
       <section className="bg-background px-6 md:px-12 py-12 md:py-16">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:grid-rows-[1fr]">
             {/* Large Left Card - Currently Showing */}
             <div className="md:col-span-3">
               <Link to={`/projects/${currentlyShowing.id}`} className="group block">
@@ -53,7 +53,7 @@ const Index = () => {
             </div>
 
             {/* Right Column - Recent Exhibitions (clipped & scrollable) */}
-            <div className="md:col-span-2 overflow-y-auto" style={{ maxHeight: 'calc(75vw * 3 / 4 + 3.5rem)', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <div className="md:col-span-2 overflow-y-auto md:overflow-hidden md:hover:overflow-y-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               <div className="flex flex-col gap-6">
                 {exhibitions.map((exhibition) => (
                   <Link
