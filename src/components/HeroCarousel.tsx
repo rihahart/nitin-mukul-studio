@@ -1,12 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import artwork1 from "@/assets/artwork-1.jpg";
-import artwork2 from "@/assets/artwork-2.jpg";
-import artwork3 from "@/assets/artwork-3.jpg";
-import artwork4 from "@/assets/artwork-4.jpg";
 import artwork5 from "@/assets/artwork-5.jpg";
 import artwork6 from "@/assets/artwork-6.jpg";
-
 type Slide = {
   title: string;
   year: string;
@@ -14,14 +9,10 @@ type Slide = {
 } & ({ type: "image"; image: string } | { type: "video"; video: string });
 
 const slides: Slide[] = [
-  { type: "image", image: artwork1, title: "Terrain of Memory", year: "2024", medium: "Oil and mixed media on canvas" },
-  { type: "video", video: "/videos/anenome.mp4", title: "Anenome", year: "2024", medium: "Video art" },
-  { type: "image", image: artwork2, title: "Heat Maps: Chromatic Field", year: "2023", medium: "Acrylic and ink on panel" },
   { type: "image", image: artwork5, title: "Avian American", year: "2024", medium: "Mixed media sculpture" },
-  { type: "video", video: "/videos/cascade.mp4", title: "Cascade", year: "2024", medium: "Video art" },
-  { type: "image", image: artwork3, title: "Golden Meridian", year: "2024", medium: "Oil, gold leaf, and resin on canvas" },
   { type: "image", image: artwork6, title: "Cease Fire", year: "2023", medium: "Mixed media on canvas" },
-  { type: "image", image: artwork4, title: "Emerald Cartography", year: "2023", medium: "Mixed media on canvas" },
+  { type: "video", video: "/videos/anenome.mp4", title: "Anenome", year: "2024", medium: "Video art" },
+  { type: "video", video: "/videos/cascade.mp4", title: "Cascade", year: "2024", medium: "Video art" },
 ];
 
 const HeroCarousel = () => {
