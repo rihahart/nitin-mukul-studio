@@ -52,31 +52,33 @@ const Index = () => {
               </Link>
             </div>
 
-            {/* Right Column - Recent Exhibitions */}
-            <div className="md:col-span-2 flex flex-col gap-6">
-              {recentExhibitions.map((exhibition) => (
-                <Link
-                  key={exhibition.id}
-                  to={`/curation`}
-                  className="group block"
-                >
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={exhibition.image}
-                      alt={exhibition.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="mt-3">
-                    <h4 className="font-display text-sm md:text-base font-bold tracking-wide text-foreground uppercase">
-                      {exhibition.title}
-                    </h4>
-                    <p className="font-body text-xs text-muted-foreground mt-0.5">
-                      {exhibition.location} · {exhibition.year}
-                    </p>
-                  </div>
-                </Link>
-              ))}
+            {/* Right Column - Recent Exhibitions (clipped & scrollable) */}
+            <div className="md:col-span-2 overflow-y-auto" style={{ maxHeight: 'calc(75vw * 3 / 4 + 3.5rem)', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              <div className="flex flex-col gap-6">
+                {exhibitions.map((exhibition) => (
+                  <Link
+                    key={exhibition.id}
+                    to={`/curation`}
+                    className="group block shrink-0"
+                  >
+                    <div className="aspect-[4/3] overflow-hidden">
+                      <img
+                        src={exhibition.image}
+                        alt={exhibition.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <div className="mt-3">
+                      <h4 className="font-display text-sm md:text-base font-bold tracking-wide text-foreground uppercase">
+                        {exhibition.title}
+                      </h4>
+                      <p className="font-body text-xs text-muted-foreground mt-0.5">
+                        {exhibition.location} · {exhibition.year}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
 
