@@ -35,36 +35,38 @@ const Navigation = () => {
   // Homepage: inline horizontal nav like Cannupa Hanska
   if (isHome) {
     return (
-      <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 transition-colors duration-300 ${scrolled ? "bg-background/80 backdrop-blur-sm" : "bg-white"}`}>
-        <Link to="/" className="font-display text-xl md:text-2xl font-light tracking-wide text-foreground">
-          Nitin Mukul
-        </Link>
-        {/* Desktop inline nav */}
-        <nav className="hidden lg:flex items-center gap-6">
-          {navItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={`font-body text-sm tracking-wide transition-opacity hover:opacity-60 ${
-                location.pathname.startsWith(item.path) ? "text-foreground" : "text-muted-foreground"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        {/* Mobile: still use hamburger */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden z-50 p-2 text-foreground hover:opacity-60 transition-opacity"
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={24} /> : <HamburgerIcon />}
-        </button>
+      <>
+        <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 transition-colors duration-300 ${scrolled ? "bg-background/80 backdrop-blur-sm" : "bg-white"}`}>
+          <Link to="/" className="font-display text-xl md:text-2xl font-light tracking-wide text-foreground">
+            Nitin Mukul
+          </Link>
+          {/* Desktop inline nav */}
+          <nav className="hidden lg:flex items-center gap-6">
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`font-body text-sm tracking-wide transition-opacity hover:opacity-60 ${
+                  location.pathname.startsWith(item.path) ? "text-foreground" : "text-muted-foreground"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          {/* Mobile: still use hamburger */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden z-50 p-2 text-foreground hover:opacity-60 transition-opacity"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={24} /> : <HamburgerIcon />}
+          </button>
+        </header>
         <AnimatePresence>
           {isOpen && <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} location={location} />}
         </AnimatePresence>
-      </header>
+      </>
     );
   }
 
@@ -104,7 +106,7 @@ const MobileMenu = ({
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
     transition={{ duration: 0.3 }}
-    className="fixed inset-0 z-[60] flex flex-col" style={{ backgroundColor: 'white' }}
+    className="fixed inset-0 z-[60] flex flex-col overflow-hidden" style={{ backgroundColor: 'white' }}
   >
     {/* Menu header row */}
     <div className="flex items-center justify-between px-6 md:px-12 py-6">
