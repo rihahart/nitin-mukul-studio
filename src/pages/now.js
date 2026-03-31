@@ -89,7 +89,7 @@ const Index = () => {
     React.createElement("section", { className: "bg-background px-6 md:px-12 pb-14 md:pb-20" },
       React.createElement("div", { className: "flex items-center justify-between mb-7" },
           React.createElement("h2", { className: "font-display text-xl md:text-2xl font-bold tracking-wide text-foreground uppercase" },
-            "Dive Into the Collection"
+            "Explore Work"
           ),
           React.createElement(Link, {
             to: "/work",
@@ -100,15 +100,13 @@ const Index = () => {
           )
         ),
         React.createElement("div", {
-          ref: scrollRef,
-          className: "flex gap-5 overflow-x-auto scrollbar-hide pb-2",
-          style: { scrollbarWidth: "none", msOverflowStyle: "none" }
+          className: "grid grid-cols-2 md:grid-cols-4 gap-5"
         },
           artworks.map((artwork) =>
             React.createElement(Link, {
               key: artwork.id,
               to: `/artwork/${artwork.id}`,
-              className: "group shrink-0 w-[220px] md:w-[260px]"
+              className: "group"
             },
               React.createElement("div", { className: "aspect-[3/4] overflow-hidden" },
                 React.createElement("img", {
