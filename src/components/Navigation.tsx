@@ -167,7 +167,7 @@ const Navigation = () => {
               className="hidden lg:block absolute top-full left-0 right-0 bg-background border-t border-border/20 shadow-sm px-12 py-8"
               style={{ backgroundColor: 'hsl(40 20% 98%)' }}
             >
-              <div className="flex gap-12">
+              <div className="flex gap-12 justify-end">
                 {artworkSubItems.map((item) => (
                   <Link
                     key={item.path}
