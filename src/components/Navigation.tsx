@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Instagram, Mail, Menu, X } from "lucide-react";
+import { Instagram, Mail, X } from "lucide-react";
+
+const HamburgerIcon = () => (
+  <svg width="32" height="16" viewBox="0 0 32 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line x1="0" y1="2" x2="32" y2="2" stroke="currentColor" strokeWidth="1.5"/>
+    <line x1="0" y1="14" x2="32" y2="14" stroke="currentColor" strokeWidth="1.5"/>
+  </svg>
+);
 
 const navItems = [
   { label: "Now", path: "/now" },
@@ -45,7 +52,7 @@ const Navigation = () => {
           className="lg:hidden z-50 p-2 text-foreground hover:opacity-60 transition-opacity"
           aria-label="Toggle menu"
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={24} /> : <HamburgerIcon />}
         </button>
         <AnimatePresence>
           {isOpen && <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} location={location} />}
@@ -66,7 +73,7 @@ const Navigation = () => {
           className="z-50 p-2 text-foreground hover:opacity-60 transition-opacity"
           aria-label="Toggle menu"
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={24} /> : <HamburgerIcon />}
         </button>
       </header>
 

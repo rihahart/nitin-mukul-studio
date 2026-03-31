@@ -85,18 +85,6 @@ const HeroCarousel = () => {
         </AnimatePresence>
       </div>
 
-      {/* Slide indicators */}
-      <div className="absolute bottom-8 right-6 md:right-12 flex gap-2">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={(e) => { e.stopPropagation(); setCurrent(i); }}
-            className={`w-8 h-0.5 transition-all duration-300 ${
-              i === current ? "bg-primary-foreground" : "bg-primary-foreground/30"
-            }`}
-          />
-        ))}
-      </div>
     </div>
   );
 };
