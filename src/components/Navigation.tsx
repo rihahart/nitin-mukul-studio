@@ -11,13 +11,13 @@ const HamburgerIcon = () => (
 );
 
 const navItems = [
-  { label: "Now", path: "/now" },
-  { label: "Artwork", path: "/work" },
-  { label: "Being", path: "/about" },
-  { label: "Epicenter", path: "/epicenter" },
-  { label: "Essays", path: "/publication" },
-  { label: "Press", path: "/news" },
-  { label: "Collect", path: "/collect" },
+  { label: "Current", path: "/now" },
+  { label: "Artwork", path: "/work", hasArrow: true },
+  { label: "Human", path: "/about", hasArrow: true },
+  { label: "News", path: "/news", hasArrow: true },
+  { label: "Publications", path: "/publication" },
+  { label: "Contact", path: "/collect" },
+  { label: "Representation", path: "/epicenter" },
 ];
 
 const Navigation = () => {
