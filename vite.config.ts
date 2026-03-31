@@ -12,10 +12,8 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
-  oxc: {
-    include: /\.(js|jsx|ts|tsx)$/,
-  },
-  plugins: [react({ include: /\.(jsx|js|tsx|ts)$/ }), mode === "development" && componentTagger()].filter(Boolean),
+  oxc: {},
+  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
