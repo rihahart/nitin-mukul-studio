@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      maxWidth: {
+        '8xl': '1600px',
+      },
       fontFamily: {
         display: ['Cormorant Garamond', 'Georgia', 'serif'],
         body: ['Inter', '-apple-system', 'sans-serif'],

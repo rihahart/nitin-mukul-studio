@@ -23,7 +23,7 @@ const Index = () => {
   return React.createElement(Layout, { hideFooter: true },
     React.createElement(HeroCarousel, null),
     React.createElement("section", { className: "bg-background px-6 md:px-12 py-12 md:py-16" },
-      React.createElement("div", { className: "max-w-7xl mx-auto" },
+      React.createElement("div", { className: "max-w-8xl mx-auto" },
         React.createElement("div", { className: "grid grid-cols-1 md:grid-cols-5 gap-6 md:grid-rows-[1fr]" },
           React.createElement("div", { className: "md:col-span-3" },
             React.createElement(Link, { to: `/projects/${currentlyShowing.id}`, className: "group block" },
@@ -89,7 +89,7 @@ const Index = () => {
       )
     ),
     React.createElement("section", { className: "bg-background px-6 md:px-12 pb-12 md:pb-16" },
-      React.createElement("div", { className: "max-w-7xl mx-auto" },
+      React.createElement("div", { className: "max-w-8xl mx-auto" },
         React.createElement("div", { className: "flex items-center justify-between mb-6" },
           React.createElement("h2", { className: "font-display text-xl md:text-2xl font-bold tracking-wide text-foreground uppercase" },
             "Dive Into the Collection"
