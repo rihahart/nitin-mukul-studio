@@ -32,6 +32,11 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [isOpen]);
+
   // Homepage: inline horizontal nav like Cannupa Hanska
   if (isHome) {
     return (
