@@ -12,9 +12,7 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
-  oxc: {
-    include: /\.(js|jsx|ts|tsx)$/,
-  },
+  oxc: {},
   plugins: [react({ include: /\.(jsx|js|tsx|ts)$/ }), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
