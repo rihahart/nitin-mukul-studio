@@ -22,7 +22,7 @@ const Index = () => {
 
   return React.createElement(Layout, { hideFooter: true },
     React.createElement(HeroCarousel, null),
-    React.createElement("section", { className: "bg-background px-4 md:px-12 py-8 md:py-20" },
+    React.createElement("section", { className: "bg-background px-4 md:px-12 py-10 md:py-28" },
       React.createElement("div", { className: "grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-14 md:grid-rows-[1fr]" },
           React.createElement("div", { className: "md:col-span-3" },
             React.createElement(Link, { to: `/projects/${currentlyShowing.id}`, className: "group block" },
@@ -86,8 +86,8 @@ const Index = () => {
           )
       )
     ),
-    React.createElement("section", { className: "bg-background px-4 md:px-12 pb-8 md:pb-20" },
-      React.createElement("div", { className: "flex items-center justify-between mb-4 md:mb-7" },
+    React.createElement("section", { className: "bg-background px-4 md:px-12 pb-10 md:pb-28" },
+      React.createElement("div", { className: "flex items-center justify-between mb-5 md:mb-8" },
           React.createElement("h2", { className: "font-display text-lg md:text-2xl font-bold tracking-wide text-foreground uppercase" },
             "Explore Work"
           )
@@ -112,7 +112,7 @@ const Index = () => {
           )
         )
     ),
-    React.createElement("section", { className: "bg-background px-4 md:px-12 py-12 md:py-32" },
+    React.createElement("section", { className: "bg-background px-4 md:px-12 py-16 md:py-44" },
       React.createElement("div", { className: "max-w-xl mx-auto text-center" },
         React.createElement("h2", { className: "font-display text-xl md:text-3xl font-light tracking-wide text-foreground mb-2 md:mb-3.5" },
           "Stay Connected"
