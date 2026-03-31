@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Instagram, Mail, X } from "lucide-react";
+import { Instagram, Mail, X, ChevronRight } from "lucide-react";
 
 const HamburgerIcon = () => (
   <svg width="32" height="16" viewBox="0 0 32 16" fill="none" xmlns="http://www.w3.org/2000/svg">
