@@ -42,7 +42,7 @@ const Navigation = () => {
     return (
       <>
         <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 md:py-8 transition-colors duration-300 ${scrolled ? "bg-background/80 backdrop-blur-sm" : "bg-white"}`}>
-          <Link to="/" className="font-display text-xl md:text-2xl font-light tracking-wide text-foreground">
+          <Link to="/" className="font-display text-xl md:text-2xl font-bold tracking-wide text-foreground">
             Nitin Mukul
           </Link>
           {/* Desktop inline nav */}
@@ -51,7 +51,7 @@ const Navigation = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className="font-body text-sm tracking-wide transition-opacity hover:opacity-60 text-foreground"
+                className="font-body text-sm font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground"
               >
                 {item.label}
               </Link>
@@ -77,7 +77,7 @@ const Navigation = () => {
   return (
     <>
       <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 md:py-8 transition-colors duration-300 ${scrolled ? "bg-background/80 backdrop-blur-sm" : "bg-white"}`}>
-        <Link to="/" className="font-display text-xl md:text-2xl font-light tracking-wide text-foreground">
+        <Link to="/" className="font-display text-xl md:text-2xl font-bold tracking-wide text-foreground">
           Nitin Mukul
         </Link>
         <button
@@ -143,9 +143,7 @@ const MobileMenu = ({
             <Link
               to={item.path}
               onClick={() => setIsOpen(false)}
-              className={`font-display text-3xl md:text-5xl font-light tracking-wide transition-opacity hover:opacity-50 ${
-                location.pathname.startsWith(item.path) ? "opacity-100" : "opacity-70"
-              }`}
+              className="font-body text-3xl md:text-5xl font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground"
             >
               {item.label}
             </Link>
