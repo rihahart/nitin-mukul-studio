@@ -48,7 +48,7 @@ const Index = () => {
           ),
           React.createElement("div", { className: "md:col-span-2 md:relative" },
             React.createElement("div", {
-              className: "flex flex-col gap-6 md:gap-9 md:absolute md:inset-0 md:overflow-y-auto",
+              className: "flex flex-col gap-6 md:gap-9 md:absolute md:inset-0 md:overflow-y-auto md:pr-3",
             },
               exhibitions.map((exhibition) =>
                 React.createElement(Link, {
