@@ -51,9 +51,7 @@ const Navigation = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`font-body text-sm tracking-wide transition-opacity hover:opacity-60 ${
-                  location.pathname.startsWith(item.path) ? "text-foreground" : "text-muted-foreground"
-                }`}
+                className="font-body text-sm tracking-wide transition-opacity hover:opacity-60 text-foreground"
               >
                 {item.label}
               </Link>
