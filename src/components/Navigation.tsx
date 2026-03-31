@@ -11,7 +11,7 @@ const HamburgerIcon = () => (
 );
 
 const navItems = [
-  { label: "Now", path: "/now" },
+  { label: "Now", path: "/" },
   { label: "Artwork", path: "/work" },
   { label: "Being", path: "/about" },
   { label: "Epicenter", path: "/epicenter" },
@@ -47,15 +47,18 @@ const Navigation = () => {
           </Link>
           {/* Desktop inline nav */}
           <nav className="hidden lg:flex items-center gap-6">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className="font-body text-sm font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isActive = item.path === "/" ? location.pathname === "/" : location.pathname.startsWith(item.path);
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`font-body text-sm font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 ${isActive ? "border-b border-foreground" : ""}`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
           {/* Mobile: still use hamburger */}
           <button
@@ -132,23 +135,26 @@ const MobileMenu = ({
     {/* Nav links */}
     <div className="flex flex-1 items-center justify-center">
       <nav className="flex flex-col items-center gap-1">
-        {navItems.map((item, i) => (
-          <motion.div
-            key={item.path}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.05, duration: 0.3 }}
-            className="text-center"
-          >
-            <Link
-              to={item.path}
-              onClick={() => setIsOpen(false)}
-              className="font-body text-3xl md:text-5xl font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground"
+        {navItems.map((item, i) => {
+          const isActive = item.path === "/" ? location.pathname === "/" : location.pathname.startsWith(item.path);
+          return (
+            <motion.div
+              key={item.path}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.05, duration: 0.3 }}
+              className="text-center"
             >
-              {item.label}
-            </Link>
-          </motion.div>
-        ))}
+              <Link
+                to={item.path}
+                onClick={() => setIsOpen(false)}
+                className={`font-body text-3xl md:text-5xl font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 ${isActive ? "border-b border-foreground" : ""}`}
+              >
+                {item.label}
+              </Link>
+            </motion.div>
+          );
+        })}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
