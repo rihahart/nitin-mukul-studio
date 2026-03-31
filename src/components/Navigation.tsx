@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Instagram, Mail, X, ChevronDown } from "lucide-react";
+import { Instagram, Mail, X, ChevronDown, ArrowLeft } from "lucide-react";
 
 const HamburgerIcon = () => (
   <svg width="32" height="16" viewBox="0 0 32 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,9 +32,22 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [artworkOpen, setArtworkOpen] = useState(false);
+  const [navLeft, setNavLeft] = useState(0);
+  const [headerHeight, setHeaderHeight] = useState(0);
   const location = useLocation();
   const isHome = location.pathname === "/";
   const headerRef = useRef<HTMLElement>(null);
+  const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const updateMeasurements = () => {
+      if (navRef.current) setNavLeft(navRef.current.getBoundingClientRect().left);
+      if (headerRef.current) setHeaderHeight(headerRef.current.offsetHeight);
+    };
+    updateMeasurements();
+    window.addEventListener("resize", updateMeasurements);
+    return () => window.removeEventListener("resize", updateMeasurements);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -69,7 +82,7 @@ const Navigation = () => {
         <button
           key={item.path}
           onClick={() => setArtworkOpen(!artworkOpen)}
-          className={`font-body text-sm font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 flex items-center gap-1 ${isActive ? "border-b border-foreground" : ""}`}
+          className={`font-body text-sm font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 flex items-center gap-1 ${artworkOpen || (isActive && !artworkOpen) ? "border-b border-foreground" : ""}`}
         >
           {item.label}
         </button>
@@ -80,14 +93,14 @@ const Navigation = () => {
       <Link
         key={item.path}
         to={item.path}
-        className={`font-body text-sm font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 ${isActive ? "border-b border-foreground" : ""}`}
+        className={`font-body text-sm font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 ${isActive && !artworkOpen ? "border-b border-foreground" : ""}`}
       >
         {item.label}
       </Link>
     );
   };
 
-  const headerClass = `fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 md:py-8 transition-colors duration-300 ${scrolled ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-background"}`;
+  const headerClass = `fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 md:py-8 transition-colors duration-300 ${scrolled && !artworkOpen ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-background"}`;
 
   if (isHome) {
     return (
@@ -96,7 +109,7 @@ const Navigation = () => {
           <Link to="/" className="font-display text-xl md:text-2xl font-bold tracking-wide text-foreground">
             Nitin Mukul
           </Link>
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav ref={navRef} className="hidden lg:flex items-center gap-6">
             {navItems.map(renderNavItem)}
           </nav>
           <button
@@ -107,33 +120,40 @@ const Navigation = () => {
             {isOpen ? <X size={24} /> : <HamburgerIcon />}
           </button>
 
-          {/* Desktop full-width artwork dropdown */}
-          <AnimatePresence>
-            {artworkOpen && (
-              <motion.div
-                initial={{ clipPath: "inset(0 0 100% 0)" }}
-                animate={{ clipPath: "inset(0 0 0% 0)" }}
-                exit={{ clipPath: "inset(0 0 100% 0)" }}
-                transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="hidden lg:block absolute top-full left-0 right-0 bg-background border-t border-border/20 shadow-sm px-12 py-8"
-                style={{ backgroundColor: 'hsl(40 20% 98%)' }}
-              >
-                <div className="flex gap-12">
-                  {artworkSubItems.map((item) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      onClick={() => setArtworkOpen(false)}
-                      className="font-body text-sm text-foreground/70 hover:text-foreground transition-colors whitespace-nowrap"
-                    >
+        </header>
+
+        {/* Desktop full-width artwork dropdown */}
+        <AnimatePresence>
+          {artworkOpen && (
+            <motion.div
+              initial={{ y: "-100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-100%" }}
+              transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="hidden lg:block fixed top-0 left-0 right-0 z-40 shadow-sm"
+              style={{ backgroundColor: 'hsl(40 20% 98%)', paddingTop: headerHeight, paddingLeft: navLeft, paddingBottom: '2rem' }}
+            >
+              <div className="flex gap-16">
+                <div className="flex flex-col gap-3">
+                  {artworkSubItems.slice(0, 3).map((item) => (
+                    <Link key={item.path} to={item.path} onClick={() => setArtworkOpen(false)}
+                      className="font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap">
                       {item.label}
                     </Link>
                   ))}
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </header>
+                <div className="flex flex-col gap-3">
+                  {artworkSubItems.slice(3).map((item) => (
+                    <Link key={item.path} to={item.path} onClick={() => setArtworkOpen(false)}
+                      className="font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap">
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <AnimatePresence>
           {isOpen && <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} location={location} />}
@@ -156,47 +176,40 @@ const Navigation = () => {
           {isOpen ? <X size={24} /> : <HamburgerIcon />}
         </button>
 
-        {/* Desktop full-width artwork dropdown */}
-        <AnimatePresence>
-          {artworkOpen && (
-            <motion.div
-              initial={{ clipPath: "inset(0 0 100% 0)" }}
-              animate={{ clipPath: "inset(0 0 0% 0)" }}
-              exit={{ clipPath: "inset(0 0 100% 0)" }}
-              transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="hidden lg:block absolute top-full left-0 right-0 bg-background border-t border-border/20 shadow-sm px-12 py-8"
-              style={{ backgroundColor: 'hsl(40 20% 98%)' }}
-            >
-              <div className="flex gap-16">
-                <div className="flex flex-col gap-1.5">
-                  {artworkSubItems.slice(0, 3).map((item) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      onClick={() => setArtworkOpen(false)}
-                      className="font-body text-sm text-foreground/70 hover:text-foreground transition-colors whitespace-nowrap"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  {artworkSubItems.slice(3).map((item) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      onClick={() => setArtworkOpen(false)}
-                      className="font-body text-sm text-foreground/70 hover:text-foreground transition-colors whitespace-nowrap"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </header>
+
+      {/* Desktop full-width artwork dropdown */}
+      <AnimatePresence>
+        {artworkOpen && (
+          <motion.div
+            initial={{ y: "-100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-100%" }}
+            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="hidden lg:block fixed top-0 left-0 right-0 z-40 shadow-sm"
+            style={{ backgroundColor: 'hsl(40 20% 98%)', paddingTop: headerHeight, paddingLeft: navLeft, paddingBottom: '2rem' }}
+          >
+            <div className="flex gap-16">
+              <div className="flex flex-col gap-3">
+                {artworkSubItems.slice(0, 3).map((item) => (
+                  <Link key={item.path} to={item.path} onClick={() => setArtworkOpen(false)}
+                    className="font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap">
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+              <div className="flex flex-col gap-3">
+                {artworkSubItems.slice(3).map((item) => (
+                  <Link key={item.path} to={item.path} onClick={() => setArtworkOpen(false)}
+                    className="font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap">
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {isOpen && <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} location={location} />}
@@ -213,7 +226,7 @@ const MobileMenu = ({
   setIsOpen: (v: boolean) => void;
   location: ReturnType<typeof useLocation>;
 }) => {
-  const [artworkExpanded, setArtworkExpanded] = useState(false);
+  const [menuLevel, setMenuLevel] = useState<'main' | 'artwork'>('main');
 
   return (
     <motion.div
@@ -221,104 +234,112 @@ const MobileMenu = ({
       animate={{ y: 0 }}
       exit={{ y: "-100%" }}
       transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="fixed inset-0 z-[60] flex flex-col overflow-hidden" style={{ backgroundColor: 'hsl(40 20% 98%)' }}
+      className="fixed inset-0 z-[60] flex flex-col overflow-hidden"
+      style={{ backgroundColor: 'hsl(40 20% 98%)' }}
     >
-      <div className="flex items-center justify-between px-6 md:px-12 py-6 md:py-8">
-        <Link
-          to="/"
-          onClick={() => setIsOpen(false)}
-          className="font-display text-xl md:text-2xl font-light tracking-wide text-foreground"
-        >
-          Nitin Mukul
-        </Link>
-        <button
-          onClick={() => setIsOpen(false)}
-          className="p-2 text-foreground hover:opacity-60 transition-opacity"
-          aria-label="Close menu"
-        >
+      {/* Header */}
+      <div className="flex items-center justify-between px-6 md:px-12 py-6 md:py-8 shrink-0">
+        {menuLevel === 'main' ? (
+          <Link to="/" onClick={() => setIsOpen(false)} className="font-display text-xl md:text-2xl font-light tracking-wide text-foreground">
+            Nitin Mukul
+          </Link>
+        ) : (
+          <button onClick={() => setMenuLevel('main')} className="p-2 -ml-2 text-foreground hover:opacity-60 transition-opacity" aria-label="Back">
+            <ArrowLeft size={24} strokeWidth={1.5} />
+          </button>
+        )}
+        <button onClick={() => setIsOpen(false)} className="p-2 text-foreground hover:opacity-60 transition-opacity" aria-label="Close menu">
           <X size={24} />
         </button>
       </div>
 
-      <div className="flex flex-1 items-center justify-center">
-        <nav className="flex flex-col items-center gap-1">
-          {navItems.map((item, i) => {
-            const isActive = item.path === "/" ? location.pathname === "/" : location.pathname.startsWith(item.path);
+      {/* Sliding panels */}
+      <div className="flex flex-1 overflow-hidden relative">
 
-            if (item.hasDropdown) {
-              return (
-                <motion.div
-                  key={item.path}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05, duration: 0.3 }}
-                  className="text-center"
-                >
-                  <button
-                    onClick={() => setArtworkExpanded(!artworkExpanded)}
-                    className={`font-body text-3xl md:text-5xl font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 flex items-center gap-2 ${isActive ? "border-b border-foreground" : ""}`}
-                  >
-                    {item.label}
-                    <ChevronDown size={20} className={`transition-transform ${artworkExpanded ? "rotate-180" : ""}`} />
-                  </button>
-                  <AnimatePresence>
-                    {artworkExpanded && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="flex flex-wrap justify-center gap-x-6 gap-y-1 mt-2 overflow-hidden"
-                      >
-                        {artworkSubItems.map((sub) => (
-                          <Link
-                            key={sub.path}
-                            to={sub.path}
-                            onClick={() => setIsOpen(false)}
-                            className="font-body text-lg text-foreground/60 hover:text-foreground transition-colors"
-                          >
-                            {sub.label}
-                          </Link>
-                        ))}
+        {/* Main menu panel */}
+        <AnimatePresence initial={false}>
+          {menuLevel === 'main' && (
+            <motion.div
+              key="main"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="absolute inset-0 flex items-start justify-start px-6 py-6"
+            >
+              <nav className="flex flex-col items-start gap-6">
+                {navItems.map((item, i) => {
+                  const isActive = item.path === "/" ? location.pathname === "/" : location.pathname.startsWith(item.path);
+
+                  if (item.hasDropdown) {
+                    return (
+                      <motion.div key={item.path} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05, duration: 0.3 }}>
+                        <button
+                          onClick={() => setMenuLevel('artwork')}
+                          className={`font-body text-3xl md:text-5xl font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 flex items-center gap-3 ${isActive ? "border-b border-foreground" : ""}`}
+                        >
+                          {item.label}
+                          <ChevronDown size={22} className="text-foreground" strokeWidth={1.5} />
+                        </button>
                       </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              );
-            }
+                    );
+                  }
 
-            return (
-              <motion.div
-                key={item.path}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.05, duration: 0.3 }}
-                className="text-center"
-              >
-                <Link
-                  to={item.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`font-body text-3xl md:text-5xl font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 ${isActive ? "border-b border-foreground" : ""}`}
-                >
-                  {item.label}
-                </Link>
-              </motion.div>
-            );
-          })}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="flex gap-6 mt-12 items-center"
-          >
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-gallery-secondary hover:text-foreground transition-colors">
-              <Instagram size={20} />
-            </a>
-            <Link to="/about" onClick={() => setIsOpen(false)} className="text-gallery-secondary hover:text-foreground transition-colors">
-              <Mail size={20} />
-            </Link>
-          </motion.div>
-        </nav>
+                  return (
+                    <motion.div key={item.path} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05, duration: 0.3 }}>
+                      <Link
+                        to={item.path}
+                        onClick={() => setIsOpen(false)}
+                        className={`font-body text-3xl md:text-5xl font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 ${isActive ? "border-b border-foreground" : ""}`}
+                      >
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="flex gap-6 mt-12 items-center">
+                  <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-gallery-secondary hover:text-foreground transition-colors">
+                    <Instagram size={20} />
+                  </a>
+                  <Link to="/about" onClick={() => setIsOpen(false)} className="text-gallery-secondary hover:text-foreground transition-colors">
+                    <Mail size={20} />
+                  </Link>
+                </motion.div>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Artwork sub-menu panel */}
+        <AnimatePresence initial={false}>
+          {menuLevel === 'artwork' && (
+            <motion.div
+              key="artwork"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="absolute inset-0 flex flex-col px-6 py-6"
+            >
+              <h2 className="font-body text-4xl md:text-6xl font-bold tracking-wide text-foreground border-b border-foreground pb-0.5 w-fit mb-16">Artwork</h2>
+              <nav className="flex flex-col items-start gap-6">
+                {artworkSubItems.map((item, i) => (
+                  <motion.div key={item.path} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05, duration: 0.3 }}>
+                    <Link
+                      to={item.path}
+                      onClick={() => setIsOpen(false)}
+                      className="font-body text-3xl md:text-5xl font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5" style={{ color: 'hsl(30 10% 12%)' }}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
       </div>
     </motion.div>
   );
