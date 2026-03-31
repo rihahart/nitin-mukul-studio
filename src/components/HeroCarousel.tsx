@@ -35,13 +35,13 @@ const HeroCarousel = () => {
 
   return (
     <div className="relative h-screen w-full overflow-hidden cursor-pointer" onClick={next}>
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="sync">
         <motion.div
           key={current}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
+          transition={{ duration: 0.1, ease: "easeInOut" }}
           className="absolute inset-0"
         >
           {slide.type === "image" ? (
@@ -67,7 +67,7 @@ const HeroCarousel = () => {
 
       {/* Bottom info bar */}
       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gallery-overlay/60 to-transparent px-6 md:px-12 pb-8 pt-24">
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="sync">
           <motion.div
             key={current}
             initial={{ opacity: 0, y: 10 }}
