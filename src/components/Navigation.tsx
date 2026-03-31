@@ -104,14 +104,14 @@ const MobileMenu = ({
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
     transition={{ duration: 0.3 }}
-    className="fixed inset-0 z-[60] flex flex-col" style={{ backgroundColor: 'white' }}
+    className="fixed inset-0 z-[60] flex flex-col overflow-hidden" style={{ backgroundColor: 'white' }}
   >
     {/* Menu header row */}
     <div className="flex items-center justify-between px-6 md:px-12 py-6">
       <Link
         to="/"
         onClick={() => setIsOpen(false)}
-        className="font-display text-xl md:text-2xl font-light tracking-wide text-foreground"
+        className="font-display text-sm font-bold tracking-wide text-foreground"
       >
         Nitin Mukul
       </Link>
@@ -124,9 +124,9 @@ const MobileMenu = ({
       </button>
     </div>
 
-    {/* Nav links */}
+    {/* Nav links - centered, no scroll */}
     <div className="flex flex-1 items-center justify-center">
-      <nav className="flex flex-col items-center gap-1">
+      <nav className="flex flex-col items-center gap-6">
         {navItems.map((item, i) => (
           <motion.div
             key={item.path}
@@ -138,27 +138,13 @@ const MobileMenu = ({
             <Link
               to={item.path}
               onClick={() => setIsOpen(false)}
-              className={`font-display text-3xl md:text-5xl font-light tracking-wide transition-opacity hover:opacity-50 ${
-                location.pathname.startsWith(item.path) ? "opacity-100" : "opacity-70"
-              }`}
+              className="inline-flex items-center gap-2 font-display text-3xl md:text-4xl font-light tracking-wide text-foreground transition-opacity hover:opacity-50"
             >
               {item.label}
+              {item.hasArrow && <ChevronRight size={28} strokeWidth={1.5} />}
             </Link>
           </motion.div>
         ))}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="flex gap-6 mt-12 items-center"
-        >
-          <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-gallery-secondary hover:text-foreground transition-colors">
-            <Instagram size={20} />
-          </a>
-          <Link to="/about" onClick={() => setIsOpen(false)} className="text-gallery-secondary hover:text-foreground transition-colors">
-            <Mail size={20} />
-          </Link>
-        </motion.div>
       </nav>
     </div>
   </motion.div>
