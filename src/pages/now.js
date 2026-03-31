@@ -86,9 +86,9 @@ const Index = () => {
           )
       )
     ),
-    React.createElement("section", { className: "bg-background px-4 md:px-12 pb-10 md:pb-28" },
+    React.createElement("section", { className: "bg-background px-4 md:px-12 pb-12 md:pb-36" },
       React.createElement("div", { className: "flex items-center justify-between mb-5 md:mb-8" },
-          React.createElement("h2", { className: "font-display text-lg md:text-2xl font-bold tracking-wide text-foreground uppercase" },
+          React.createElement("h1", { className: "font-display text-lg md:text-2xl font-bold tracking-wide text-foreground uppercase" },
             "Explore Work"
           )
         ),
