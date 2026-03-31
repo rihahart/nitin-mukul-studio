@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Instagram, Linkedin, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
@@ -8,6 +8,19 @@ import { exhibitions, projects, artworks } from "@/lib/artworkData";
 const Index = () => {
   const [email, setEmail] = useState("");
   const scrollRef = useRef(null);
+  const leftColRef = useRef(null);
+  const rightColRef = useRef(null);
+
+  useEffect(() => {
+    const syncHeight = () => {
+      if (leftColRef.current && rightColRef.current) {
+        rightColRef.current.style.maxHeight = leftColRef.current.offsetHeight + "px";
+      }
+    };
+    syncHeight();
+    window.addEventListener("resize", syncHeight);
+    return () => window.removeEventListener("resize", syncHeight);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
