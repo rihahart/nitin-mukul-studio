@@ -12,14 +12,14 @@ const Index = () => {
   const rightColRef = useRef(null);
 
   useEffect(() => {
-    const syncHeight = () => {
-      if (leftColRef.current && rightColRef.current) {
-        rightColRef.current.style.maxHeight = leftColRef.current.offsetHeight + "px";
-      }
-    };
-    syncHeight();
-    window.addEventListener("resize", syncHeight);
-    return () => window.removeEventListener("resize", syncHeight);
+    const left = leftColRef.current;
+    const right = rightColRef.current;
+    if (!left || !right) return;
+    const ro = new ResizeObserver(() => {
+      right.style.maxHeight = left.offsetHeight + "px";
+    });
+    ro.observe(left);
+    return () => ro.disconnect();
   }, []);
 
   const handleSubmit = (e) => {
