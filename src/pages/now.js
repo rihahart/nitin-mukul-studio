@@ -37,8 +37,8 @@ const Index = () => {
     React.createElement(HeroCarousel, null),
     React.createElement("section", { className: "bg-background px-6 md:px-12 py-12 md:py-16" },
       React.createElement("div", { className: "max-w-7xl mx-auto" },
-        React.createElement("div", { className: "grid grid-cols-1 md:grid-cols-5 gap-6 md:grid-rows-[1fr]" },
-          React.createElement("div", { className: "md:col-span-3" },
+        React.createElement("div", { className: "grid grid-cols-1 md:grid-cols-5 gap-6" },
+          React.createElement("div", { ref: leftColRef, className: "md:col-span-3" },
             React.createElement(Link, { to: `/projects/${currentlyShowing.id}`, className: "group block" },
               React.createElement("div", { className: "aspect-[4/3] overflow-hidden" },
                 React.createElement("img", {
