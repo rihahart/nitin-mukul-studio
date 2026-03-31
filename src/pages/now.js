@@ -90,17 +90,10 @@ const Index = () => {
       React.createElement("div", { className: "flex items-center justify-between mb-7" },
           React.createElement("h2", { className: "font-display text-xl md:text-2xl font-bold tracking-wide text-foreground uppercase" },
             "Explore Work"
-          ),
-          React.createElement(Link, {
-            to: "/work",
-            className: "inline-flex items-center gap-1 font-body text-sm tracking-wide text-foreground hover:opacity-60 transition-opacity shrink-0"
-          },
-            "View all",
-            React.createElement(ChevronRight, { size: 16 })
           )
         ),
         React.createElement("div", {
-          className: "grid grid-cols-2 md:grid-cols-4 gap-5"
+          className: "grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-14"
         },
           artworks.map((artwork) =>
             React.createElement(Link, {
