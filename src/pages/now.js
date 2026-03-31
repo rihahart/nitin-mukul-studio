@@ -47,7 +47,7 @@ const Index = () => {
               )
             )
           ),
-          React.createElement("div", { className: "md:col-span-2 overflow-y-auto md:overflow-hidden md:hover:overflow-y-auto", style: { scrollbarWidth: 'none', msOverflowStyle: 'none' } },
+          React.createElement("div", { className: "md:col-span-2 md:h-full md:overflow-y-auto", style: { scrollbarWidth: 'none', msOverflowStyle: 'none' } },
             React.createElement("div", { className: "flex flex-col gap-6" },
               exhibitions.map((exhibition) =>
                 React.createElement(Link, {
@@ -71,17 +71,17 @@ const Index = () => {
                     )
                   )
                 )
+              ),
+              React.createElement("div", { className: "flex justify-end" },
+                React.createElement(Link, {
+                  to: "/curation",
+                  className: "inline-flex items-center gap-1 font-body text-sm tracking-wide text-foreground hover:opacity-60 transition-opacity"
+                },
+                  "See All Exhibitions",
+                  React.createElement(ChevronRight, { size: 16 })
+                )
               )
             )
-          )
-        ),
-        React.createElement("div", { className: "mt-6 flex justify-end" },
-          React.createElement(Link, {
-            to: "/curation",
-            className: "inline-flex items-center gap-1 font-body text-sm tracking-wide text-foreground hover:opacity-60 transition-opacity"
-          },
-            "See All Exhibitions",
-            React.createElement(ChevronRight, { size: 16 })
           )
         )
       )
