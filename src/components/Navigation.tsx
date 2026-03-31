@@ -41,7 +41,7 @@ const Navigation = () => {
   if (isHome) {
     return (
       <>
-        <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 md:py-8 transition-colors duration-300 ${scrolled ? "bg-background/80 backdrop-blur-sm" : "bg-white"}`}>
+        <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 md:py-8 transition-colors duration-300 ${scrolled ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-white"}`}>
           <Link to="/" className="font-display text-xl md:text-2xl font-bold tracking-wide text-foreground">
             Nitin Mukul
           </Link>
@@ -79,7 +79,7 @@ const Navigation = () => {
   // Inner pages: hamburger menu
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 md:py-8 transition-colors duration-300 ${scrolled ? "bg-background/80 backdrop-blur-sm" : "bg-white"}`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 md:py-8 transition-colors duration-300 ${scrolled ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-white"}`}>
         <Link to="/" className="font-display text-xl md:text-2xl font-bold tracking-wide text-foreground">
           Nitin Mukul
         </Link>
