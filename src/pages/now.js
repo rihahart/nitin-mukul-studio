@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Instagram, Linkedin, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
@@ -8,6 +8,19 @@ import { exhibitions, projects, artworks } from "@/lib/artworkData";
 const Index = () => {
   const [email, setEmail] = useState("");
   const scrollRef = useRef(null);
+  const leftColRef = useRef(null);
+  const rightColRef = useRef(null);
+
+  useEffect(() => {
+    const syncHeight = () => {
+      if (leftColRef.current && rightColRef.current) {
+        rightColRef.current.style.maxHeight = leftColRef.current.offsetHeight + "px";
+      }
+    };
+    syncHeight();
+    window.addEventListener("resize", syncHeight);
+    return () => window.removeEventListener("resize", syncHeight);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,8 +37,8 @@ const Index = () => {
     React.createElement(HeroCarousel, null),
     React.createElement("section", { className: "bg-background px-6 md:px-12 py-12 md:py-16" },
       React.createElement("div", { className: "max-w-7xl mx-auto" },
-        React.createElement("div", { className: "grid grid-cols-1 md:grid-cols-5 gap-6 md:grid-rows-[1fr]" },
-          React.createElement("div", { className: "md:col-span-3" },
+        React.createElement("div", { className: "grid grid-cols-1 md:grid-cols-5 gap-6" },
+          React.createElement("div", { ref: leftColRef, className: "md:col-span-3" },
             React.createElement(Link, { to: `/projects/${currentlyShowing.id}`, className: "group block" },
               React.createElement("div", { className: "aspect-[4/3] overflow-hidden" },
                 React.createElement("img", {
@@ -47,7 +60,7 @@ const Index = () => {
               )
             )
           ),
-          React.createElement("div", { className: "md:col-span-2 overflow-y-auto md:overflow-hidden md:hover:overflow-y-auto", style: { scrollbarWidth: 'none', msOverflowStyle: 'none' } },
+          React.createElement("div", { ref: rightColRef, className: "md:col-span-2 overflow-y-auto", style: { scrollbarWidth: 'none', msOverflowStyle: 'none' } },
             React.createElement("div", { className: "flex flex-col gap-6" },
               exhibitions.map((exhibition) =>
                 React.createElement(Link, {
