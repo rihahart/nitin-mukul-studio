@@ -41,7 +41,7 @@ const Navigation = () => {
   if (isHome) {
     return (
       <>
-        <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 transition-colors duration-300 ${scrolled ? "bg-background/80 backdrop-blur-sm" : "bg-white"}`}>
+        <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 md:py-8 transition-colors duration-300 ${scrolled ? "bg-background/80 backdrop-blur-sm" : "bg-white"}`}>
           <Link to="/" className="font-display text-xl md:text-2xl font-light tracking-wide text-foreground">
             Nitin Mukul
           </Link>
@@ -78,7 +78,7 @@ const Navigation = () => {
   // Inner pages: hamburger menu
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 transition-colors duration-300 ${scrolled ? "bg-background/80 backdrop-blur-sm" : "bg-white"}`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 md:py-8 transition-colors duration-300 ${scrolled ? "bg-background/80 backdrop-blur-sm" : "bg-white"}`}>
         <Link to="/" className="font-display text-xl md:text-2xl font-light tracking-wide text-foreground">
           Nitin Mukul
         </Link>
@@ -114,7 +114,7 @@ const MobileMenu = ({
     className="fixed inset-0 z-[60] flex flex-col overflow-hidden" style={{ backgroundColor: 'white' }}
   >
     {/* Menu header row */}
-    <div className="flex items-center justify-between px-6 md:px-12 py-6">
+    <div className="flex items-center justify-between px-6 md:px-12 py-6 md:py-8">
       <Link
         to="/"
         onClick={() => setIsOpen(false)}
