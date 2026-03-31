@@ -28,55 +28,13 @@ const navItems = [
   { label: "Collect", path: "/collect" },
 ];
 
-const ArtworkDropdown = ({ onClose }: { onClose: () => void }) => {
-  const leftItems = artworkSubItems.slice(0, 3);
-  const rightItems = artworkSubItems.slice(3);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: -4 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -4 }}
-      transition={{ duration: 0.2 }}
-      className="absolute top-full right-0 mt-2 bg-background border border-border/40 shadow-sm px-8 py-4 z-50"
-    >
-      <div className="flex gap-16">
-        <div className="flex flex-col gap-1.5">
-          {leftItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              onClick={onClose}
-              className="font-body text-sm text-foreground/70 hover:text-foreground transition-colors whitespace-nowrap"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
-        <div className="flex flex-col gap-1.5">
-          {rightItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              onClick={onClose}
-              className="font-body text-sm text-foreground/70 hover:text-foreground transition-colors whitespace-nowrap"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [artworkOpen, setArtworkOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -95,7 +53,7 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
         setArtworkOpen(false);
       }
     };
@@ -108,17 +66,13 @@ const Navigation = () => {
 
     if (item.hasDropdown) {
       return (
-        <div key={item.path} className="relative" ref={dropdownRef}>
-          <button
-            onClick={() => setArtworkOpen(!artworkOpen)}
-            className={`font-body text-sm font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 flex items-center gap-1 ${isActive ? "border-b border-foreground" : ""}`}
-          >
-            {item.label}
-          </button>
-          <AnimatePresence>
-            {artworkOpen && <ArtworkDropdown onClose={() => setArtworkOpen(false)} />}
-          </AnimatePresence>
-        </div>
+        <button
+          key={item.path}
+          onClick={() => setArtworkOpen(!artworkOpen)}
+          className={`font-body text-sm font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 flex items-center gap-1 ${isActive ? "border-b border-foreground" : ""}`}
+        >
+          {item.label}
+        </button>
       );
     }
 
@@ -133,10 +87,12 @@ const Navigation = () => {
     );
   };
 
+  const headerClass = `fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 md:py-8 transition-colors duration-300 ${scrolled ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-background"}`;
+
   if (isHome) {
     return (
       <>
-        <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 md:py-8 transition-colors duration-300 ${scrolled ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-white"}`}>
+        <header ref={headerRef} className={headerClass}>
           <Link to="/" className="font-display text-xl md:text-2xl font-bold tracking-wide text-foreground">
             Nitin Mukul
           </Link>
@@ -150,7 +106,35 @@ const Navigation = () => {
           >
             {isOpen ? <X size={24} /> : <HamburgerIcon />}
           </button>
+
+          {/* Desktop full-width artwork dropdown */}
+          <AnimatePresence>
+            {artworkOpen && (
+              <motion.div
+                initial={{ clipPath: "inset(0 0 100% 0)" }}
+                animate={{ clipPath: "inset(0 0 0% 0)" }}
+                exit={{ clipPath: "inset(0 0 100% 0)" }}
+                transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="hidden lg:block absolute top-full left-0 right-0 bg-background border-t border-border/20 shadow-sm px-12 py-8"
+                style={{ backgroundColor: 'hsl(40 20% 98%)' }}
+              >
+                <div className="flex gap-12">
+                  {artworkSubItems.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setArtworkOpen(false)}
+                      className="font-body text-sm text-foreground/70 hover:text-foreground transition-colors whitespace-nowrap"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </header>
+
         <AnimatePresence>
           {isOpen && <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} location={location} />}
         </AnimatePresence>
@@ -160,7 +144,7 @@ const Navigation = () => {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 md:py-8 transition-colors duration-300 ${scrolled ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-white"}`}>
+      <header ref={headerRef} className={headerClass}>
         <Link to="/" className="font-display text-xl md:text-2xl font-bold tracking-wide text-foreground">
           Nitin Mukul
         </Link>
@@ -171,6 +155,33 @@ const Navigation = () => {
         >
           {isOpen ? <X size={24} /> : <HamburgerIcon />}
         </button>
+
+        {/* Desktop full-width artwork dropdown */}
+        <AnimatePresence>
+          {artworkOpen && (
+            <motion.div
+              initial={{ clipPath: "inset(0 0 100% 0)" }}
+              animate={{ clipPath: "inset(0 0 0% 0)" }}
+              exit={{ clipPath: "inset(0 0 100% 0)" }}
+              transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="hidden lg:block absolute top-full left-0 right-0 bg-background border-t border-border/20 shadow-sm px-12 py-8"
+              style={{ backgroundColor: 'hsl(40 20% 98%)' }}
+            >
+              <div className="flex gap-12">
+                {artworkSubItems.map((item) => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setArtworkOpen(false)}
+                    className="font-body text-sm text-foreground/70 hover:text-foreground transition-colors whitespace-nowrap"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       <AnimatePresence>
@@ -192,11 +203,11 @@ const MobileMenu = ({
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="fixed inset-0 z-[60] flex flex-col overflow-hidden" style={{ backgroundColor: 'white' }}
+      initial={{ y: "-100%" }}
+      animate={{ y: 0 }}
+      exit={{ y: "-100%" }}
+      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="fixed inset-0 z-[60] flex flex-col overflow-hidden" style={{ backgroundColor: 'hsl(40 20% 98%)' }}
     >
       <div className="flex items-center justify-between px-6 md:px-12 py-6 md:py-8">
         <Link
