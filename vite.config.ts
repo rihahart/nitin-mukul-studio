@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   oxc: {},
-  plugins: [react({ include: /\.(jsx|js|tsx|ts)$/ }), mode === "development" && componentTagger()].filter(Boolean),
+  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
