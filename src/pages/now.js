@@ -47,8 +47,11 @@ const Index = () => {
               )
             )
           ),
-          React.createElement("div", { className: "md:col-span-2 md:h-full md:overflow-y-auto", style: { scrollbarWidth: 'none', msOverflowStyle: 'none' } },
-            React.createElement("div", { className: "flex flex-col gap-6" },
+          React.createElement("div", { className: "md:col-span-2 md:relative" },
+            React.createElement("div", {
+              className: "flex flex-col gap-6 md:absolute md:inset-0 md:overflow-y-auto",
+              style: { scrollbarWidth: 'none', msOverflowStyle: 'none' }
+            },
               exhibitions.map((exhibition) =>
                 React.createElement(Link, {
                   key: exhibition.id,
