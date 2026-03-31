@@ -97,9 +97,28 @@ const MobileMenu = ({
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
     transition={{ duration: 0.3 }}
-    className="fixed inset-0 z-40 bg-background"
+    className="fixed inset-0 z-[60] flex flex-col" style={{ backgroundColor: 'white' }}
   >
-    <div className="flex h-full items-center justify-center">
+    {/* Menu header row */}
+    <div className="flex items-center justify-between px-6 md:px-12 py-6">
+      <Link
+        to="/"
+        onClick={() => setIsOpen(false)}
+        className="font-display text-xl md:text-2xl font-light tracking-wide text-foreground"
+      >
+        Nitin Mukul
+      </Link>
+      <button
+        onClick={() => setIsOpen(false)}
+        className="p-2 text-foreground hover:opacity-60 transition-opacity"
+        aria-label="Close menu"
+      >
+        <X size={24} />
+      </button>
+    </div>
+
+    {/* Nav links */}
+    <div className="flex flex-1 items-center justify-center">
       <nav className="flex flex-col items-center gap-1">
         {navItems.map((item, i) => (
           <motion.div
