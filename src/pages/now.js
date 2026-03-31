@@ -22,8 +22,8 @@ const Index = () => {
 
   return React.createElement(Layout, { hideFooter: true },
     React.createElement(HeroCarousel, null),
-    React.createElement("section", { className: "bg-background px-6 md:px-12 py-14 md:py-20" },
-      React.createElement("div", { className: "grid grid-cols-1 md:grid-cols-5 gap-14 md:grid-rows-[1fr]" },
+    React.createElement("section", { className: "bg-background px-4 md:px-12 py-8 md:py-20" },
+      React.createElement("div", { className: "grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-14 md:grid-rows-[1fr]" },
           React.createElement("div", { className: "md:col-span-3" },
             React.createElement(Link, { to: `/projects/${currentlyShowing.id}`, className: "group block" },
               React.createElement("div", { className: "aspect-[4/3] overflow-hidden" },
@@ -33,11 +33,11 @@ const Index = () => {
                   className: "w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 })
               ),
-              React.createElement("div", { className: "mt-5" },
+              React.createElement("div", { className: "mt-3 md:mt-5" },
                 React.createElement("p", { className: "font-body text-xs tracking-widest uppercase text-muted-foreground mb-1" },
                   "Currently Showing"
                 ),
-                React.createElement("h3", { className: "font-display text-xl md:text-2xl font-bold tracking-wide text-foreground uppercase" },
+                React.createElement("h3", { className: "font-display text-lg md:text-2xl font-bold tracking-wide text-foreground uppercase" },
                   currentlyShowing.title
                 ),
                 React.createElement("p", { className: "font-body text-sm text-muted-foreground mt-1" },
@@ -48,7 +48,7 @@ const Index = () => {
           ),
           React.createElement("div", { className: "md:col-span-2 md:relative" },
             React.createElement("div", {
-              className: "flex flex-col gap-9 md:absolute md:inset-0 md:overflow-y-auto",
+              className: "flex flex-col gap-6 md:gap-9 md:absolute md:inset-0 md:overflow-y-auto",
             },
               exhibitions.map((exhibition) =>
                 React.createElement(Link, {
@@ -63,7 +63,7 @@ const Index = () => {
                       className: "w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     })
                   ),
-                  React.createElement("div", { className: "mt-3.5" },
+                  React.createElement("div", { className: "mt-2 md:mt-3.5" },
                     React.createElement("h4", { className: "font-display text-sm md:text-base font-bold tracking-wide text-foreground uppercase" },
                       exhibition.title
                     ),
@@ -86,14 +86,14 @@ const Index = () => {
           )
       )
     ),
-    React.createElement("section", { className: "bg-background px-6 md:px-12 pb-14 md:pb-20" },
-      React.createElement("div", { className: "flex items-center justify-between mb-7" },
-          React.createElement("h2", { className: "font-display text-xl md:text-2xl font-bold tracking-wide text-foreground uppercase" },
+    React.createElement("section", { className: "bg-background px-4 md:px-12 pb-8 md:pb-20" },
+      React.createElement("div", { className: "flex items-center justify-between mb-4 md:mb-7" },
+          React.createElement("h2", { className: "font-display text-lg md:text-2xl font-bold tracking-wide text-foreground uppercase" },
             "Explore Work"
           )
         ),
         React.createElement("div", {
-          className: "grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-14"
+          className: "grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-14"
         },
           artworks.map((artwork) =>
             React.createElement(Link, {
@@ -112,15 +112,15 @@ const Index = () => {
           )
         )
     ),
-    React.createElement("section", { className: "bg-background px-6 md:px-12 py-24 md:py-32" },
+    React.createElement("section", { className: "bg-background px-4 md:px-12 py-12 md:py-32" },
       React.createElement("div", { className: "max-w-xl mx-auto text-center" },
-        React.createElement("h2", { className: "font-display text-2xl md:text-3xl font-light tracking-wide text-foreground mb-3.5" },
+        React.createElement("h2", { className: "font-display text-xl md:text-3xl font-light tracking-wide text-foreground mb-2 md:mb-3.5" },
           "Stay Connected"
         ),
-        React.createElement("p", { className: "font-body text-sm text-muted-foreground mb-10" },
+        React.createElement("p", { className: "font-body text-sm text-muted-foreground mb-6 md:mb-10" },
           "Sign up for updates on new work, exhibitions, and projects."
         ),
-        React.createElement("form", { onSubmit: handleSubmit, className: "flex gap-3.5 max-w-md mx-auto" },
+        React.createElement("form", { onSubmit: handleSubmit, className: "flex gap-2 md:gap-3.5 max-w-md mx-auto" },
           React.createElement("input", {
             type: "email",
             value: email,
@@ -136,7 +136,7 @@ const Index = () => {
             "Subscribe"
           )
         ),
-        React.createElement("div", { className: "flex justify-center gap-6 mt-10" },
+        React.createElement("div", { className: "flex justify-center gap-5 md:gap-6 mt-6 md:mt-10" },
           React.createElement("a", {
             href: "https://instagram.com",
             target: "_blank",
