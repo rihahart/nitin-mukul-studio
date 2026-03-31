@@ -60,7 +60,7 @@ const Index = () => {
               )
             )
           ),
-          React.createElement("div", { className: "md:col-span-2 min-h-0 overflow-y-auto", style: { scrollbarWidth: 'none', msOverflowStyle: 'none' } },
+          React.createElement("div", { ref: rightColRef, className: "md:col-span-2 overflow-y-auto", style: { scrollbarWidth: 'none', msOverflowStyle: 'none' } },
             React.createElement("div", { className: "flex flex-col gap-6" },
               exhibitions.map((exhibition) =>
                 React.createElement(Link, {
