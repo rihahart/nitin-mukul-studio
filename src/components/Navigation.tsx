@@ -167,17 +167,31 @@ const Navigation = () => {
               className="hidden lg:block absolute top-full left-0 right-0 bg-background border-t border-border/20 shadow-sm px-12 py-8"
               style={{ backgroundColor: 'hsl(40 20% 98%)' }}
             >
-              <div className="flex gap-12 justify-start">
-                {artworkSubItems.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => setArtworkOpen(false)}
-                    className="font-body text-sm text-foreground/70 hover:text-foreground transition-colors whitespace-nowrap"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+              <div className="flex gap-16">
+                <div className="flex flex-col gap-1.5">
+                  {artworkSubItems.slice(0, 3).map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setArtworkOpen(false)}
+                      className="font-body text-sm text-foreground/70 hover:text-foreground transition-colors whitespace-nowrap"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  {artworkSubItems.slice(3).map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setArtworkOpen(false)}
+                      className="font-body text-sm text-foreground/70 hover:text-foreground transition-colors whitespace-nowrap"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </motion.div>
           )}
