@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Instagram, Mail, ChevronDown, ArrowLeft } from "lucide-react";
 
-const LINE_COLOR = 'hsl(30, 10%, 12%)';
+const LINE_COLOR = 'hsl(var(--foreground))';
 
 const MenuIcon = ({ isOpen }: { isOpen: boolean }) => (
   <div className="w-8 h-8 relative flex items-center justify-center">
@@ -326,10 +326,10 @@ const MobileMenu = ({
 
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="flex gap-6 mt-12 items-center">
                   <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-foreground hover:opacity-60 transition-opacity">
-                    <Instagram size={20} />
+                    <Instagram size={20} className="text-foreground" />
                   </a>
                   <Link to="/about" onClick={() => setIsOpen(false)} className="text-foreground hover:opacity-60 transition-opacity">
-                    <Mail size={20} />
+                    <Mail size={20} className="text-foreground" />
                   </Link>
                 </motion.div>
               </nav>
