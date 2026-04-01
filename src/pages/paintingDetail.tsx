@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import prints1 from "@/assets/prints-1.jpg";
 import prints2 from "@/assets/prints-2.jpg";
@@ -92,6 +92,10 @@ const prints = [
 const PrintDetail = () => {
   const { id } = useParams();
   const [slideIndex, setSlideIndex] = useState(0);
+
+  useEffect(() => {
+    setSlideIndex(0);
+  }, [id]);
 
   const printIndex = prints.findIndex((p) => p.id === id);
   const print = prints[printIndex];
