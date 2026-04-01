@@ -29,7 +29,7 @@ const prints = [
     credit: "I Woke Up Somewhere Else",
     gallery: "The Guild Gallery, New York City",
     medium: "Oil on canvas",
-    dimensions: "36 × 48 inches",
+    dimensions: "24 × 18 inches",
     image: prints2,
     detailCrop: { x: "20%", y: "15%", size: "55%" },
   },
@@ -189,15 +189,15 @@ const PrintDetail = () => {
           <h1 className="font-display text-2xl md:text-3xl font-light text-foreground tracking-wide">
             {print.title}
           </h1>
-          <p className="font-body text-sm text-foreground/60">
+          <p className="font-body text-sm text-foreground">
             {(print as any).credit ?? "Nitin Mukul"}, {print.year}
           </p>
           {(print as any).gallery && (
-            <p id="gallery" className="font-body text-sm text-foreground/60">
+            <p id="gallery" className="font-body text-sm text-foreground">
               {(print as any).gallery}
             </p>
           )}
-          <p className="font-body text-sm text-foreground/60">
+          <p className="font-body text-sm text-foreground">
             {print.medium} | {print.dimensions}
           </p>
         </div>
