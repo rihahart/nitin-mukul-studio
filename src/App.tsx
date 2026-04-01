@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/now";
 import Prints from "./pages/Prints";
+import PrintDetail from "./pages/PrintDetail";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/work" element={<Prints />} />
+          <Route path="/work/:id" element={<PrintDetail />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
