@@ -35,9 +35,9 @@ const MenuIcon = ({ isOpen }: { isOpen: boolean }) => (
 const artworkSubItems = [
   { label: "Video", path: "/work?category=video" },
   { label: "Painting", path: "/work?category=painting" },
+  { label: "Public Art", path: "/work?category=public-art" },
   { label: "Installation", path: "/work?category=installation" },
   { label: "Prints", path: "/work?category=prints" },
-  { label: "Public Art", path: "/work?category=public-art" },
 ];
 
 const navItems = [
@@ -192,14 +192,16 @@ const Navigation = () => {
         <Link to="/" className="font-display text-xl md:text-2xl font-bold tracking-wide text-foreground">
           Nitin Mukul
         </Link>
+        <nav ref={navRef} className="hidden lg:flex items-center gap-6">
+          {navItems.map(renderNavItem)}
+        </nav>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="z-50 p-2 text-foreground hover:opacity-60 transition-opacity"
+          className="lg:hidden z-50 p-2 text-foreground hover:opacity-60 transition-opacity"
           aria-label="Toggle menu"
         >
           <MenuIcon isOpen={isOpen} />
         </button>
-
       </header>
 
       {/* Desktop full-width artwork dropdown */}
