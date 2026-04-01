@@ -3,19 +3,24 @@ import Layout from "@/components/Layout";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import prints1 from "@/assets/prints-1.jpg";
-import prints2 from "@/assets/prints-2.jpg";
-import prints3 from "@/assets/prints-3.jpg";
-import prints4 from "@/assets/prints-4.jpg";
-import prints5 from "@/assets/prints-5.jpg";
-import prints6 from "@/assets/prints-6.jpg";
-import prints7 from "@/assets/prints-7.jpg";
-import prints8 from "@/assets/prints-8.jpg";
-import painting9 from "@/assets/08_mukul_slide.jpg";
-import painting10 from "@/assets/08_rock_for_light.jpg";
-import painting11 from "@/assets/09_mukul.jpg";
-import painting12 from "@/assets/15_mukul_slide.jpg";
-import painting13 from "@/assets/16_mukul_slide.jpg";
+import prints1 from "@/assets/Paintings/prints-1.jpg";
+import prints2 from "@/assets/Paintings/prints-2.jpg";
+import prints3 from "@/assets/Paintings/prints-3.jpg";
+import prints4 from "@/assets/Paintings/prints-4.jpg";
+import prints5 from "@/assets/Paintings/prints-5.jpg";
+import prints6 from "@/assets/Paintings/prints-6.jpg";
+import prints7 from "@/assets/Paintings/prints-7.jpg";
+import prints8 from "@/assets/Paintings/prints-8.jpg";
+import painting9 from "@/assets/Paintings/08_mukul_slide.jpg";
+import painting10 from "@/assets/Paintings/08_rock_for_light.jpg";
+import painting11 from "@/assets/Paintings/09_mukul.jpg";
+import painting12 from "@/assets/Paintings/15_mukul_slide.jpg";
+import painting13 from "@/assets/Paintings/16_mukul_slide.jpg";
+import painting14 from "@/assets/Paintings/Garuda.jpg";
+import painting15 from "@/assets/Paintings/boom_tomb.jpg";
+import painting16 from "@/assets/Paintings/brush_in_the_alley.jpg";
+import painting17 from "@/assets/Paintings/hotrs_1_hi_res.jpg";
+import painting18 from "@/assets/Paintings/flying_lotus_hi_res.jpg";
 
 const prints = [
   {
@@ -135,6 +140,51 @@ const prints = [
     medium: "Lorem ipsum dolor sit amet",
     dimensions: "00 × 00 inches",
     image: painting13,
+    detailCrop: { x: "25%", y: "10%", size: "50%" },
+  },
+  {
+    id: "painting-14",
+    title: "Garuda",
+    year: "2023",
+    medium: "Lorem ipsum dolor sit amet",
+    dimensions: "00 × 00 inches",
+    image: painting14,
+    detailCrop: { x: "25%", y: "10%", size: "50%" },
+  },
+  {
+    id: "painting-15",
+    title: "Lorem Ipsum XV",
+    year: "2023",
+    medium: "Lorem ipsum dolor sit amet",
+    dimensions: "00 × 00 inches",
+    image: painting15,
+    detailCrop: { x: "25%", y: "10%", size: "50%" },
+  },
+  {
+    id: "painting-16",
+    title: "Lorem Ipsum XVI",
+    year: "2023",
+    medium: "Lorem ipsum dolor sit amet",
+    dimensions: "00 × 00 inches",
+    image: painting16,
+    detailCrop: { x: "25%", y: "10%", size: "50%" },
+  },
+  {
+    id: "painting-17",
+    title: "Lorem Ipsum XVII",
+    year: "2023",
+    medium: "Lorem ipsum dolor sit amet",
+    dimensions: "00 × 00 inches",
+    image: painting17,
+    detailCrop: { x: "25%", y: "10%", size: "50%" },
+  },
+  {
+    id: "painting-18",
+    title: "Lorem Ipsum XVIII",
+    year: "2023",
+    medium: "Lorem ipsum dolor sit amet",
+    dimensions: "00 × 00 inches",
+    image: painting18,
     detailCrop: { x: "25%", y: "10%", size: "50%" },
   },
 ];

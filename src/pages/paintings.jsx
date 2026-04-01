@@ -1,18 +1,23 @@
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import prints1 from "@/assets/prints-1.jpg";
-import prints2 from "@/assets/prints-2.jpg";
-import prints3 from "@/assets/prints-3.jpg";
-import prints4 from "@/assets/prints-4.jpg";
-import prints5 from "@/assets/prints-5.jpg";
-import prints6 from "@/assets/prints-6.jpg";
-import prints7 from "@/assets/prints-7.jpg";
-import prints8 from "@/assets/prints-8.jpg";
-import painting9 from "@/assets/08_mukul_slide.jpg";
-import painting10 from "@/assets/08_rock_for_light.jpg";
-import painting11 from "@/assets/09_mukul.jpg";
-import painting12 from "@/assets/15_mukul_slide.jpg";
-import painting13 from "@/assets/16_mukul_slide.jpg";
+import prints1 from "@/assets/Paintings/prints-1.jpg";
+import prints2 from "@/assets/Paintings/prints-2.jpg";
+import prints3 from "@/assets/Paintings/prints-3.jpg";
+import prints4 from "@/assets/Paintings/prints-4.jpg";
+import prints5 from "@/assets/Paintings/prints-5.jpg";
+import prints6 from "@/assets/Paintings/prints-6.jpg";
+import prints7 from "@/assets/Paintings/prints-7.jpg";
+import prints8 from "@/assets/Paintings/prints-8.jpg";
+import painting9 from "@/assets/Paintings/08_mukul_slide.jpg";
+import painting10 from "@/assets/Paintings/08_rock_for_light.jpg";
+import painting11 from "@/assets/Paintings/09_mukul.jpg";
+import painting12 from "@/assets/Paintings/15_mukul_slide.jpg";
+import painting13 from "@/assets/Paintings/16_mukul_slide.jpg";
+import painting14 from "@/assets/Paintings/Garuda.jpg";
+import painting15 from "@/assets/Paintings/boom_tomb.jpg";
+import painting16 from "@/assets/Paintings/brush_in_the_alley.jpg";
+import painting17 from "@/assets/Paintings/hotrs_1_hi_res.jpg";
+import painting18 from "@/assets/Paintings/flying_lotus_hi_res.jpg";
 import { motion } from "framer-motion";
 
 const prints = [
@@ -29,6 +34,11 @@ const prints = [
   { id: "painting-11", title: "Lorem Ipsum XI", image: painting11 },
   { id: "painting-12", title: "Lorem Ipsum XII", image: painting12 },
   { id: "painting-13", title: "Lorem Ipsum XIII", image: painting13 },
+  { id: "painting-14", title: "Garuda", image: painting14 },
+  { id: "painting-15", title: "Lorem Ipsum XV", image: painting15 },
+  { id: "painting-16", title: "Lorem Ipsum XVI", image: painting16 },
+  { id: "painting-17", title: "Lorem Ipsum XVII", image: painting17 },
+  { id: "painting-18", title: "Lorem Ipsum XVIII", image: painting18 },
 ];
 
 const Prints = () => {
