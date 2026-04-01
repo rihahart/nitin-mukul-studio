@@ -23,8 +23,8 @@ const prints = [
     detailCrop: { x: "25%", y: "10%", size: "50%" },
   },
   {
-    id: "untitled-2",
-    title: "Untitled II",
+    id: "witness",
+    title: "Witness",
     year: "2023",
     medium: "Oil on canvas",
     dimensions: "36 × 48 inches",

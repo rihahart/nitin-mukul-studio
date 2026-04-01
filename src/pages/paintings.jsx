@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 
 const prints = [
   { id: "untitled-1", title: "Untitled I", image: prints1 },
-  { id: "untitled-2", title: "Untitled II", image: prints2 },
+  { id: "witness", title: "Witness", image: prints2 },
   { id: "untitled-3", title: "Untitled III", image: prints3 },
   { id: "untitled-4", title: "Untitled IV", image: prints4 },
   { id: "untitled-5", title: "Untitled V", image: prints5 },
