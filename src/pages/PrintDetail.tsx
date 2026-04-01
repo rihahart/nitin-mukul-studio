@@ -149,7 +149,7 @@ const PrintDetail = () => {
         </div>
 
         {/* Prev / Next artwork navigation */}
-        <div className="border-t border-foreground/10 pt-8 flex items-center justify-between">
+        <div className="pt-8 flex items-center justify-between">
           <Link
             to={`/work/${prevPrint.id}`}
             className="flex items-center gap-2 group hover:opacity-60 transition-opacity"
