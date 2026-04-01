@@ -6,6 +6,11 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import prints1 from "@/assets/prints-1.jpg";
 import prints2 from "@/assets/prints-2.jpg";
 import prints3 from "@/assets/prints-3.jpg";
+import prints4 from "@/assets/prints-4.jpg";
+import prints5 from "@/assets/prints-5.jpg";
+import prints6 from "@/assets/prints-6.jpg";
+import prints7 from "@/assets/prints-7.jpg";
+import prints8 from "@/assets/prints-8.jpg";
 
 const prints = [
   {
@@ -34,6 +39,51 @@ const prints = [
     dimensions: "60 × 40 inches",
     image: prints3,
     detailCrop: { x: "15%", y: "20%", size: "50%" },
+  },
+  {
+    id: "untitled-4",
+    title: "Untitled IV",
+    year: "2023",
+    medium: "Oil on canvas",
+    dimensions: "48 × 60 inches",
+    image: prints4,
+    detailCrop: { x: "30%", y: "20%", size: "50%" },
+  },
+  {
+    id: "untitled-5",
+    title: "Untitled V",
+    year: "2022",
+    medium: "Oil on canvas",
+    dimensions: "36 × 48 inches",
+    image: prints5,
+    detailCrop: { x: "25%", y: "15%", size: "55%" },
+  },
+  {
+    id: "untitled-6",
+    title: "The Bestiary",
+    year: "2023",
+    medium: "Oil on canvas",
+    dimensions: "60 × 48 inches",
+    image: prints6,
+    detailCrop: { x: "20%", y: "10%", size: "50%" },
+  },
+  {
+    id: "untitled-7",
+    title: "Untitled VII",
+    year: "2024",
+    medium: "Oil on canvas",
+    dimensions: "48 × 72 inches",
+    image: prints7,
+    detailCrop: { x: "25%", y: "20%", size: "50%" },
+  },
+  {
+    id: "untitled-8",
+    title: "Untitled VIII",
+    year: "2022",
+    medium: "Oil on canvas",
+    dimensions: "36 × 48 inches",
+    image: prints8,
+    detailCrop: { x: "20%", y: "15%", size: "55%" },
   },
 ];
 
