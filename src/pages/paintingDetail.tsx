@@ -27,6 +27,7 @@ const prints = [
     title: "Witness",
     year: "2006",
     credit: "I Woke Up Somewhere Else",
+    gallery: "The Guild Gallery, New York City",
     medium: "Oil on canvas",
     dimensions: "36 × 48 inches",
     image: prints2,
@@ -191,6 +192,11 @@ const PrintDetail = () => {
           <p className="font-body text-sm text-foreground/60">
             {(print as any).credit ?? "Nitin Mukul"}, {print.year}
           </p>
+          {(print as any).gallery && (
+            <p id="gallery" className="font-body text-sm text-foreground/60">
+              {(print as any).gallery}
+            </p>
+          )}
           <p className="font-body text-sm text-foreground/60">
             {print.medium}
           </p>
