@@ -60,6 +60,7 @@ const PrintDetail = () => {
     { type: "detail" as const },
   ];
 
+  const prevPrint = prints[(printIndex - 1 + prints.length) % prints.length];
   const nextPrint = prints[(printIndex + 1) % prints.length];
 
   return (
@@ -70,7 +71,7 @@ const PrintDetail = () => {
           {/* Prev arrow */}
           <button
             onClick={() => setSlideIndex((prev) => (prev - 1 + slideImages.length) % slideImages.length)}
-            className="absolute left-0 md:-left-12 z-10 p-2 text-foreground/40 hover:text-foreground transition-colors"
+            className="absolute left-0 md:-left-12 z-10 p-2 text-foreground hover:opacity-60 transition-opacity"
             aria-label="Previous"
           >
             <ChevronLeft size={32} strokeWidth={1} />
@@ -112,7 +113,7 @@ const PrintDetail = () => {
           {/* Next arrow */}
           <button
             onClick={() => setSlideIndex((prev) => (prev + 1) % slideImages.length)}
-            className="absolute right-0 md:-right-12 z-10 p-2 text-foreground/40 hover:text-foreground transition-colors"
+            className="absolute right-0 md:-right-12 z-10 p-2 text-foreground hover:opacity-60 transition-opacity"
             aria-label="Next"
           >
             <ChevronRight size={32} strokeWidth={1} />
@@ -147,19 +148,25 @@ const PrintDetail = () => {
           </p>
         </div>
 
-        {/* Next artwork link */}
-        <div className="border-t border-foreground/10 pt-8">
+        {/* Prev / Next artwork navigation */}
+        <div className="border-t border-foreground/10 pt-8 flex items-center justify-between">
+          <Link
+            to={`/work/${prevPrint.id}`}
+            className="flex items-center gap-2 group hover:opacity-60 transition-opacity"
+          >
+            <ChevronLeft size={24} strokeWidth={1} className="text-foreground" />
+            <p className="font-display text-lg md:text-xl text-foreground">
+              {prevPrint.title}
+            </p>
+          </Link>
           <Link
             to={`/work/${nextPrint.id}`}
-            className="flex items-center justify-end gap-3 group"
+            className="flex items-center gap-2 group hover:opacity-60 transition-opacity"
           >
-            <div className="text-right">
-              <p className="font-body text-xs text-foreground/40 uppercase tracking-widest">Next</p>
-              <p className="font-display text-lg md:text-xl text-foreground group-hover:opacity-60 transition-opacity">
-                {nextPrint.title}
-              </p>
-            </div>
-            <ChevronRight size={24} strokeWidth={1} className="text-foreground/40 group-hover:text-foreground transition-colors" />
+            <p className="font-display text-lg md:text-xl text-foreground">
+              {nextPrint.title}
+            </p>
+            <ChevronRight size={24} strokeWidth={1} className="text-foreground" />
           </Link>
         </div>
       </div>
