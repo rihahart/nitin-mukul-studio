@@ -1,0 +1,170 @@
+import { useParams, Link } from "react-router-dom";
+import Layout from "@/components/Layout";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import prints1 from "@/assets/prints-1.jpg";
+import prints2 from "@/assets/prints-2.jpg";
+import prints3 from "@/assets/prints-3.jpg";
+
+const prints = [
+  {
+    id: "untitled-1",
+    title: "Untitled I",
+    year: "2024",
+    medium: "Oil on canvas",
+    dimensions: "48 × 72 inches",
+    image: prints1,
+    detailCrop: { x: "25%", y: "10%", size: "50%" },
+  },
+  {
+    id: "untitled-2",
+    title: "Untitled II",
+    year: "2023",
+    medium: "Oil on canvas",
+    dimensions: "36 × 48 inches",
+    image: prints2,
+    detailCrop: { x: "20%", y: "15%", size: "55%" },
+  },
+  {
+    id: "untitled-3",
+    title: "Untitled III",
+    year: "2024",
+    medium: "Mixed media sculpture",
+    dimensions: "60 × 40 inches",
+    image: prints3,
+    detailCrop: { x: "15%", y: "20%", size: "50%" },
+  },
+];
+
+const PrintDetail = () => {
+  const { id } = useParams();
+  const [slideIndex, setSlideIndex] = useState(0);
+
+  const printIndex = prints.findIndex((p) => p.id === id);
+  const print = prints[printIndex];
+
+  if (!print) {
+    return (
+      <Layout>
+        <div className="flex items-center justify-center min-h-screen">
+          <p className="font-body text-foreground">Work not found.</p>
+        </div>
+      </Layout>
+    );
+  }
+
+  // Two slides: full image, then detail crop
+  const slideImages = [
+    { type: "full" as const },
+    { type: "detail" as const },
+  ];
+
+  const nextPrint = prints[(printIndex + 1) % prints.length];
+
+  return (
+    <Layout>
+      <div className="pt-24 md:pt-32 pb-16 px-6 md:px-12 max-w-6xl mx-auto">
+        {/* Image carousel */}
+        <div className="relative w-full flex items-center justify-center mb-12">
+          {/* Prev arrow */}
+          <button
+            onClick={() => setSlideIndex((prev) => (prev - 1 + slideImages.length) % slideImages.length)}
+            className="absolute left-0 md:-left-12 z-10 p-2 text-foreground/40 hover:text-foreground transition-colors"
+            aria-label="Previous"
+          >
+            <ChevronLeft size={32} strokeWidth={1} />
+          </button>
+
+          {/* Image area */}
+          <div className="w-full max-w-3xl aspect-[4/3] relative overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={slideIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+                className="absolute inset-0 flex items-center justify-center"
+              >
+                {slideImages[slideIndex].type === "full" ? (
+                  <img
+                    src={print.image}
+                    alt={print.title}
+                    className="max-w-full max-h-full object-contain"
+                  />
+                ) : (
+                  <div
+                    className="w-full h-full bg-no-repeat"
+                    style={{
+                      backgroundImage: `url(${print.image})`,
+                      backgroundPosition: `${print.detailCrop.x} ${print.detailCrop.y}`,
+                      backgroundSize: "250%",
+                    }}
+                    role="img"
+                    aria-label={`${print.title} — detail`}
+                  />
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Next arrow */}
+          <button
+            onClick={() => setSlideIndex((prev) => (prev + 1) % slideImages.length)}
+            className="absolute right-0 md:-right-12 z-10 p-2 text-foreground/40 hover:text-foreground transition-colors"
+            aria-label="Next"
+          >
+            <ChevronRight size={32} strokeWidth={1} />
+          </button>
+        </div>
+
+        {/* Slide indicators */}
+        <div className="flex justify-center gap-2 mb-12">
+          {slideImages.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setSlideIndex(i)}
+              className={`w-2 h-2 rounded-full transition-colors ${i === slideIndex ? "bg-foreground" : "bg-foreground/20"}`}
+              aria-label={`Slide ${i + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Artwork info */}
+        <div className="text-center space-y-2 mb-20">
+          <h1 className="font-display text-2xl md:text-3xl font-light text-foreground tracking-wide">
+            {print.title}
+          </h1>
+          <p className="font-body text-sm text-foreground/60">
+            Nitin Mukul, {print.year}
+          </p>
+          <p className="font-body text-sm text-foreground/60">
+            {print.medium}
+          </p>
+          <p className="font-body text-sm text-foreground/60">
+            {print.dimensions}
+          </p>
+        </div>
+
+        {/* Next artwork link */}
+        <div className="border-t border-foreground/10 pt-8">
+          <Link
+            to={`/work/${nextPrint.id}`}
+            className="flex items-center justify-end gap-3 group"
+          >
+            <div className="text-right">
+              <p className="font-body text-xs text-foreground/40 uppercase tracking-widest">Next</p>
+              <p className="font-display text-lg md:text-xl text-foreground group-hover:opacity-60 transition-opacity">
+                {nextPrint.title}
+              </p>
+            </div>
+            <ChevronRight size={24} strokeWidth={1} className="text-foreground/40 group-hover:text-foreground transition-colors" />
+          </Link>
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export default PrintDetail;
