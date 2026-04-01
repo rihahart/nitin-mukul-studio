@@ -8,6 +8,11 @@ import prints5 from "@/assets/prints-5.jpg";
 import prints6 from "@/assets/prints-6.jpg";
 import prints7 from "@/assets/prints-7.jpg";
 import prints8 from "@/assets/prints-8.jpg";
+import painting9 from "@/assets/08_mukul_slide.jpg";
+import painting10 from "@/assets/08_rock_for_light.jpg";
+import painting11 from "@/assets/09_mukul.jpg";
+import painting12 from "@/assets/15_mukul_slide.jpg";
+import painting13 from "@/assets/16_mukul_slide.jpg";
 import { motion } from "framer-motion";
 
 const prints = [
@@ -19,6 +24,11 @@ const prints = [
   { id: "untitled-6", title: "The Bestiary", image: prints6 },
   { id: "untitled-7", title: "Untitled VII", image: prints7 },
   { id: "untitled-8", title: "Untitled VIII", image: prints8 },
+  { id: "painting-9", title: "Lorem Ipsum IX", image: painting9 },
+  { id: "painting-10", title: "Lorem Ipsum X", image: painting10 },
+  { id: "painting-11", title: "Lorem Ipsum XI", image: painting11 },
+  { id: "painting-12", title: "Lorem Ipsum XII", image: painting12 },
+  { id: "painting-13", title: "Lorem Ipsum XIII", image: painting13 },
 ];
 
 const Prints = () => {

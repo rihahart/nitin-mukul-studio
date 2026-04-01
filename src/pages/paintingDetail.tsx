@@ -11,6 +11,11 @@ import prints5 from "@/assets/prints-5.jpg";
 import prints6 from "@/assets/prints-6.jpg";
 import prints7 from "@/assets/prints-7.jpg";
 import prints8 from "@/assets/prints-8.jpg";
+import painting9 from "@/assets/08_mukul_slide.jpg";
+import painting10 from "@/assets/08_rock_for_light.jpg";
+import painting11 from "@/assets/09_mukul.jpg";
+import painting12 from "@/assets/15_mukul_slide.jpg";
+import painting13 from "@/assets/16_mukul_slide.jpg";
 
 const prints = [
   {
@@ -86,6 +91,51 @@ const prints = [
     dimensions: "36 × 48 inches",
     image: prints8,
     detailCrop: { x: "20%", y: "15%", size: "55%" },
+  },
+  {
+    id: "painting-9",
+    title: "Lorem Ipsum IX",
+    year: "2023",
+    medium: "Lorem ipsum dolor sit amet",
+    dimensions: "00 × 00 inches",
+    image: painting9,
+    detailCrop: { x: "25%", y: "10%", size: "50%" },
+  },
+  {
+    id: "painting-10",
+    title: "Lorem Ipsum X",
+    year: "2023",
+    medium: "Lorem ipsum dolor sit amet",
+    dimensions: "00 × 00 inches",
+    image: painting10,
+    detailCrop: { x: "25%", y: "10%", size: "50%" },
+  },
+  {
+    id: "painting-11",
+    title: "Lorem Ipsum XI",
+    year: "2023",
+    medium: "Lorem ipsum dolor sit amet",
+    dimensions: "00 × 00 inches",
+    image: painting11,
+    detailCrop: { x: "25%", y: "10%", size: "50%" },
+  },
+  {
+    id: "painting-12",
+    title: "Lorem Ipsum XII",
+    year: "2023",
+    medium: "Lorem ipsum dolor sit amet",
+    dimensions: "00 × 00 inches",
+    image: painting12,
+    detailCrop: { x: "25%", y: "10%", size: "50%" },
+  },
+  {
+    id: "painting-13",
+    title: "Lorem Ipsum XIII",
+    year: "2023",
+    medium: "Lorem ipsum dolor sit amet",
+    dimensions: "00 × 00 inches",
+    image: painting13,
+    detailCrop: { x: "25%", y: "10%", size: "50%" },
   },
 ];
 
