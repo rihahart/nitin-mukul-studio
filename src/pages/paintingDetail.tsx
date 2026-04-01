@@ -198,10 +198,7 @@ const PrintDetail = () => {
             </p>
           )}
           <p className="font-body text-sm text-foreground/60">
-            {print.medium}
-          </p>
-          <p className="font-body text-sm text-foreground/60">
-            {print.dimensions}
+            {print.medium} | {print.dimensions}
           </p>
         </div>
 
