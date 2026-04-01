@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import prints1 from "@/assets/prints-1.jpg";
 import prints2 from "@/assets/prints-2.jpg";
@@ -23,17 +24,19 @@ const Prints = () => {
               transition={{ duration: 0.6, delay: i * 0.15 }}
               className="flex flex-col items-center"
             >
-              <div className="w-full overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-auto object-contain"
-                  loading="lazy"
-                />
-              </div>
-              <h3 className="font-display text-lg md:text-xl mt-4 text-foreground tracking-wide">
-                {item.title}
-              </h3>
+              <Link to={`/work/${item.id}`} className="w-full group">
+                <div className="w-full overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-auto object-contain group-hover:opacity-80 transition-opacity"
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="font-display text-lg md:text-xl mt-4 text-foreground tracking-wide text-center">
+                  {item.title}
+                </h3>
+              </Link>
             </motion.div>
           ))}
         </div>
