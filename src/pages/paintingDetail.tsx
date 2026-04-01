@@ -25,7 +25,8 @@ const prints = [
   {
     id: "witness",
     title: "Witness",
-    year: "2023",
+    year: "2006",
+    credit: "I Woke Up Somewhere Else",
     medium: "Oil on canvas",
     dimensions: "36 × 48 inches",
     image: prints2,
@@ -188,7 +189,7 @@ const PrintDetail = () => {
             {print.title}
           </h1>
           <p className="font-body text-sm text-foreground/60">
-            Nitin Mukul, {print.year}
+            {(print as any).credit ?? "Nitin Mukul"}, {print.year}
           </p>
           <p className="font-body text-sm text-foreground/60">
             {print.medium}
