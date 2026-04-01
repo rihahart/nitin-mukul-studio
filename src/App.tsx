@@ -17,6 +17,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/work" element={<Prints />} />
+        </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
