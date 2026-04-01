@@ -1,13 +1,35 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Instagram, Mail, X, ChevronDown, ArrowLeft } from "lucide-react";
+import { Instagram, Mail, ChevronDown, ArrowLeft } from "lucide-react";
 
-const HamburgerIcon = () => (
-  <svg width="32" height="16" viewBox="0 0 32 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <line x1="0" y1="2" x2="32" y2="2" stroke="currentColor" strokeWidth="1.5"/>
-    <line x1="0" y1="14" x2="32" y2="14" stroke="currentColor" strokeWidth="1.5"/>
-  </svg>
+const LINE_COLOR = 'hsl(30, 10%, 12%)';
+
+const MenuIcon = ({ isOpen }: { isOpen: boolean }) => (
+  <div className="w-8 h-8 relative flex items-center justify-center">
+    <motion.span
+      className="absolute block w-8 rounded-full"
+      style={{ height: "2px" }}
+      initial={{ rotate: 0, y: -6, backgroundColor: LINE_COLOR }}
+      animate={isOpen
+        ? { rotate: 45, y: 0, backgroundColor: LINE_COLOR }
+        : { rotate: 0, y: -6, backgroundColor: LINE_COLOR }}
+      transition={isOpen
+        ? { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }
+        : { duration: 0.5, delay: 0.56, ease: [0.25, 0.46, 0.45, 0.94] }}
+    />
+    <motion.span
+      className="absolute block w-8 rounded-full"
+      style={{ height: "2px" }}
+      initial={{ rotate: 0, y: 6, backgroundColor: LINE_COLOR }}
+      animate={isOpen
+        ? { rotate: -45, y: 0, backgroundColor: LINE_COLOR }
+        : { rotate: 0, y: 6, backgroundColor: LINE_COLOR }}
+      transition={isOpen
+        ? { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }
+        : { duration: 0.5, delay: 0.56, ease: [0.25, 0.46, 0.45, 0.94] }}
+    />
+  </div>
 );
 
 const artworkSubItems = [
@@ -117,7 +139,7 @@ const Navigation = () => {
             className="lg:hidden z-50 p-2 text-foreground hover:opacity-60 transition-opacity"
             aria-label="Toggle menu"
           >
-            {isOpen ? <X size={24} /> : <HamburgerIcon />}
+            <MenuIcon isOpen={isOpen} />
           </button>
 
         </header>
@@ -173,7 +195,7 @@ const Navigation = () => {
           className="z-50 p-2 text-foreground hover:opacity-60 transition-opacity"
           aria-label="Toggle menu"
         >
-          {isOpen ? <X size={24} /> : <HamburgerIcon />}
+          <MenuIcon isOpen={isOpen} />
         </button>
 
       </header>
@@ -219,6 +241,7 @@ const Navigation = () => {
 };
 
 const MobileMenu = ({
+  isOpen,
   setIsOpen,
   location,
 }: {
@@ -231,9 +254,8 @@ const MobileMenu = ({
   return (
     <motion.div
       initial={{ y: "-100%" }}
-      animate={{ y: 0 }}
-      exit={{ y: "-100%" }}
-      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+      animate={{ y: 0, transition: { duration: 0.7, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] } }}
+      exit={{ y: "-100%", transition: { duration: 0.7, delay: 0, ease: [0.25, 0.46, 0.45, 0.94] } }}
       className="fixed inset-0 z-[60] flex flex-col overflow-hidden"
       style={{ backgroundColor: 'hsl(40 20% 98%)' }}
     >
@@ -245,11 +267,11 @@ const MobileMenu = ({
           </Link>
         ) : (
           <button onClick={() => setMenuLevel('main')} className="p-2 -ml-2 text-foreground hover:opacity-60 transition-opacity" aria-label="Back">
-            <ArrowLeft size={24} strokeWidth={1.5} />
+            <ArrowLeft size={32} strokeWidth={1.5} />
           </button>
         )}
         <button onClick={() => setIsOpen(false)} className="p-2 text-foreground hover:opacity-60 transition-opacity" aria-label="Close menu">
-          <X size={24} />
+          <MenuIcon isOpen={isOpen} />
         </button>
       </div>
 
@@ -299,10 +321,10 @@ const MobileMenu = ({
                 })}
 
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="flex gap-6 mt-12 items-center">
-                  <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-gallery-secondary hover:text-foreground transition-colors">
+                  <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-foreground hover:opacity-60 transition-opacity">
                     <Instagram size={20} />
                   </a>
-                  <Link to="/about" onClick={() => setIsOpen(false)} className="text-gallery-secondary hover:text-foreground transition-colors">
+                  <Link to="/about" onClick={() => setIsOpen(false)} className="text-foreground hover:opacity-60 transition-opacity">
                     <Mail size={20} />
                   </Link>
                 </motion.div>
