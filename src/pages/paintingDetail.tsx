@@ -21,6 +21,7 @@ import painting15 from "@/assets/Paintings/boom_tomb.jpg";
 import painting16 from "@/assets/Paintings/brush_in_the_alley.jpg";
 import painting17 from "@/assets/Paintings/hotrs_1_hi_res.jpg";
 import painting18 from "@/assets/Paintings/flying_lotus_hi_res.jpg";
+import painting19 from "@/assets/Paintings/17_mukul_slide.jpg";
 
 const prints = [
   {
@@ -185,6 +186,15 @@ const prints = [
     medium: "Lorem ipsum dolor sit amet",
     dimensions: "00 × 00 inches",
     image: painting18,
+    detailCrop: { x: "25%", y: "10%", size: "50%" },
+  },
+  {
+    id: "painting-19",
+    title: "Lorem Ipsum XIX",
+    year: "2023",
+    medium: "Lorem ipsum dolor sit amet",
+    dimensions: "00 × 00 inches",
+    image: painting19,
     detailCrop: { x: "25%", y: "10%", size: "50%" },
   },
 ];

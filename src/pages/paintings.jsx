@@ -18,6 +18,7 @@ import painting15 from "@/assets/Paintings/boom_tomb.jpg";
 import painting16 from "@/assets/Paintings/brush_in_the_alley.jpg";
 import painting17 from "@/assets/Paintings/hotrs_1_hi_res.jpg";
 import painting18 from "@/assets/Paintings/flying_lotus_hi_res.jpg";
+import painting19 from "@/assets/Paintings/17_mukul_slide.jpg";
 import { motion } from "framer-motion";
 
 const prints = [
@@ -39,6 +40,7 @@ const prints = [
   { id: "painting-16", title: "Lorem Ipsum XVI", image: painting16 },
   { id: "painting-17", title: "Lorem Ipsum XVII", image: painting17 },
   { id: "painting-18", title: "Lorem Ipsum XVIII", image: painting18 },
+  { id: "painting-19", title: "Lorem Ipsum XIX", image: painting19 },
 ];
 
 const Prints = () => {
