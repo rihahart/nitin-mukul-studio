@@ -60,6 +60,7 @@ const Navigation = () => {
   const isHome = location.pathname === "/";
   const headerRef = useRef<HTMLElement>(null);
   const navRef = useRef<HTMLElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const updateMeasurements = () => {
@@ -88,9 +89,9 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
-        setArtworkOpen(false);
-      }
+      const inHeader = headerRef.current?.contains(e.target as Node);
+      const inDropdown = dropdownRef.current?.contains(e.target as Node);
+      if (!inHeader && !inDropdown) setArtworkOpen(false);
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
@@ -152,6 +153,7 @@ const Navigation = () => {
               animate={{ y: 0 }}
               exit={{ y: "-100%" }}
               transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+              ref={dropdownRef}
               className="hidden lg:block fixed top-0 left-0 right-0 z-40 shadow-sm"
               style={{ backgroundColor: 'hsl(40 20% 98%)', paddingTop: headerHeight, paddingLeft: navLeft, paddingBottom: '2rem' }}
             >
