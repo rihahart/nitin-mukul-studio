@@ -3,12 +3,22 @@ import Layout from "@/components/Layout";
 import prints1 from "@/assets/prints-1.jpg";
 import prints2 from "@/assets/prints-2.jpg";
 import prints3 from "@/assets/prints-3.jpg";
+import prints4 from "@/assets/prints-4.jpg";
+import prints5 from "@/assets/prints-5.jpg";
+import prints6 from "@/assets/prints-6.jpg";
+import prints7 from "@/assets/prints-7.jpg";
+import prints8 from "@/assets/prints-8.jpg";
 import { motion } from "framer-motion";
 
 const prints = [
   { id: "untitled-1", title: "Untitled I", image: prints1 },
   { id: "untitled-2", title: "Untitled II", image: prints2 },
   { id: "untitled-3", title: "Untitled III", image: prints3 },
+  { id: "untitled-4", title: "Untitled IV", image: prints4 },
+  { id: "untitled-5", title: "Untitled V", image: prints5 },
+  { id: "untitled-6", title: "The Bestiary", image: prints6 },
+  { id: "untitled-7", title: "Untitled VII", image: prints7 },
+  { id: "untitled-8", title: "Untitled VIII", image: prints8 },
 ];
 
 const Prints = () => {
