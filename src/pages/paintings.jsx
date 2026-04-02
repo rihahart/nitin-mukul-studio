@@ -5,7 +5,7 @@ import prints2 from "@/assets/Paintings/prints-2.jpg";
 import prints3 from "@/assets/Paintings/prints-3.jpg";
 import prints4 from "@/assets/Paintings/prints-4.jpg";
 import prints5 from "@/assets/Paintings/prints-5.jpg";
-import prints6 from "@/assets/Paintings/prints-6.jpg";
+import prints6 from "@/assets/Paintings/02_The_Bestiary.jpg";
 import prints7 from "@/assets/Paintings/prints-7.jpg";
 import prints8 from "@/assets/Paintings/prints-8.jpg";
 import painting9 from "@/assets/Paintings/08_mukul_slide.jpg";
@@ -51,6 +51,7 @@ import { motion } from "framer-motion";
 const prints = [
   // 01–19 numbered series
   { id: "painting-44", title: "Lorem Ipsum XLIV", image: painting44 },   // 01_Mother
+  { id: "untitled-6", title: "The Bestiary", image: prints6 },            // 02_The_Bestiary
   { id: "Fault-Lines", title: "Fault Lines", image: painting24 },         // 03_Fault_Lines
   { id: "Cease-Fire", title: "Cease Fire", image: painting22 },           // 04_Cease_Fire
   { id: "painting-14", title: "Garuda", image: painting14 },              // 05_Garuda
@@ -72,7 +73,6 @@ const prints = [
   { id: "untitled-3", title: "Untitled III", image: prints3 },
   { id: "untitled-4", title: "Untitled IV", image: prints4 },
   { id: "untitled-5", title: "Untitled V", image: prints5 },
-  { id: "untitled-6", title: "The Bestiary", image: prints6 },
   { id: "untitled-7", title: "Untitled VII", image: prints7 },
   { id: "untitled-8", title: "Untitled VIII", image: prints8 },
   // unnumbered

@@ -53,6 +53,7 @@ import painting46 from "@/assets/Paintings/sociodermis.jpg";
 const prints = [
   // 01–19 numbered series
   { id: "painting-44", title: "Lorem Ipsum XLIV", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting44, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 01_Mother
+  { id: "untitled-6", title: "The Bestiary", year: "2023", medium: "Oil on canvas", dimensions: "60 × 48 inches", image: prints6, detailCrop: { x: "20%", y: "10%", size: "50%" } }, // 02_The_Bestiary
   { id: "Fault-Lines", title: "Fault Lines", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting24, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 03_Fault_Lines
   { id: "Cease-Fire", title: "Cease Fire", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting22, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 04_Cease_Fire
   { id: "painting-14", title: "Garuda", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting14, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 05_Garuda
@@ -115,15 +116,6 @@ const prints = [
     dimensions: "36 × 48 inches",
     image: prints5,
     detailCrop: { x: "25%", y: "15%", size: "55%" },
-  },
-  {
-    id: "untitled-6",
-    title: "The Bestiary",
-    year: "2023",
-    medium: "Oil on canvas",
-    dimensions: "60 × 48 inches",
-    image: prints6,
-    detailCrop: { x: "20%", y: "10%", size: "50%" },
   },
   {
     id: "untitled-7",
