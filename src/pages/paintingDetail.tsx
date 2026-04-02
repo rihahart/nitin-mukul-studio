@@ -52,25 +52,26 @@ import painting46 from "@/assets/Paintings/sociodermis.jpg";
 
 const prints = [
   // 01–19 numbered series
-  { id: "painting-44", title: "Lorem Ipsum XLIV", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting44, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 01_Mother
-  { id: "Fault-Lines", title: "Fault Lines", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting24, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 03_Fault_Lines
-  { id: "Cease-Fire", title: "Cease Fire", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting22, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 04_Cease_Fire
-  { id: "painting-14", title: "Garuda", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting14, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 05_Garuda
-  { id: "painting-45", title: "Lorem Ipsum XLV", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting45, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 06_CallofKali
-  { id: "The-Sky-is-Falling", title: "The Sky is Falling", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting35, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 07_The_Sky_is_Falling
-  { id: "Levitate", title: "Levitate", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting31, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 08_Levitate
-  { id: "painting-9", title: "Lorem Ipsum IX", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting9, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 08_mukul_slide
-  { id: "Parasolipsism", title: "Parasolipsism", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting34, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 08_Parasolipsism
-  { id: "painting-10", title: "Lorem Ipsum X", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting10, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 08_rock_for_light
-  { id: "painting-38", title: "Lorem Ipsum XXXVIII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting38, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 09_confluence
-  { id: "painting-11", title: "Lorem Ipsum XI", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting11, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 09_mukul
-  { id: "painting-12", title: "Lorem Ipsum XII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting12, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 15_mukul_slide
-  { id: "painting-13", title: "Lorem Ipsum XIII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting13, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 16_mukul_slide
-  { id: "painting-19", title: "Lorem Ipsum XIX", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting19, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 17_mukul_slide
-  { id: "painting-20", title: "Lorem Ipsum XX", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting20, detailCrop: { x: "25%", y: "10%", size: "50%" } }, // 19_mukul_slide
+  { id: "01-Mother", title: "Lorem Ipsum XLIV", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting44, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "02-The-Bestiary", title: "The Bestiary", year: "2023", medium: "Oil on canvas", dimensions: "60 × 48 inches", image: prints6, detailCrop: { x: "20%", y: "10%", size: "50%" } },
+  { id: "03-Fault-Lines", title: "Fault Lines", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting24, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "04-Cease-Fire", title: "Cease Fire", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting22, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "05-Garuda", title: "Garuda", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting14, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "06-CallofKali", title: "Lorem Ipsum XLV", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting45, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "07-The-Sky-is-Falling", title: "The Sky is Falling", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting35, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "08-Levitate", title: "Levitate", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting31, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "08-mukul-slide", title: "Lorem Ipsum IX", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting9, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "08-Parasolipsism", title: "Parasolipsism", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting34, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "08-rock-for-light", title: "Lorem Ipsum X", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting10, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "09-confluence", title: "Lorem Ipsum XXXVIII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting38, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "09-mukul", title: "Lorem Ipsum XI", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting11, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "15-mukul-slide", title: "Lorem Ipsum XII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting12, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "16-mukul-slide", title: "Lorem Ipsum XIII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting13, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "17-mukul-slide", title: "Lorem Ipsum XIX", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting19, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "19-mukul-slide", title: "Lorem Ipsum XX", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting20, detailCrop: { x: "25%", y: "10%", size: "50%" } },
   // prints series (1–8)
   {
-    id: "untitled-1",
+    id: "prints-1",
     title: "Untitled I",
     year: "2024",
     medium: "Oil on canvas",
@@ -79,7 +80,7 @@ const prints = [
     detailCrop: { x: "25%", y: "10%", size: "50%" },
   },
   {
-    id: "witness",
+    id: "prints-2",
     title: "Witness",
     year: "2006",
     credit: "I Woke Up Somewhere Else",
@@ -90,7 +91,7 @@ const prints = [
     detailCrop: { x: "20%", y: "15%", size: "55%" },
   },
   {
-    id: "untitled-3",
+    id: "prints-3",
     title: "Untitled III",
     year: "2024",
     medium: "Mixed media sculpture",
@@ -99,7 +100,7 @@ const prints = [
     detailCrop: { x: "15%", y: "20%", size: "50%" },
   },
   {
-    id: "untitled-4",
+    id: "prints-4",
     title: "Untitled IV",
     year: "2023",
     medium: "Oil on canvas",
@@ -108,7 +109,7 @@ const prints = [
     detailCrop: { x: "30%", y: "20%", size: "50%" },
   },
   {
-    id: "untitled-5",
+    id: "prints-5",
     title: "Untitled V",
     year: "2022",
     medium: "Oil on canvas",
@@ -117,16 +118,7 @@ const prints = [
     detailCrop: { x: "25%", y: "15%", size: "55%" },
   },
   {
-    id: "untitled-6",
-    title: "The Bestiary",
-    year: "2023",
-    medium: "Oil on canvas",
-    dimensions: "60 × 48 inches",
-    image: prints6,
-    detailCrop: { x: "20%", y: "10%", size: "50%" },
-  },
-  {
-    id: "untitled-7",
+    id: "prints-7",
     title: "Untitled VII",
     year: "2024",
     medium: "Oil on canvas",
@@ -135,7 +127,7 @@ const prints = [
     detailCrop: { x: "25%", y: "20%", size: "50%" },
   },
   {
-    id: "untitled-8",
+    id: "prints-8",
     title: "Untitled VIII",
     year: "2022",
     medium: "Oil on canvas",
@@ -144,28 +136,28 @@ const prints = [
     detailCrop: { x: "20%", y: "15%", size: "55%" },
   },
   // unnumbered
-  { id: "painting-15", title: "Lorem Ipsum XV", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting15, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-16", title: "Lorem Ipsum XVI", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting16, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-17", title: "Lorem Ipsum XVII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting17, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-18", title: "Lorem Ipsum XVIII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting18, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-21", title: "Lorem Ipsum XXI", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting21, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "boom-tomb", title: "Lorem Ipsum XV", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting15, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "brush-in-the-alley", title: "Lorem Ipsum XVI", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting16, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "hotrs-1-hi-res", title: "Lorem Ipsum XVII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting17, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "flying-lotus-hi-res", title: "Lorem Ipsum XVIII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting18, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "207156fb9b072944dc0c13bad869605e", title: "Lorem Ipsum XXI", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting21, detailCrop: { x: "25%", y: "10%", size: "50%" } },
   { id: "Civil-Lines", title: "Civil Lines", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting23, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-25", title: "Lorem Ipsum XXV", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting25, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-26", title: "Lorem Ipsum XXVI", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting26, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-27", title: "Lorem Ipsum XXVII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting27, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-28", title: "Lorem Ipsum XXVIII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting28, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-29", title: "Lorem Ipsum XXIX", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting29, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-30", title: "Lorem Ipsum XXX", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting30, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-32", title: "Lorem Ipsum XXXII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting32, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-33", title: "Lorem Ipsum XXXIII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting33, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-36", title: "Lorem Ipsum XXXVI", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting36, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-37", title: "Lorem Ipsum XXXVII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting37, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-39", title: "Lorem Ipsum XXXIX", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting39, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-40", title: "Lorem Ipsum XL", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting40, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-41", title: "Lorem Ipsum XLI", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting41, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-42", title: "Lorem Ipsum XLII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting42, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-43", title: "Lorem Ipsum XLIII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting43, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "painting-46", title: "Lorem Ipsum XLVI", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting46, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "IMG-0622", title: "Lorem Ipsum XXV", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting25, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "IMG-0712", title: "Lorem Ipsum XXVI", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting26, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "IMG-1373", title: "Lorem Ipsum XXVII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting27, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "IMG-3272", title: "Lorem Ipsum XXVIII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting28, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "IMG-4648", title: "Lorem Ipsum XXIX", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting29, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "IMG-4652", title: "Lorem Ipsum XXX", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting30, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "O1-mukul-slide", title: "Lorem Ipsum XXXII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting32, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "O6-mukul-slide", title: "Lorem Ipsum XXXIII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting33, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "celebration-hi-res", title: "Lorem Ipsum XXXVI", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting36, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "coarse-empire", title: "Lorem Ipsum XXXVII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting37, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "flower-lines", title: "Lorem Ipsum XXXIX", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting39, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "fountain", title: "Lorem Ipsum XL", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting40, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "hotrs-2-hi-res", title: "Lorem Ipsum XLI", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting41, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "hotrs-3-hi-res", title: "Lorem Ipsum XLII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting42, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "hotrs-4-hi-res", title: "Lorem Ipsum XLIII", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting43, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "sociodermis", title: "Lorem Ipsum XLVI", year: "2023", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: painting46, detailCrop: { x: "25%", y: "10%", size: "50%" } },
 ];
 
 const PrintDetail = () => {
