@@ -193,6 +193,16 @@ const PrintDetail = () => {
   return (
     <Layout>
       <div className="pt-24 md:pt-32 pb-16 px-6 md:px-12 max-w-6xl mx-auto">
+        {/* Breadcrumb */}
+        <div className="mb-8">
+          <Link
+            to="/artwork/paintings"
+            className="font-body text-sm text-foreground hover:opacity-60 transition-opacity tracking-wide"
+          >
+            ← Paintings
+          </Link>
+        </div>
+
         {/* Image carousel */}
         <div className="relative w-full flex items-center justify-center mb-12">
           {/* Prev arrow */}
@@ -280,7 +290,7 @@ const PrintDetail = () => {
         {/* Prev / Next artwork navigation */}
         <div className="pt-8 flex items-center justify-between">
           <Link
-            to={`/work/${prevPrint.id}`}
+            to={`/artwork/paintings/${prevPrint.id}`}
             className="flex items-center gap-2 group hover:opacity-60 transition-opacity"
           >
             <ChevronLeft size={24} strokeWidth={1} className="text-foreground" />
@@ -289,7 +299,7 @@ const PrintDetail = () => {
             </p>
           </Link>
           <Link
-            to={`/work/${nextPrint.id}`}
+            to={`/artwork/paintings/${nextPrint.id}`}
             className="flex items-center gap-2 group hover:opacity-60 transition-opacity"
           >
             <p className="font-display text-lg md:text-xl text-foreground">

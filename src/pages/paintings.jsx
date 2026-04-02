@@ -113,7 +113,7 @@ const Prints = () => {
               transition={{ duration: 0.6, delay: i * 0.15 }}
               className="flex flex-col items-center"
             >
-              <Link to={`/work/${item.id}`} className="w-full group">
+              <Link to={`/artwork/paintings/${item.id}`} className="w-full group">
                 <div className="w-full overflow-hidden">
                   <img
                     src={item.image}

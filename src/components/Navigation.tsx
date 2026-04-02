@@ -34,7 +34,7 @@ const MenuIcon = ({ isOpen }: { isOpen: boolean }) => (
 
 const artworkSubItems = [
   { label: "Video", path: "/work?category=video" },
-  { label: "Painting", path: "/work?category=painting" },
+  { label: "Painting", path: "/artwork/paintings" },
   { label: "Public Art", path: "/work?category=public-art" },
   { label: "Installation", path: "/work?category=installation" },
   { label: "Prints", path: "/work?category=prints" },
