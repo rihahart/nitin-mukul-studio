@@ -50,54 +50,54 @@ import { motion } from "framer-motion";
 
 const prints = [
   // 01–19 numbered series
-  { id: "painting-44", title: "Lorem Ipsum XLIV", image: painting44 },   // 01_Mother
-  { id: "untitled-6", title: "The Bestiary", image: prints6 },            // 02_The_Bestiary
-  { id: "Fault-Lines", title: "Fault Lines", image: painting24 },         // 03_Fault_Lines
-  { id: "Cease-Fire", title: "Cease Fire", image: painting22 },           // 04_Cease_Fire
-  { id: "painting-14", title: "Garuda", image: painting14 },              // 05_Garuda
-  { id: "painting-45", title: "Lorem Ipsum XLV", image: painting45 },    // 06_CallofKali
-  { id: "The-Sky-is-Falling", title: "The Sky is Falling", image: painting35 }, // 07_The_Sky_is_Falling
-  { id: "Levitate", title: "Levitate", image: painting31 },               // 08_Levitate
-  { id: "painting-9", title: "Lorem Ipsum IX", image: painting9 },        // 08_mukul_slide
-  { id: "Parasolipsism", title: "Parasolipsism", image: painting34 },     // 08_Parasolipsism
-  { id: "painting-10", title: "Lorem Ipsum X", image: painting10 },       // 08_rock_for_light
-  { id: "painting-38", title: "Lorem Ipsum XXXVIII", image: painting38 }, // 09_confluence
-  { id: "painting-11", title: "Lorem Ipsum XI", image: painting11 },      // 09_mukul
-  { id: "painting-12", title: "Lorem Ipsum XII", image: painting12 },     // 15_mukul_slide
-  { id: "painting-13", title: "Lorem Ipsum XIII", image: painting13 },    // 16_mukul_slide
-  { id: "painting-19", title: "Lorem Ipsum XIX", image: painting19 },     // 17_mukul_slide
-  { id: "painting-20", title: "Lorem Ipsum XX", image: painting20 },      // 19_mukul_slide
+  { id: "01-Mother", title: "Lorem Ipsum XLIV", image: painting44 },
+  { id: "02-The-Bestiary", title: "The Bestiary", image: prints6 },
+  { id: "03-Fault-Lines", title: "Fault Lines", image: painting24 },
+  { id: "04-Cease-Fire", title: "Cease Fire", image: painting22 },
+  { id: "05-Garuda", title: "Garuda", image: painting14 },
+  { id: "06-CallofKali", title: "Lorem Ipsum XLV", image: painting45 },
+  { id: "07-The-Sky-is-Falling", title: "The Sky is Falling", image: painting35 },
+  { id: "08-Levitate", title: "Levitate", image: painting31 },
+  { id: "08-mukul-slide", title: "Lorem Ipsum IX", image: painting9 },
+  { id: "08-Parasolipsism", title: "Parasolipsism", image: painting34 },
+  { id: "08-rock-for-light", title: "Lorem Ipsum X", image: painting10 },
+  { id: "09-confluence", title: "Lorem Ipsum XXXVIII", image: painting38 },
+  { id: "09-mukul", title: "Lorem Ipsum XI", image: painting11 },
+  { id: "15-mukul-slide", title: "Lorem Ipsum XII", image: painting12 },
+  { id: "16-mukul-slide", title: "Lorem Ipsum XIII", image: painting13 },
+  { id: "17-mukul-slide", title: "Lorem Ipsum XIX", image: painting19 },
+  { id: "19-mukul-slide", title: "Lorem Ipsum XX", image: painting20 },
   // prints series (1–8)
-  { id: "untitled-1", title: "Untitled I", image: prints1 },
-  { id: "witness", title: "Witness", image: prints2 },
-  { id: "untitled-3", title: "Untitled III", image: prints3 },
-  { id: "untitled-4", title: "Untitled IV", image: prints4 },
-  { id: "untitled-5", title: "Untitled V", image: prints5 },
-  { id: "untitled-7", title: "Untitled VII", image: prints7 },
-  { id: "untitled-8", title: "Untitled VIII", image: prints8 },
+  { id: "prints-1", title: "Untitled I", image: prints1 },
+  { id: "prints-2", title: "Witness", image: prints2 },
+  { id: "prints-3", title: "Untitled III", image: prints3 },
+  { id: "prints-4", title: "Untitled IV", image: prints4 },
+  { id: "prints-5", title: "Untitled V", image: prints5 },
+  { id: "prints-7", title: "Untitled VII", image: prints7 },
+  { id: "prints-8", title: "Untitled VIII", image: prints8 },
   // unnumbered
-  { id: "painting-15", title: "Lorem Ipsum XV", image: painting15 },
-  { id: "painting-16", title: "Lorem Ipsum XVI", image: painting16 },
-  { id: "painting-17", title: "Lorem Ipsum XVII", image: painting17 },
-  { id: "painting-18", title: "Lorem Ipsum XVIII", image: painting18 },
-  { id: "painting-21", title: "Lorem Ipsum XXI", image: painting21 },
+  { id: "boom-tomb", title: "Lorem Ipsum XV", image: painting15 },
+  { id: "brush-in-the-alley", title: "Lorem Ipsum XVI", image: painting16 },
+  { id: "hotrs-1-hi-res", title: "Lorem Ipsum XVII", image: painting17 },
+  { id: "flying-lotus-hi-res", title: "Lorem Ipsum XVIII", image: painting18 },
+  { id: "207156fb9b072944dc0c13bad869605e", title: "Lorem Ipsum XXI", image: painting21 },
   { id: "Civil-Lines", title: "Civil Lines", image: painting23 },
-  { id: "painting-25", title: "Lorem Ipsum XXV", image: painting25 },
-  { id: "painting-26", title: "Lorem Ipsum XXVI", image: painting26 },
-  { id: "painting-27", title: "Lorem Ipsum XXVII", image: painting27 },
-  { id: "painting-28", title: "Lorem Ipsum XXVIII", image: painting28 },
-  { id: "painting-29", title: "Lorem Ipsum XXIX", image: painting29 },
-  { id: "painting-30", title: "Lorem Ipsum XXX", image: painting30 },
-  { id: "painting-32", title: "Lorem Ipsum XXXII", image: painting32 },
-  { id: "painting-33", title: "Lorem Ipsum XXXIII", image: painting33 },
-  { id: "painting-36", title: "Lorem Ipsum XXXVI", image: painting36 },
-  { id: "painting-37", title: "Lorem Ipsum XXXVII", image: painting37 },
-  { id: "painting-39", title: "Lorem Ipsum XXXIX", image: painting39 },
-  { id: "painting-40", title: "Lorem Ipsum XL", image: painting40 },
-  { id: "painting-41", title: "Lorem Ipsum XLI", image: painting41 },
-  { id: "painting-42", title: "Lorem Ipsum XLII", image: painting42 },
-  { id: "painting-43", title: "Lorem Ipsum XLIII", image: painting43 },
-  { id: "painting-46", title: "Lorem Ipsum XLVI", image: painting46 },
+  { id: "IMG-0622", title: "Lorem Ipsum XXV", image: painting25 },
+  { id: "IMG-0712", title: "Lorem Ipsum XXVI", image: painting26 },
+  { id: "IMG-1373", title: "Lorem Ipsum XXVII", image: painting27 },
+  { id: "IMG-3272", title: "Lorem Ipsum XXVIII", image: painting28 },
+  { id: "IMG-4648", title: "Lorem Ipsum XXIX", image: painting29 },
+  { id: "IMG-4652", title: "Lorem Ipsum XXX", image: painting30 },
+  { id: "O1-mukul-slide", title: "Lorem Ipsum XXXII", image: painting32 },
+  { id: "O6-mukul-slide", title: "Lorem Ipsum XXXIII", image: painting33 },
+  { id: "celebration-hi-res", title: "Lorem Ipsum XXXVI", image: painting36 },
+  { id: "coarse-empire", title: "Lorem Ipsum XXXVII", image: painting37 },
+  { id: "flower-lines", title: "Lorem Ipsum XXXIX", image: painting39 },
+  { id: "fountain", title: "Lorem Ipsum XL", image: painting40 },
+  { id: "hotrs-2-hi-res", title: "Lorem Ipsum XLI", image: painting41 },
+  { id: "hotrs-3-hi-res", title: "Lorem Ipsum XLII", image: painting42 },
+  { id: "hotrs-4-hi-res", title: "Lorem Ipsum XLIII", image: painting43 },
+  { id: "sociodermis", title: "Lorem Ipsum XLVI", image: painting46 },
 ];
 
 const Prints = () => {
