@@ -1,7 +1,6 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import _02_The_Bestiary from "@/assets/Paintings/02_The_Bestiary.jpg";
 import _09_mukul from "@/assets/Paintings/09_mukul.jpg";
@@ -141,7 +140,7 @@ const paintings = [
     year: "2022", 
     collection: "", 
     gallery: "", 
-    medium: "oil and acrylic on canvas", 
+    medium: "Oil and acrylic on canvas", 
     dimensions: "48 × 36 inches", 
     image: _08_Parasolipsism, 
     detailCrop: { x: "25%", y: "10%", size: "50%" } },
@@ -193,8 +192,8 @@ const paintings = [
     title: "Celebration",
     year: "2010",
     collection: "Malleable Memory",
-    gallery: "private collection",
-    medium: "oil, acrylic and tea stain on canvas", 
+    gallery: "Private Collection",
+    medium: "Oil, acrylic and tea stain on canvas", 
     dimensions: "72 × 48 inches", 
     image: _14_celebration, 
     detailCrop: { x: "25%", y: "10%", size: "50%" } },
@@ -260,7 +259,7 @@ const paintings = [
     year: "2008", 
     collection: "The Nature of the City", 
     gallery: "", 
-    medium: "oil, acrylic and tea stain on canvas", 
+    medium: "Oil, acrylic and tea stain on canvas", 
     dimensions: "48 × 36 inches", 
     image: _21_coarse_empire, 
     detailCrop: { x: "25%", y: "10%", size: "50%" } },
@@ -342,7 +341,7 @@ const paintings = [
     year: "2008",
     collection: "The Nature of the City", 
     gallery: "Private Collection",
-    medium: "oil, acrylic and tea stain on canvas", 
+    medium: "Oil, acrylic and tea stain on canvas", 
     dimensions: "48 × 36 inches", 
     image: _29_flying_lotus,
     detailCrop: { x: "25%", y: "10%", size: "50%" } },
@@ -371,7 +370,7 @@ const paintings = [
     year: "2008", 
     collection: "The Nature of the City", 
     gallery: "Private Collection",
-    medium: "oil, acrylic and tea stain on canvas", 
+    medium: "Oil, acrylic and tea stain on canvas", 
     dimensions: "48 × 36 inches", 
     image: _32_flower_lines,
     detailCrop: { x: "25%", y: "10%", size: "50%" } },
@@ -475,11 +474,7 @@ const paintings = [
 
 const PaintingDetail = () => {
   const { id } = useParams();
-  const [slideIndex, setSlideIndex] = useState(0);
-
-  useEffect(() => {
-    setSlideIndex(0);
-  }, [id]);
+  const navigate = useNavigate();
 
   const paintingIndex = paintings.findIndex((p) => p.id === id);
   const painting = paintings[paintingIndex];
@@ -494,132 +489,73 @@ const PaintingDetail = () => {
     );
   }
 
-  // Two slides: full image, then detail crop
-  const slideImages = [
-    { type: "full" as const },
-    { type: "detail" as const },
-  ];
-
   const prevPainting = paintings[(paintingIndex - 1 + paintings.length) % paintings.length];
   const nextPainting = paintings[(paintingIndex + 1) % paintings.length];
 
   return (
     <Layout>
       <div className="pt-24 md:pt-32 pb-16 px-6 md:px-12 max-w-6xl mx-auto">
-        {/* Breadcrumb */}
-        <div className="mb-8">
-          <Link
-            to="/artwork/paintings"
-            className="font-body text-sm text-foreground hover:opacity-60 transition-opacity tracking-wide"
-          >
-            ← Paintings
-          </Link>
-        </div>
-
-        {/* Image carousel */}
+{/* Image with prev/next arrows */}
         <div className="relative w-full flex items-center justify-center mb-12">
-          {/* Prev arrow */}
           <button
-            onClick={() => setSlideIndex((prev) => (prev - 1 + slideImages.length) % slideImages.length)}
-            className="absolute left-0 md:-left-12 z-10 p-2 text-foreground hover:opacity-60 transition-opacity"
-            aria-label="Previous"
+            onClick={() => navigate(`/artwork/paintings/${prevPainting.id}`)}
+            className="absolute left-0 md:-left-12 z-10 p-2 text-foreground hover:opacity-60 transition-opacity flex flex-col items-center gap-1 group"
+            aria-label="Previous painting"
           >
             <ChevronLeft size={32} strokeWidth={1} />
+            <span className="font-body text-sm tracking-wide whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+              {prevPainting.title}
+            </span>
           </button>
 
-          {/* Image area */}
           <div className="w-full max-w-3xl aspect-[4/3] relative overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
-                key={slideIndex}
+                key={id}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4 }}
                 className="absolute inset-0 flex items-center justify-center"
               >
-                {slideImages[slideIndex].type === "full" ? (
-                  <img
-                    src={painting.image}
-                    alt={painting.title}
-                    className="max-w-full max-h-full object-contain"
-                  />
-                ) : (
-                  <div
-                    className="w-full h-full bg-no-repeat"
-                    style={{
-                      backgroundImage: `url(${painting.image})`,
-                      backgroundPosition: `${painting.detailCrop.x} ${painting.detailCrop.y}`,
-                      backgroundSize: "250%",
-                    }}
-                    role="img"
-                    aria-label={`${painting.title} — detail`}
-                  />
-                )}
+                <img
+                  src={painting.image}
+                  alt={painting.title}
+                  className="max-w-full max-h-full object-contain"
+                />
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Next arrow */}
           <button
-            onClick={() => setSlideIndex((prev) => (prev + 1) % slideImages.length)}
-            className="absolute right-0 md:-right-12 z-10 p-2 text-foreground hover:opacity-60 transition-opacity"
-            aria-label="Next"
+            onClick={() => navigate(`/artwork/paintings/${nextPainting.id}`)}
+            className="absolute right-0 md:-right-12 z-10 p-2 text-foreground hover:opacity-60 transition-opacity flex flex-col items-center gap-1 group"
+            aria-label="Next painting"
           >
             <ChevronRight size={32} strokeWidth={1} />
+            <span className="font-body text-sm tracking-wide whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+              {nextPainting.title}
+            </span>
           </button>
         </div>
 
-        {/* Slide indicators */}
-        <div className="flex justify-center gap-2 mb-12">
-          {slideImages.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setSlideIndex(i)}
-              className={`w-2 h-2 rounded-full transition-colors ${i === slideIndex ? "bg-foreground" : "bg-foreground/20"}`}
-              aria-label={`Slide ${i + 1}`}
-            />
-          ))}
-        </div>
-
         {/* Artwork info */}
-        <div className="text-center space-y-2 mb-20">
-          <h1 className="font-display text-2xl text-foreground tracking-wide font-bold md:text-3xl">
+        <div className="text-center mb-20">
+          <h1 className="font-display text-2xl text-foreground tracking-wide font-bold md:text-3xl mb-3">
             {painting.title}
           </h1>
-          <p className="font-body text-sm text-foreground">
-            {painting.collection && `${painting.collection}, `}{painting.year}
-          </p>
-          {painting.gallery && (
-            <p id="gallery" className="font-body text-sm text-foreground">
-              {painting.gallery}
+          {(painting.collection || painting.year) && (
+            <p className="font-body text-sm text-foreground mb-6">
+              {painting.collection && `${painting.collection}, `}{painting.year}
             </p>
           )}
-          <p className="font-body text-sm text-foreground">
-            {painting.medium} | {painting.dimensions}
-          </p>
-        </div>
-
-        {/* Prev / Next artwork navigation */}
-        <div className="pt-8 flex items-center justify-between">
-          <Link
-            to={`/artwork/paintings/${prevPainting.id}`}
-            className="flex items-center gap-2 group hover:opacity-60 transition-opacity"
-          >
-            <ChevronLeft size={24} strokeWidth={1} className="text-foreground" />
-            <p className="font-display text-lg md:text-xl text-foreground">
-              {prevPainting.title}
-            </p>
-          </Link>
-          <Link
-            to={`/artwork/paintings/${nextPainting.id}`}
-            className="flex items-center gap-2 group hover:opacity-60 transition-opacity"
-          >
-            <p className="font-display text-lg md:text-xl text-foreground">
-              {nextPainting.title}
-            </p>
-            <ChevronRight size={24} strokeWidth={1} className="text-foreground" />
-          </Link>
+          <div className="flex flex-col items-center gap-1 mt-8">
+            <p className="font-body text-sm text-foreground">{painting.medium}</p>
+            <p className="font-body text-sm text-foreground">{painting.dimensions}</p>
+            {painting.gallery && (
+              <p className="font-body text-sm text-foreground">{painting.gallery}</p>
+            )}
+          </div>
         </div>
       </div>
     </Layout>

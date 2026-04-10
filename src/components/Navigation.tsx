@@ -98,7 +98,11 @@ const Navigation = () => {
   }, []);
 
   const renderNavItem = (item: typeof navItems[0]) => {
-    const isActive = item.path === "/" ? location.pathname === "/" : location.pathname.startsWith(item.path);
+    const isActive = item.path === "/"
+      ? location.pathname === "/"
+      : item.hasDropdown
+        ? location.pathname.startsWith(item.path) || location.pathname.startsWith("/artwork")
+        : location.pathname.startsWith(item.path);
 
     if (item.hasDropdown) {
       return (
@@ -159,20 +163,26 @@ const Navigation = () => {
             >
               <div className="flex gap-16">
                 <div className="flex flex-col gap-3">
-                  {artworkSubItems.slice(0, 3).map((item) => (
-                    <Link key={item.path} to={item.path} onClick={() => setArtworkOpen(false)}
-                      className="font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap">
-                      {item.label}
-                    </Link>
-                  ))}
+                  {artworkSubItems.slice(0, 3).map((item) => {
+                    const isSubActive = location.pathname.startsWith(item.path);
+                    return (
+                      <Link key={item.path} to={item.path} onClick={() => setArtworkOpen(false)}
+                        className={`font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap pb-0.5 w-fit ${isSubActive ? "border-b border-foreground" : ""}`}>
+                        {item.label}
+                      </Link>
+                    );
+                  })}
                 </div>
                 <div className="flex flex-col gap-3">
-                  {artworkSubItems.slice(3).map((item) => (
-                    <Link key={item.path} to={item.path} onClick={() => setArtworkOpen(false)}
-                      className="font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap">
-                      {item.label}
-                    </Link>
-                  ))}
+                  {artworkSubItems.slice(3).map((item) => {
+                    const isSubActive = location.pathname.startsWith(item.path);
+                    return (
+                      <Link key={item.path} to={item.path} onClick={() => setArtworkOpen(false)}
+                        className={`font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap pb-0.5 w-fit ${isSubActive ? "border-b border-foreground" : ""}`}>
+                        {item.label}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </motion.div>
@@ -212,25 +222,32 @@ const Navigation = () => {
             animate={{ y: 0 }}
             exit={{ y: "-100%" }}
             transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            ref={dropdownRef}
             className="hidden lg:block fixed top-0 left-0 right-0 z-40 shadow-sm"
             style={{ backgroundColor: 'hsl(40 20% 98%)', paddingTop: headerHeight, paddingLeft: navLeft, paddingBottom: '2rem' }}
           >
             <div className="flex gap-16">
               <div className="flex flex-col gap-3">
-                {artworkSubItems.slice(0, 3).map((item) => (
-                  <Link key={item.path} to={item.path} onClick={() => setArtworkOpen(false)}
-                    className="font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap">
-                    {item.label}
-                  </Link>
-                ))}
+                {artworkSubItems.slice(0, 3).map((item) => {
+                  const isSubActive = location.pathname.startsWith(item.path);
+                  return (
+                    <Link key={item.path} to={item.path} onClick={() => setArtworkOpen(false)}
+                      className={`font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap pb-0.5 w-fit ${isSubActive ? "border-b border-foreground" : ""}`}>
+                      {item.label}
+                    </Link>
+                  );
+                })}
               </div>
               <div className="flex flex-col gap-3">
-                {artworkSubItems.slice(3).map((item) => (
-                  <Link key={item.path} to={item.path} onClick={() => setArtworkOpen(false)}
-                    className="font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap">
-                    {item.label}
-                  </Link>
-                ))}
+                {artworkSubItems.slice(3).map((item) => {
+                  const isSubActive = location.pathname.startsWith(item.path);
+                  return (
+                    <Link key={item.path} to={item.path} onClick={() => setArtworkOpen(false)}
+                      className={`font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap pb-0.5 w-fit ${isSubActive ? "border-b border-foreground" : ""}`}>
+                      {item.label}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </motion.div>
@@ -295,7 +312,11 @@ const MobileMenu = ({
             >
               <nav className="flex flex-col items-start gap-6">
                 {navItems.map((item, i) => {
-                  const isActive = item.path === "/" ? location.pathname === "/" : location.pathname.startsWith(item.path);
+                  const isActive = item.path === "/"
+                    ? location.pathname === "/"
+                    : item.hasDropdown
+                      ? location.pathname.startsWith(item.path) || location.pathname.startsWith("/artwork")
+                      : location.pathname.startsWith(item.path);
 
                   if (item.hasDropdown) {
                     return (
@@ -350,17 +371,21 @@ const MobileMenu = ({
             >
               <h2 className="font-body text-4xl md:text-6xl font-bold tracking-wide text-foreground border-b border-foreground pb-0.5 w-fit mb-16">Artwork</h2>
               <nav className="flex flex-col items-start gap-6">
-                {artworkSubItems.map((item, i) => (
-                  <motion.div key={item.path} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05, duration: 0.3 }}>
-                    <Link
-                      to={item.path}
-                      onClick={() => setIsOpen(false)}
-                      className="font-body text-3xl md:text-5xl font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5" style={{ color: 'hsl(30 10% 12%)' }}
-                    >
-                      {item.label}
-                    </Link>
-                  </motion.div>
-                ))}
+                {artworkSubItems.map((item, i) => {
+                  const isSubActive = location.pathname.startsWith(item.path);
+                  return (
+                    <motion.div key={item.path} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05, duration: 0.3 }}>
+                      <Link
+                        to={item.path}
+                        onClick={() => setIsOpen(false)}
+                        className={`font-body text-3xl md:text-5xl font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 ${isSubActive ? "border-b border-foreground" : ""}`}
+                        style={{ color: 'hsl(30 10% 12%)' }}
+                      >
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
               </nav>
             </motion.div>
           )}
