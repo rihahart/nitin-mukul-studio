@@ -499,7 +499,7 @@ const PaintingDetail = () => {
         <div className="relative w-full flex items-center justify-center mb-12">
           <button
             onClick={() => navigate(`/artwork/paintings/${prevPainting.id}`)}
-            className="absolute left-0 md:-left-12 z-10 p-2 text-foreground hover:opacity-60 transition-opacity flex flex-col items-center gap-1 group"
+            className="hidden md:flex absolute left-0 md:-left-12 z-10 p-2 text-foreground hover:opacity-60 transition-opacity flex-col items-center gap-1 group"
             aria-label="Previous painting"
           >
             <ChevronLeft size={32} strokeWidth={1} />
@@ -529,7 +529,7 @@ const PaintingDetail = () => {
 
           <button
             onClick={() => navigate(`/artwork/paintings/${nextPainting.id}`)}
-            className="absolute right-0 md:-right-12 z-10 p-2 text-foreground hover:opacity-60 transition-opacity flex flex-col items-center gap-1 group"
+            className="hidden md:flex absolute right-0 md:-right-12 z-10 p-2 text-foreground hover:opacity-60 transition-opacity flex-col items-center gap-1 group"
             aria-label="Next painting"
           >
             <ChevronRight size={32} strokeWidth={1} />
@@ -540,7 +540,7 @@ const PaintingDetail = () => {
         </div>
 
         {/* Artwork info */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-10">
           <h1 className="font-display text-2xl text-foreground tracking-wide font-bold md:text-3xl mb-3">
             {painting.title}
           </h1>
@@ -556,6 +556,26 @@ const PaintingDetail = () => {
               <p className="font-body text-sm text-foreground">{painting.gallery}</p>
             )}
           </div>
+        </div>
+
+        {/* Mobile prev/next navigation */}
+        <div className="flex md:hidden items-center justify-between mt-6 mb-10">
+          <button
+            onClick={() => navigate(`/artwork/paintings/${prevPainting.id}`)}
+            className="flex items-center gap-1 text-foreground hover:opacity-60 transition-opacity"
+            aria-label="Previous painting"
+          >
+            <ChevronLeft size={20} strokeWidth={1} />
+            <span className="font-body text-sm tracking-wide">{prevPainting.title}</span>
+          </button>
+          <button
+            onClick={() => navigate(`/artwork/paintings/${nextPainting.id}`)}
+            className="flex items-center gap-1 text-foreground hover:opacity-60 transition-opacity"
+            aria-label="Next painting"
+          >
+            <span className="font-body text-sm tracking-wide">{nextPainting.title}</span>
+            <ChevronRight size={20} strokeWidth={1} />
+          </button>
         </div>
       </div>
     </Layout>
