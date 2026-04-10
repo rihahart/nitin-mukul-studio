@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import _02_The_Bestiary from "@/assets/Paintings/02_The_Bestiary.jpg";
 import _09_mukul from "@/assets/Paintings/09_mukul.jpg";
@@ -475,6 +476,7 @@ const paintings = [
 const PaintingDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   const paintingIndex = paintings.findIndex((p) => p.id === id);
   const painting = paintings[paintingIndex];
@@ -521,7 +523,8 @@ const PaintingDetail = () => {
                 <img
                   src={painting.image}
                   alt={painting.title}
-                  className="max-w-full max-h-full object-contain"
+                  className="max-w-full max-h-full object-contain cursor-zoom-in"
+                  onClick={() => setLightboxOpen(true)}
                 />
               </motion.div>
             </AnimatePresence>
@@ -549,7 +552,7 @@ const PaintingDetail = () => {
               {painting.collection && `${painting.collection}, `}{painting.year}
             </p>
           )}
-          <div className="flex flex-col items-center gap-1 mt-8">
+          <div className="flex flex-col items-center gap-1 mt-4 md:mt-8">
             <p className="font-body text-sm text-foreground">{painting.medium}</p>
             <p className="font-body text-sm text-foreground">{painting.dimensions}</p>
             {painting.gallery && (
@@ -559,7 +562,7 @@ const PaintingDetail = () => {
         </div>
 
         {/* Mobile prev/next navigation */}
-        <div className="flex md:hidden items-center justify-between mt-6 mb-10">
+        <div className="flex md:hidden items-center justify-between mt-16 mb-4">
           <button
             onClick={() => navigate(`/artwork/paintings/${prevPainting.id}`)}
             className="flex items-center gap-1 text-foreground hover:opacity-60 transition-opacity"
@@ -578,6 +581,39 @@ const PaintingDetail = () => {
           </button>
         </div>
       </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightboxOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 bg-neutral-600/95 md:bg-neutral-600/90 flex items-center justify-center p-4 md:py-24"
+            onClick={() => setLightboxOpen(false)}
+          >
+            <div
+              className="flex flex-col items-center gap-4 max-h-full max-w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                className="text-white hover:opacity-60 transition-opacity font-body text-sm tracking-wide"
+                onClick={() => setLightboxOpen(false)}
+                aria-label="Close"
+              >
+                [ Close Screen ]
+              </button>
+              <img
+                src={painting.image}
+                alt={painting.title}
+                className="max-w-full object-contain cursor-zoom-out"
+                style={{ maxHeight: "calc(100vh - 12rem)" }}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Layout>
   );
 };
