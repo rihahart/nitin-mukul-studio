@@ -498,7 +498,7 @@ const PaintingDetail = () => {
     <Layout>
       <div className="pt-24 md:pt-32 pb-16 px-6 md:px-12 max-w-6xl mx-auto">
 {/* Image with prev/next arrows */}
-        <div className="relative w-full flex items-center justify-center mb-12">
+        <div className="relative w-full flex items-center justify-center mb-4 md:mb-12">
           <button
             onClick={() => navigate(`/artwork/paintings/${prevPainting.id}`)}
             className="hidden md:flex absolute left-0 md:-left-12 z-10 p-2 text-foreground hover:opacity-60 transition-opacity flex-col items-center gap-1 group"
@@ -510,7 +510,7 @@ const PaintingDetail = () => {
             </span>
           </button>
 
-          <div className="w-full max-w-3xl aspect-[4/3] relative overflow-hidden">
+          <div className="w-full max-w-3xl aspect-square md:aspect-[4/3] relative overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={id}
@@ -529,7 +529,6 @@ const PaintingDetail = () => {
               </motion.div>
             </AnimatePresence>
           </div>
-
           <button
             onClick={() => navigate(`/artwork/paintings/${nextPainting.id}`)}
             className="hidden md:flex absolute right-0 md:-right-12 z-10 p-2 text-foreground hover:opacity-60 transition-opacity flex-col items-center gap-1 group"
@@ -541,7 +540,6 @@ const PaintingDetail = () => {
             </span>
           </button>
         </div>
-
         {/* Artwork info */}
         <div className="text-center mb-10">
           <h1 className="font-display text-2xl text-foreground tracking-wide font-bold md:text-3xl mb-3">
