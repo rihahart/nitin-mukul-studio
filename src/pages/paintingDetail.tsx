@@ -584,7 +584,7 @@ const PaintingDetail = () => {
 
         {/* Artwork info */}
         <div className="text-center space-y-2 mb-20">
-          <h1 className="font-display text-2xl md:text-3xl font-light text-foreground tracking-wide">
+          <h1 className="font-display text-2xl text-foreground tracking-wide font-bold md:text-3xl">
             {painting.title}
           </h1>
           <p className="font-body text-sm text-foreground">
