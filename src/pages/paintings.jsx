@@ -56,7 +56,11 @@ import _49_detonate from "@/assets/Paintings/49_detonate.jpg";
 import { motion } from "framer-motion";
 
 const paintings = [
-  { id: "Mother", title: "Mother", image: _01_Mother },
+  {
+    id: "Don't_Forget_to_Call_Your_Mother",
+    title: "Don't Forget to Call Your Mother",
+    image: _01_Mother,
+  },
   { id: "The_Bestiary", title: "The Bestiary", image: _02_The_Bestiary },
   { id: "Fault_Lines", title: "Fault Lines", image: _03_Fault_Lines },
   { id: "Cease_Fire", title: "Cease Fire", image: _04_Cease_Fire },
@@ -90,7 +94,11 @@ const paintings = [
   },
   { id: "Chandelier", title: "Chandelier", image: _16_chandelier },
   { id: "Chandelier_2", title: "Chandelier 2", image: _17_chandelier_2 },
-  { id: "Stand_Your_Ground", title: "Stand Your Ground", image: _18__stand_your_ground },
+  {
+    id: "Stand_Your_Ground",
+    title: "Stand Your Ground",
+    image: _18__stand_your_ground,
+  },
   { id: "Giger_Counter", title: "Giger Counter", image: _19_giger_counter },
   { id: "Chandelier_3", title: "Chandelier 3", image: _20_chandelier_3 },
   { id: "Coarse_Empire", title: "Coarse Empire", image: _21_coarse_empire },

@@ -33,11 +33,10 @@ const MenuIcon = ({ isOpen }: { isOpen: boolean }) => (
 );
 
 const artworkSubItems = [
-  { label: "Video", path: "/work?category=video" },
-  { label: "Painting", path: "/artwork/paintings" },
+   { label: "Painting", path: "/artwork/paintings" },
+  { label: "Video and Installation", path: "/work?category=video" },
   { label: "Public Art", path: "/work?category=public-art" },
-  { label: "Installation", path: "/work?category=installation" },
-  { label: "Prints", path: "/work?category=prints" },
+  { label: "Paper", path: "/work?category=prints" },
 ];
 
 const navItems = [
