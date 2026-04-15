@@ -7,6 +7,7 @@ import Index from "./pages/now";
 import Prints from "./pages/paintings.jsx";
 import PrintDetail from "./pages/paintingDetail";
 import VideoInstallation from "./pages/videoInstallation.jsx";
+import HeatMapQueens from "./pages/heatMapQueens";
 
 const queryClient = new QueryClient();
 
