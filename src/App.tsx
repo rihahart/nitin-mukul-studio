@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/now";
 import Prints from "./pages/paintings.jsx";
 import PrintDetail from "./pages/paintingDetail";
+import VideoInstallation from "./pages/videoInstallation.jsx";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/artwork/paintings" element={<Prints />} />
           <Route path="/artwork/paintings/:id" element={<PrintDetail />} />
+          <Route path="/artwork/video-installation" element={<VideoInstallation />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

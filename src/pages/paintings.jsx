@@ -176,7 +176,7 @@ const Paintings = () => {
                     loading="lazy"
                   />
                 </div>
-                <h3 className="font-display text-lg md:text-xl mt-4 text-foreground tracking-wide text-center">
+                <h3 className="font-display text-lg md:text-xl mt-4 text-foreground tracking-wide text-center font-bold">
                   {item.title}
                 </h3>
               </Link>
