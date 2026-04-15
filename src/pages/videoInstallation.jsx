@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import heatMapVideo from "@/assets/Video&Installation/HeatMapsQueens/jamaica_social.mp4";
 import waysOfShowingUpCover from "@/assets/Video&Installation/waysOfSHowingUp/cover.JPG";
 import youWereHereVideo from "@/assets/Video&Installation/youWereHere/YWH_30_second_clip.mp4";

@@ -22,6 +22,7 @@ const App = () => (
           <Route path="/artwork/paintings" element={<Prints />} />
           <Route path="/artwork/paintings/:id" element={<PrintDetail />} />
           <Route path="/artwork/video-installation" element={<VideoInstallation />} />
+          <Route path="/artwork/video-installation/heat-map-queens" element={<HeatMapQueens />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
