@@ -11,6 +11,7 @@ const items = [
     title: "Heat Map: Queens",
     type: "video",
     src: heatMapVideo,
+    link: "/artwork/video-installation/heat-map-queens",
   },
   {
     id: "Ways_of_Showing_Up",
@@ -62,38 +63,45 @@ const VideoInstallation = () => {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-          {items.map((item, i) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="flex flex-col items-center"
-            >
-              <div className="w-full">
-                {item.type === "video" ? (
-                  <video
-                    src={item.src}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-auto object-contain"
-                  />
-                ) : (
-                  <img
-                    src={item.src}
-                    alt={item.title}
-                    className="w-full h-auto object-contain"
-                    loading="lazy"
-                  />
-                )}
-                <h3 className="font-display text-lg md:text-xl mt-4 text-foreground tracking-wide text-center font-bold">
-                  {item.title}
-                </h3>
-              </div>
-            </motion.div>
-          ))}
+          {items.map((item, i) => {
+            const content = (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+                className="flex flex-col items-center"
+              >
+                <div className="w-full">
+                  {item.type === "video" ? (
+                    <video
+                      src={item.src}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="w-full h-auto object-contain"
+                    />
+                  ) : (
+                    <img
+                      src={item.src}
+                      alt={item.title}
+                      className="w-full h-auto object-contain"
+                      loading="lazy"
+                    />
+                  )}
+                  <h3 className="font-display text-lg md:text-xl mt-4 text-foreground tracking-wide text-center font-bold">
+                    {item.title}
+                  </h3>
+                </div>
+              </motion.div>
+            );
+            return item.link ? (
+              <Link key={item.id} to={item.link}>{content}</Link>
+            ) : (
+              <div key={item.id}>{content}</div>
+            );
+          })}
         </div>
       </div>
     </Layout>
