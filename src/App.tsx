@@ -4,11 +4,13 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/now";
-import Prints from "./pages/paintings.jsx";
-import PrintDetail from "./pages/paintingDetail";
+import Paintings from "./pages/paintings.jsx";
+import PaintingDetail from "./pages/paintingDetail";
 import VideoInstallation from "./pages/videoInstallation.jsx";
 import HeatMapQueens from "./pages/heatMapQueens";
 import WaysOfShowingUp from "./pages/waysOfShowingUp";
+import Prints from "./pages/prints";
+import PrintDetail from "./pages/printDetail";
 
 const queryClient = new QueryClient();
 
@@ -20,8 +22,10 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/artwork/paintings" element={<Prints />} />
-          <Route path="/artwork/paintings/:id" element={<PrintDetail />} />
+          <Route path="/artwork/paintings" element={<Paintings />} />
+          <Route path="/artwork/paintings/:id" element={<PaintingDetail />} />
+          <Route path="/artwork/prints" element={<Prints />} />
+          <Route path="/artwork/prints/:id" element={<PrintDetail />} />
           <Route path="/artwork/video-installation" element={<VideoInstallation />} />
           <Route path="/artwork/video-installation/heat-map-queens" element={<HeatMapQueens />} />
           <Route path="/artwork/video-installation/ways-of-showing-up" element={<WaysOfShowingUp />} />

@@ -51,7 +51,7 @@ const artworkSubItems = [
 ];
 
 const paperSubItems = [
-  { label: "Print", path: "/work?category=print" },
+  { label: "Print", path: "/artwork/prints" },
   { label: "Drawing", path: "/work?category=drawing" },
   { label: "Photo-Based", path: "/work?category=photo-based" },
 ];
