@@ -8,6 +8,7 @@ import Prints from "./pages/paintings.jsx";
 import PrintDetail from "./pages/paintingDetail";
 import VideoInstallation from "./pages/videoInstallation.jsx";
 import HeatMapQueens from "./pages/heatMapQueens";
+import WaysOfShowingUp from "./pages/waysOfShowingUp";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/artwork/paintings/:id" element={<PrintDetail />} />
           <Route path="/artwork/video-installation" element={<VideoInstallation />} />
           <Route path="/artwork/video-installation/heat-map-queens" element={<HeatMapQueens />} />
+          <Route path="/artwork/video-installation/ways-of-showing-up" element={<WaysOfShowingUp />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

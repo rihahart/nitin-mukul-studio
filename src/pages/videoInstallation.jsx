@@ -18,6 +18,7 @@ const items = [
     title: "Ways of Showing Up: Slow Your Roll",
     type: "image",
     src: waysOfShowingUpCover,
+    link: "/artwork/video-installation/ways-of-showing-up",
   },
   {
     id: "You_Were_Here",
@@ -97,7 +98,9 @@ const VideoInstallation = () => {
               </motion.div>
             );
             return item.link ? (
-              <Link key={item.id} to={item.link}>{content}</Link>
+              <Link key={item.id} to={item.link}>
+                {content}
+              </Link>
             ) : (
               <div key={item.id}>{content}</div>
             );

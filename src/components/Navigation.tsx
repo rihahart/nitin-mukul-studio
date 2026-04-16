@@ -117,6 +117,10 @@ const Navigation = () => {
   }, [location]);
 
   useEffect(() => {
+    if (!artworkOpen) setPaperOpen(false);
+  }, [artworkOpen]);
+
+  useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const inHeader = headerRef.current?.contains(e.target as Node);
       const inDropdown = dropdownRef.current?.contains(e.target as Node);
@@ -156,7 +160,7 @@ const Navigation = () => {
     );
   };
 
-  const headerClass = `fixed top-0 left-0 right-0 z-50 flex items-start justify-between px-6 md:px-12 py-6 md:py-8 transition-colors duration-300 bg-background/80 backdrop-blur-sm ${artworkOpen ? "bg-background" : ""}`;
+  const headerClass = `fixed top-0 left-0 right-0 z-50 flex items-center lg:items-start justify-between px-6 md:px-12 py-6 md:py-8 transition-colors duration-300 bg-background/80 backdrop-blur-sm ${artworkOpen ? "bg-background" : ""}`;
 
   const DesktopSocialIcons = () => (
     <div className="hidden lg:flex flex-col items-end gap-3">
@@ -204,6 +208,19 @@ const Navigation = () => {
             <MenuIcon isOpen={isOpen} />
           </button>
         </motion.header>
+
+        {/* Backdrop to close dropdown on click-away */}
+        <AnimatePresence>
+          {artworkOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="hidden lg:block fixed inset-0 z-30"
+              onClick={() => { setArtworkOpen(false); setPaperOpen(false); }}
+            />
+          )}
+        </AnimatePresence>
 
         {/* Desktop full-width artwork dropdown */}
         <AnimatePresence>
@@ -296,6 +313,19 @@ const Navigation = () => {
         </button>
       </motion.header>
 
+      {/* Backdrop to close dropdown on click-away */}
+      <AnimatePresence>
+        {artworkOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="hidden lg:block fixed inset-0 z-30"
+            onClick={() => { setArtworkOpen(false); setPaperOpen(false); }}
+          />
+        )}
+      </AnimatePresence>
+
       {/* Desktop full-width artwork dropdown */}
       <AnimatePresence>
         {artworkOpen && (
@@ -310,7 +340,7 @@ const Navigation = () => {
           >
             <div className="flex gap-16">
               <div className="flex flex-col gap-3">
-                {artworkSubItems.slice(0, 3).map((item) => {
+                {artworkSubItems.map((item) => {
                   const isSubActive = location.pathname.startsWith(item.path);
                   return (
                     <Link key={item.path} to={item.path} onClick={() => setArtworkOpen(false)}
@@ -321,15 +351,33 @@ const Navigation = () => {
                 })}
               </div>
               <div className="flex flex-col gap-3">
-                {artworkSubItems.slice(3).map((item) => {
-                  const isSubActive = location.pathname.startsWith(item.path);
-                  return (
-                    <Link key={item.path} to={item.path} onClick={() => setArtworkOpen(false)}
-                      className={`font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap pb-0.5 w-fit ${isSubActive ? "border-b border-foreground" : ""}`}>
-                      {item.label}
-                    </Link>
-                  );
-                })}
+                <button
+                  onClick={() => setPaperOpen(!paperOpen)}
+                  className={`font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap pb-0.5 w-fit text-left ${paperOpen ? "border-b border-foreground" : ""}`}
+                >
+                  Paper
+                </button>
+                <AnimatePresence>
+                  {paperOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -4 }}
+                      transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      className="flex flex-col gap-3 pl-4"
+                    >
+                      {paperSubItems.map((item) => {
+                        const isSubActive = location.pathname.startsWith(item.path);
+                        return (
+                          <Link key={item.path} to={item.path} onClick={() => { setArtworkOpen(false); setPaperOpen(false); }}
+                            className={`font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap pb-0.5 w-fit ${isSubActive ? "border-b border-foreground" : ""}`}>
+                            {item.label}
+                          </Link>
+                        );
+                      })}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
           </motion.div>
