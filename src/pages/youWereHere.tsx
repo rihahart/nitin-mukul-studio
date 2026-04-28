@@ -53,13 +53,13 @@ const YouWereHere = () => {
               You Were Here
             </h1>
 
-            <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed text-center mb-12 italic">
+            <p className="font-body text-sm md:text-base text-muted-foreground leading-loose text-center mb-12 italic">
               (2025) durational painting filmed at 1:30pm on April 30, 2025,
               outside temperature 73 degrees fahrenheit in Jackson Heights, NY.
               16 minutes. Dimensions variable.
             </p>
 
-            <p className="font-body text-sm md:text-base text-foreground leading-relaxed text-left">
+            <p className="font-body text-sm md:text-base text-foreground leading-loose text-left">
               You Were Here has just been placed as a video art installation in
               the 74th St. / Roosevelt Ave. Station in Jackson Heights, Queens,
               one of the busiest subway stations in NYC with an average of over
