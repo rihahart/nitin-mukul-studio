@@ -160,7 +160,7 @@ const Navigation = () => {
     );
   };
 
-  const headerClass = `fixed top-0 left-0 right-0 z-50 flex items-center lg:items-start justify-between px-6 md:px-12 py-6 md:py-8 transition-colors duration-300 bg-background/80 backdrop-blur-sm ${artworkOpen ? "bg-background" : ""}`;
+  const headerClass = `fixed top-0 left-0 right-0 z-50 flex items-center lg:items-start justify-between px-[clamp(1.5rem,5vw,6rem)] py-6 md:py-8 transition-colors duration-300 bg-background/80 backdrop-blur-sm ${artworkOpen ? "bg-background" : ""}`;
 
   const DesktopSocialIcons = () => (
     <div className="hidden lg:flex flex-col items-end gap-3">

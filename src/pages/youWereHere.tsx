@@ -11,7 +11,7 @@ const subwayImages = [img1, img2, img4];
 const stillImage = img3;
 const allImages = [img1, img2, img4, img3];
 
-const HeatMapQueens = () => {
+const YouWereHere = () => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const openLightbox = (src: string) => {
@@ -31,7 +31,7 @@ const HeatMapQueens = () => {
 
   return (
     <Layout>
-      <div className="w-full mt-12 md:mt-48 h-[50vh] md:h-[55vh]">
+      <div className="w-full mt-20 md:mt-52 h-[50vh] md:h-[55vh]">
         <iframe
           src="https://player.vimeo.com/video/1136164853?h=bd746718ec&autoplay=1&muted=1"
           className="w-full h-full"
@@ -185,4 +185,4 @@ const HeatMapQueens = () => {
   );
 };
 
-export default HeatMapQueens;
+export default YouWereHere;

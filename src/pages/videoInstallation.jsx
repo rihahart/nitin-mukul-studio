@@ -25,16 +25,17 @@ const items = [
     title: "You Were Here",
     type: "video",
     src: youWereHereVideo,
+    link: "/artwork/video-installation/you-were-here",
   },
 ];
 
 const VideoInstallation = () => {
   return (
     <Layout>
-      <div className="w-full px-6 md:px-12 pt-24 md:pt-48 pb-24">
-        <div className="max-w-5xl mx-auto mb-16">
-          <h1 className="font-display text-2xl md:text-3xl font-bold text-foreground tracking-wide mb-6 text-center">
-            What is durational painting:
+      <div className="w-full px-[clamp(1.5rem,5vw,6rem)] py-[clamp(6rem,5vw+6rem,12rem)]">
+        <div className="max-w-6xl mx-auto mb-16">
+          <h1 className="font-display text-3xl md:text-5xl font-bold text-foreground tracking-wide mb-8 mt-4 text-center">
+            What is durational painting?
           </h1>
           <p className="font-body text-sm md:text-base text-foreground leading-relaxed text-left">
             Durational painting is an immersive slow art experience that

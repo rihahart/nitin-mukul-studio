@@ -527,11 +527,55 @@ const paintings = [
     image: _45_puddle, 
     detailCrop: { x: "25%", y: "10%", size: "50%" } },
 
-  { id: "Unnamed_45", title: "Unnamed", year: "2023", collection: "", gallery: "", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: _45_unnamed_slide, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "Elsie", title: "Elsie", year: "2023", collection: "", gallery: "", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: _46_Elsie, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "Golden_40s", title: "Golden 40s", year: "2023", collection: "", gallery: "", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: _47_golden_40s, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "Road_Test", title: "Road Test", year: "2023", collection: "", gallery: "", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: _48_road_test, detailCrop: { x: "25%", y: "10%", size: "50%" } },
-  { id: "Detonate", title: "Detonate", year: "2023", collection: "", gallery: "", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: _49_detonate, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "Want_Some_Candy", 
+    title: "Want Some Candy?", 
+    year: "2003", 
+    collection: "", 
+    gallery: "Available Works", 
+    medium: "Acrylic paint and digital", 
+    dimensions: "8 × 10 inches (3)", 
+    image: _45_unnamed_slide, 
+    detailCrop: { x: "25%", y: "10%", size: "50%" } },
+
+  { id: "Elsie", 
+    title: "Elsie", 
+    year: "1993", 
+    collection: "", 
+    gallery: "Available Works", 
+    medium: "Oil and acrylic on cotton Indian tapestry", 
+    dimensions: "48 × 48 inches", 
+    image: _46_Elsie, 
+    detailCrop: { x: "25%", y: "10%", size: "50%" } },
+
+  { id: "Golden_40s", 
+    title: "Golden 40s", 
+    year: "1993", 
+    collection: "", 
+    gallery: "Available Works", 
+    medium: "Oil and acrylic on canvas", 
+    dimensions: "00 × 00 inches", 
+    image: _47_golden_40s, 
+    detailCrop: { x: "25%", y: "10%", size: "50%" } },
+
+  { id: "Road_Test",
+     title: "Road Test", 
+     year: "1993", 
+     collection: "", 
+     gallery: "Available Works", 
+     medium: "Oil on canvas", 
+     dimensions: "72 × 48 inches", 
+     image: _48_road_test,
+      detailCrop: { x: "25%", y: "10%", size: "50%" } },
+
+  { id: "Detonate", 
+    title: "Detonate", 
+    year: "1993", 
+    collection: "", 
+    gallery: "Available Works", 
+    medium: "Oil on canvas", 
+    dimensions: "72 × 48 inches", 
+    image: _49_detonate, 
+    detailCrop: { x: "25%", y: "10%", size: "50%" } },
 
   { id: "Civil_Lines", 
     title: "Civil Lines", 
@@ -544,7 +588,13 @@ const paintings = [
      detailCrop: { x: "25%", y: "10%", size: "50%" } },
 
 
-  { id: "Unnamed_49", title: "Unnamed", year: "2023", collection: "", gallery: "", medium: "Lorem ipsum dolor sit amet", dimensions: "00 × 00 inches", image: O6_mukul_slide, detailCrop: { x: "25%", y: "10%", size: "50%" } },
+  { id: "Unnamed_49", 
+    title: "Unnamed", 
+    year: "2023", 
+    collection: "", 
+    gallery: "",
+     medium: "Lorem ipsum dolor sit amet", 
+     dimensions: "00 × 00 inches", image: O6_mukul_slide, detailCrop: { x: "25%", y: "10%", size: "50%" } },
 ];
 
 const PaintingDetail = () => {
@@ -570,7 +620,7 @@ const PaintingDetail = () => {
 
   return (
     <Layout>
-      <div className="pt-24 md:pt-32 pb-16 px-6 md:px-12 max-w-6xl mx-auto">
+      <div className="px-[clamp(1.5rem,5vw,6rem)] py-[clamp(6rem,5vw+6rem,12rem)] max-w-6xl mx-auto">
 {/* Image with prev/next arrows */}
         <div className="relative w-full flex items-center justify-center mb-4 md:mb-12">
           <button

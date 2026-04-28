@@ -28,7 +28,7 @@ const PrintDetail = () => {
 
   return (
     <Layout>
-      <div className="pt-24 md:pt-32 pb-16 px-6 md:px-12 max-w-6xl mx-auto">
+      <div className="px-[clamp(1.5rem,5vw,6rem)] py-[clamp(6rem,5vw+6rem,12rem)] mx-auto">
         {/* Image with prev/next arrows */}
         <div className="relative w-full flex items-center justify-center mb-4 md:mb-12">
           <button

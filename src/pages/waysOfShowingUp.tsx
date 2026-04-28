@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const WaysOfShowingUp = () => {
   return (
     <Layout>
-      <div className="w-full mt-12 md:mt-48 h-[50vh] md:h-[55vh]">
+      <div className="w-full mt-20 md:mt-52 h-[50vh] md:h-[60vh]">
         <iframe
           src="https://player.vimeo.com/video/1022198277?autoplay=1&muted=1"
           className="w-full h-full"
@@ -16,13 +16,13 @@ const WaysOfShowingUp = () => {
       </div>
 
       <div className="w-full px-6 md:px-12 pt-0.5 pb-24 md:py-24">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="font-display text-2xl md:text-3xl font-bold text-foreground tracking-wide text-center mb-6">
+            <h1 className="font-display text-2xl md:text-4xl font-bold text-foreground tracking-wide text-center mb-6">
               Ways of Showing Up: Slow Your Roll
             </h1>
 

@@ -7,7 +7,7 @@ import Index from "./pages/now";
 import Paintings from "./pages/paintings.jsx";
 import PaintingDetail from "./pages/paintingDetail";
 import VideoInstallation from "./pages/videoInstallation.jsx";
-import HeatMapQueens from "./pages/heatMapQueens";
+import YouWereHere from "./pages/youWereHere";
 import WaysOfShowingUp from "./pages/waysOfShowingUp";
 import Prints from "./pages/prints";
 import PrintDetail from "./pages/printDetail";
@@ -27,7 +27,7 @@ const App = () => (
           <Route path="/artwork/prints" element={<Prints />} />
           <Route path="/artwork/prints/:id" element={<PrintDetail />} />
           <Route path="/artwork/video-installation" element={<VideoInstallation />} />
-          <Route path="/artwork/video-installation/heat-map-queens" element={<HeatMapQueens />} />
+          <Route path="/artwork/video-installation/you-were-here" element={<YouWereHere />} />
           <Route path="/artwork/video-installation/ways-of-showing-up" element={<WaysOfShowingUp />} />
         </Routes>
       </BrowserRouter>

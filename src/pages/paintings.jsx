@@ -142,7 +142,11 @@ const paintings = [
   { id: "Noise", title: "Noise", image: _44_Noise },
   { id: "Pastoral", title: "Pastoral", image: _44_Pastoral },
   { id: "Puddle", title: "Puddle", image: _45_puddle },
-  { id: "Unnamed_45", title: "Unnamed", image: _45_unnamed_slide },
+  {
+    id: "Want_Some_Candy",
+    title: "Want Some Candy?",
+    image: _45_unnamed_slide,
+  },
   { id: "Elsie", title: "Elsie", image: _46_Elsie },
   { id: "Golden_40s", title: "Golden 40s", image: _47_golden_40s },
   { id: "Road_Test", title: "Road Test", image: _48_road_test },
@@ -154,7 +158,7 @@ const paintings = [
 const Paintings = () => {
   return (
     <Layout>
-      <div className="w-full px-6 md:px-12 pt-32 pb-24">
+      <div className="w-full px-[clamp(1.5rem,5vw,6rem)] py-[clamp(6rem,5vw+6rem,12rem)]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
           {paintings.map((item, i) => (
             <motion.div

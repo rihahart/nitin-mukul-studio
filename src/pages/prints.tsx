@@ -39,7 +39,7 @@ export { prints };
 const Prints = () => {
   return (
     <Layout>
-      <div className="w-full px-6 md:px-12 pt-32 pb-24">
+      <div className="w-full px-[clamp(1.5rem,5vw,6rem)] py-[clamp(6rem,5vw+6rem,12rem)]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
           {prints.map((item, i) => (
             <motion.div
