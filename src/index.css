@@ -79,7 +79,13 @@
     font-family: var(--font-display);
   }
 
- 
+  /* Force a looser line-height site-wide, overriding Tailwind text-* defaults */
+  p, li, blockquote, dd, dt, figcaption, label, span, a, button, input, textarea, select {
+    line-height: 2;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.4;
+  }
 }
 
 @layer utilities {
