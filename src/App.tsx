@@ -29,6 +29,7 @@ import PrintDetail from "./pages/printDetail";
 import Bio from "./pages/bio";
 import Epicenter from "./pages/epicenter";
 import News from "./pages/news";
+import Essay from "./pages/essay";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -71,6 +72,7 @@ const App = () => (
           <Route path="/being" element={<Bio />} />
           <Route path="/epicenter" element={<Epicenter />} />
           <Route path="/press" element={<News />} />
+          <Route path="/publication" element={<Essay />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
