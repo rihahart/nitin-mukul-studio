@@ -2,6 +2,7 @@ import Layout from "@/components/Layout";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import VideoNav from "@/components/VideoNav";
 import img1 from "@/assets/Video&Installation/youWereHere/Images/01_subway_view1.JPG";
 import img2 from "@/assets/Video&Installation/youWereHere/Images/02_subway_view2.JPG";
 import img3 from "@/assets/Video&Installation/youWereHere/Images/03_still_image.png";
@@ -31,7 +32,7 @@ const YouWereHere = () => {
 
   return (
     <Layout>
-      <div className="w-full mt-20 md:mt-52 h-[50vh] md:h-[55vh]">
+      <div className="w-full mt-20 md:mt-52 h-[50vh] md:h-[60vh]">
         <iframe
           src="https://player.vimeo.com/video/1136164853?h=bd746718ec&autoplay=1&muted=1"
           className="w-full h-full"
@@ -43,17 +44,17 @@ const YouWereHere = () => {
       </div>
 
       <div className="w-full px-6 md:px-12 pt-0.5 pb-6 md:py-24">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="font-display text-2xl md:text-3xl font-bold text-foreground tracking-wide text-center mb-6">
+            <h1 className="font-display text-2xl md:text-5xl font-bold text-foreground tracking-wide text-center mb-6">
               You Were Here
             </h1>
 
-            <p className="font-body text-sm md:text-base text-muted-foreground leading-loose text-center mb-12 italic">
+            <p className="font-body uppercase text-sm md:text-base text-muted-foreground leading-loose text-center mb-12 ">
               (2025) durational painting filmed at 1:30pm on April 30, 2025,
               outside temperature 73 degrees fahrenheit in Jackson Heights, NY.
               16 minutes. Dimensions variable.
@@ -181,6 +182,7 @@ const YouWereHere = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      <VideoNav currentId="you-were-here" />
     </Layout>
   );
 };

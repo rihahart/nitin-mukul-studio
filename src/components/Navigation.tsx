@@ -52,17 +52,17 @@ const artworkSubItems = [
 
 const paperSubItems = [
   { label: "Print", path: "/artwork/prints" },
-  { label: "Drawing", path: "/work?category=drawing" },
-  { label: "Photo-Based", path: "/work?category=photo-based" },
+  { label: "Drawing", path: "/artwork/drawings" },
+  { label: "Photo-Based", path: "/artwork/photo-based" },
 ];
 
 const navItems = [
   { label: "Now", path: "/" },
   { label: "Artwork", path: "/work", hasDropdown: true },
-  { label: "Being", path: "/about" },
+  { label: "Being", path: "/being" },
   { label: "Epicenter", path: "/epicenter" },
   { label: "Essays", path: "/publication" },
-  { label: "Press", path: "/news" },
+  { label: "Press", path: "/press" },
   { label: "Collect", path: "/collect" },
 ];
 
@@ -70,7 +70,6 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [artworkOpen, setArtworkOpen] = useState(false);
-  const [paperOpen, setPaperOpen] = useState(false);
   const [navLeft, setNavLeft] = useState(0);
   const [headerHeight, setHeaderHeight] = useState(0);
   const location = useLocation();
@@ -113,12 +112,7 @@ const Navigation = () => {
 
   useEffect(() => {
     setArtworkOpen(false);
-    setPaperOpen(false);
   }, [location]);
-
-  useEffect(() => {
-    if (!artworkOpen) setPaperOpen(false);
-  }, [artworkOpen]);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -129,6 +123,18 @@ const Navigation = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  useEffect(() => {
+    if (!artworkOpen) return;
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as Node;
+      const inHeader = headerRef.current?.contains(target);
+      const inDropdown = dropdownRef.current?.contains(target);
+      if (!inHeader && !inDropdown) setArtworkOpen(false);
+    };
+    document.addEventListener("mouseover", handleMouseOver);
+    return () => document.removeEventListener("mouseover", handleMouseOver);
+  }, [artworkOpen]);
 
   const renderNavItem = (item: typeof navItems[0]) => {
     const isActive = item.path === "/"
@@ -142,7 +148,8 @@ const Navigation = () => {
         <button
           key={item.path}
           onClick={() => setArtworkOpen(!artworkOpen)}
-          className={`font-body text-sm font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 flex items-center gap-1 ${artworkOpen || (isActive && !artworkOpen) ? "border-b border-foreground" : ""}`}
+          onMouseEnter={() => setArtworkOpen(true)}
+          className={`font-body text-sm font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 flex items-center gap-1 ${artworkOpen || (isActive && !artworkOpen) ? "border-b-2 border-foreground" : ""}`}
         >
           {item.label}
         </button>
@@ -153,14 +160,15 @@ const Navigation = () => {
       <Link
         key={item.path}
         to={item.path}
-        className={`font-body text-sm font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 ${isActive && !artworkOpen ? "border-b border-foreground" : ""}`}
+        onMouseEnter={() => setArtworkOpen(false)}
+        className={`font-body text-sm font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 ${isActive && !artworkOpen ? "border-b-2 border-foreground" : ""}`}
       >
         {item.label}
       </Link>
     );
   };
 
-  const headerClass = `fixed top-0 left-0 right-0 z-50 flex items-center lg:items-start justify-between px-[clamp(1.5rem,5vw,6rem)] py-6 md:py-8 transition-colors duration-300 bg-background/80 backdrop-blur-sm ${artworkOpen ? "bg-background" : ""}`;
+  const headerClass = `fixed top-0 left-0 right-0 z-50 flex items-center lg:items-start justify-between px-[clamp(1.5rem,5vw,6rem)] py-6 md:py-8 transition-colors duration-300 bg-background/30 backdrop-blur-sm ${artworkOpen ? "bg-background" : ""}`;
 
   const DesktopSocialIcons = () => (
     <div className="hidden lg:flex flex-col items-end gap-3">
@@ -195,7 +203,7 @@ const Navigation = () => {
             <Link to="/" className="font-display text-xl md:text-2xl font-bold tracking-wide text-foreground">
               Nitin Mukul
             </Link>
-            <nav ref={navRef} className="hidden lg:flex items-center gap-6 mt-6">
+            <nav ref={navRef} className="hidden lg:flex items-center gap-6 mt-10">
               {navItems.map(renderNavItem)}
             </nav>
           </div>
@@ -217,7 +225,7 @@ const Navigation = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="hidden lg:block fixed inset-0 z-30"
-              onClick={() => { setArtworkOpen(false); setPaperOpen(false); }}
+              onClick={() => setArtworkOpen(false)}
             />
           )}
         </AnimatePresence>
@@ -240,40 +248,27 @@ const Navigation = () => {
                     const isSubActive = location.pathname.startsWith(item.path);
                     return (
                       <Link key={item.path} to={item.path} onClick={() => setArtworkOpen(false)}
-                        className={`font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap pb-0.5 w-fit ${isSubActive ? "border-b border-foreground" : ""}`}>
+                        className={`font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap pb-0.5 w-fit ${isSubActive ? "border-b-2 border-foreground" : ""}`}>
                         {item.label}
                       </Link>
                     );
                   })}
                 </div>
                 <div className="flex flex-col gap-3">
-                  <button
-                    onClick={() => setPaperOpen(!paperOpen)}
-                    className={`font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap pb-0.5 w-fit text-left ${paperOpen ? "border-b border-foreground" : ""}`}
-                  >
+                  <span className="font-body text-sm text-foreground whitespace-nowrap pb-0.5 w-fit">
                     Paper
-                  </button>
-                  <AnimatePresence>
-                    {paperOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -4 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -4 }}
-                        transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-                        className="flex flex-col gap-3 pl-4"
-                      >
-                        {paperSubItems.map((item) => {
-                          const isSubActive = location.pathname.startsWith(item.path);
-                          return (
-                            <Link key={item.path} to={item.path} onClick={() => { setArtworkOpen(false); setPaperOpen(false); }}
-                              className={`font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap pb-0.5 w-fit ${isSubActive ? "border-b border-foreground" : ""}`}>
-                              {item.label}
-                            </Link>
-                          );
-                        })}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  </span>
+                  <div className="flex flex-col gap-3 pl-4">
+                    {paperSubItems.map((item) => {
+                      const isSubActive = location.pathname.startsWith(item.path);
+                      return (
+                        <Link key={item.path} to={item.path} onClick={() => setArtworkOpen(false)}
+                          className={`font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap pb-0.5 w-fit ${isSubActive ? "border-b-2 border-foreground" : ""}`}>
+                          {item.label}
+                        </Link>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -299,7 +294,7 @@ const Navigation = () => {
           <Link to="/" className="font-display text-xl md:text-2xl font-bold tracking-wide text-foreground">
             Nitin Mukul
           </Link>
-          <nav ref={navRef} className="hidden lg:flex items-center gap-6 mt-6">
+          <nav ref={navRef} className="hidden lg:flex items-center gap-6 mt-8">
             {navItems.map(renderNavItem)}
           </nav>
         </div>
@@ -321,7 +316,7 @@ const Navigation = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="hidden lg:block fixed inset-0 z-30"
-            onClick={() => { setArtworkOpen(false); setPaperOpen(false); }}
+            onClick={() => setArtworkOpen(false)}
           />
         )}
       </AnimatePresence>
@@ -344,40 +339,27 @@ const Navigation = () => {
                   const isSubActive = location.pathname.startsWith(item.path);
                   return (
                     <Link key={item.path} to={item.path} onClick={() => setArtworkOpen(false)}
-                      className={`font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap pb-0.5 w-fit ${isSubActive ? "border-b border-foreground" : ""}`}>
+                      className={`font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap pb-0.5 w-fit ${isSubActive ? "border-b-2 border-foreground" : ""}`}>
                       {item.label}
                     </Link>
                   );
                 })}
               </div>
               <div className="flex flex-col gap-3">
-                <button
-                  onClick={() => setPaperOpen(!paperOpen)}
-                  className={`font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap pb-0.5 w-fit text-left ${paperOpen ? "border-b border-foreground" : ""}`}
-                >
+                <span className="font-body text-sm text-foreground whitespace-nowrap pb-0.5 w-fit">
                   Paper
-                </button>
-                <AnimatePresence>
-                  {paperOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -4 }}
-                      transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-                      className="flex flex-col gap-3 pl-4"
-                    >
-                      {paperSubItems.map((item) => {
-                        const isSubActive = location.pathname.startsWith(item.path);
-                        return (
-                          <Link key={item.path} to={item.path} onClick={() => { setArtworkOpen(false); setPaperOpen(false); }}
-                            className={`font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap pb-0.5 w-fit ${isSubActive ? "border-b border-foreground" : ""}`}>
-                            {item.label}
-                          </Link>
-                        );
-                      })}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                </span>
+                <div className="flex flex-col gap-3 pl-4">
+                  {paperSubItems.map((item) => {
+                    const isSubActive = location.pathname.startsWith(item.path);
+                    return (
+                      <Link key={item.path} to={item.path} onClick={() => setArtworkOpen(false)}
+                        className={`font-body text-sm text-foreground hover:opacity-60 transition-opacity whitespace-nowrap pb-0.5 w-fit ${isSubActive ? "border-b-2 border-foreground" : ""}`}>
+                        {item.label}
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </motion.div>
@@ -457,7 +439,7 @@ const MobileMenu = ({
                       <motion.div key={item.path} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05, duration: 0.3 }}>
                         <button
                           onClick={() => setMenuLevel('artwork')}
-                          className={`font-body text-3xl md:text-5xl font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 flex items-center gap-3 ${isActive ? "border-b border-foreground" : ""}`}
+                          className={`font-body text-3xl md:text-5xl font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 flex items-center gap-3 ${isActive ? "border-b-2 border-foreground" : ""}`}
                         >
                           {item.label}
                           <ChevronDown size={22} className="text-foreground" strokeWidth={1.5} />
@@ -471,7 +453,7 @@ const MobileMenu = ({
                       <Link
                         to={item.path}
                         onClick={() => setIsOpen(false)}
-                        className={`font-body text-3xl md:text-5xl font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 ${isActive ? "border-b border-foreground" : ""}`}
+                        className={`font-body text-3xl md:text-5xl font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 ${isActive ? "border-b-2 border-foreground" : ""}`}
                       >
                         {item.label}
                       </Link>
@@ -506,7 +488,7 @@ const MobileMenu = ({
               transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="absolute inset-0 flex flex-col px-6 py-6"
             >
-              <h2 className="font-body text-4xl md:text-6xl font-bold tracking-wide text-foreground border-b border-foreground pb-0.5 w-fit mb-16">Artwork</h2>
+              <h2 className="font-body text-4xl md:text-6xl font-bold tracking-wide text-foreground border-b-2 border-foreground pb-0.5 w-fit mb-16">Artwork</h2>
               <nav className="flex flex-col items-start gap-6">
                 {artworkSubItems.map((item, i) => {
                   const isSubActive = location.pathname.startsWith(item.path);
@@ -515,7 +497,7 @@ const MobileMenu = ({
                       <Link
                         to={item.path}
                         onClick={() => setIsOpen(false)}
-                        className={`font-body text-3xl md:text-5xl font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 ${isSubActive ? "border-b border-foreground" : ""}`}
+                        className={`font-body text-3xl md:text-5xl font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 ${isSubActive ? "border-b-2 border-foreground" : ""}`}
                       >
                         {item.label}
                       </Link>
@@ -547,7 +529,7 @@ const MobileMenu = ({
               transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="absolute inset-0 flex flex-col px-6 py-6"
             >
-              <h2 className="font-body text-4xl md:text-6xl font-bold tracking-wide text-foreground border-b border-foreground pb-0.5 w-fit mb-16">Paper</h2>
+              <h2 className="font-body text-4xl md:text-6xl font-bold tracking-wide text-foreground border-b-2 border-foreground pb-0.5 w-fit mb-16">Paper</h2>
               <nav className="flex flex-col items-start gap-6">
                 {paperSubItems.map((item, i) => {
                   const isSubActive = location.pathname.startsWith(item.path);
@@ -556,7 +538,7 @@ const MobileMenu = ({
                       <Link
                         to={item.path}
                         onClick={() => setIsOpen(false)}
-                        className={`font-body text-3xl md:text-5xl font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 ${isSubActive ? "border-b border-foreground" : ""}`}
+                        className={`font-body text-3xl md:text-5xl font-medium tracking-wide transition-opacity hover:opacity-60 text-foreground pb-0.5 ${isSubActive ? "border-b-2 border-foreground" : ""}`}
                       >
                         {item.label}
                       </Link>

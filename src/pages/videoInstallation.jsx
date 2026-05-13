@@ -1,11 +1,107 @@
 import Layout from "@/components/Layout";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useRef, useEffect } from "react";
 import heatMapVideo from "@/assets/Video&Installation/HeatMapsQueens/jamaica_social.mp4";
-import waysOfShowingUpCover from "@/assets/Video&Installation/waysOfSHowingUp/cover.JPG";
 import youWereHereVideo from "@/assets/Video&Installation/youWereHere/YWH_30_second_clip.mp4";
 
+function VimeoPreview({ videoId, startTime = 0 }) {
+  const ref = useRef(null);
+  useEffect(function () {
+    const el = ref.current;
+    if (!el) return;
+    function send(method) {
+      el.contentWindow?.postMessage(
+        JSON.stringify({ method }),
+        "https://player.vimeo.com",
+      );
+    }
+    function onLoad() {
+      const obs = new IntersectionObserver(
+        function ([entry]) {
+          entry.isIntersecting ? send("play") : send("pause");
+        },
+        { threshold: 0.1 },
+      );
+      obs.observe(el);
+      el._obs = obs;
+    }
+    el.addEventListener("load", onLoad);
+    return function () {
+      el.removeEventListener("load", onLoad);
+      el._obs?.disconnect();
+    };
+  }, []);
+  return (
+    <iframe
+      ref={ref}
+      src={`https://player.vimeo.com/video/${videoId}?autoplay=0&muted=1&controls=0&loop=1&autopause=0#t=${startTime}s`}
+      className="w-full aspect-video"
+      style={{ border: "none" }}
+      allow="autoplay; fullscreen; picture-in-picture"
+      title="Video preview"
+    />
+  );
+}
+
+function YoutubePreview({ videoId }) {
+  const ref = useRef(null);
+  useEffect(function () {
+    const el = ref.current;
+    if (!el) return;
+    function send(func) {
+      el.contentWindow?.postMessage(
+        JSON.stringify({ event: "command", func }),
+        "https://www.youtube.com",
+      );
+    }
+    function onLoad() {
+      const obs = new IntersectionObserver(
+        function ([entry]) {
+          entry.isIntersecting ? send("playVideo") : send("pauseVideo");
+        },
+        { threshold: 0.1 },
+      );
+      obs.observe(el);
+      el._obs = obs;
+    }
+    el.addEventListener("load", onLoad);
+    return function () {
+      el.removeEventListener("load", onLoad);
+      el._obs?.disconnect();
+    };
+  }, []);
+  return (
+    <div className="relative w-full">
+      <iframe
+        ref={ref}
+        src={`https://www.youtube.com/embed/${videoId}?autoplay=0&mute=1&controls=0&loop=1&playlist=${videoId}&enablejsapi=1`}
+        className="w-full aspect-video"
+        style={{ border: "none" }}
+        allow="autoplay; fullscreen; picture-in-picture"
+        title="Video preview"
+      />
+      <div className="absolute inset-0" />
+    </div>
+  );
+}
+
 const items = [
+  {
+    id: "You_Were_Here",
+    title: "You Were Here",
+    type: "video",
+    src: youWereHereVideo,
+    link: "/artwork/video-installation/you-were-here",
+  },
+  {
+    id: "Ways_of_Showing_Up",
+    title: "Ways of Showing Up",
+    type: "vimeo",
+    vimeoId: "1022198277",
+    startTime: 473,
+    link: "/artwork/video-installation/ways-of-showing-up",
+  },
   {
     id: "Heat_Map_Queens",
     title: "Heat Map: Queens",
@@ -14,18 +110,59 @@ const items = [
     link: "/artwork/video-installation/heat-map-queens",
   },
   {
-    id: "Ways_of_Showing_Up",
-    title: "Ways of Showing Up: Slow Your Roll",
-    type: "image",
-    src: waysOfShowingUpCover,
-    link: "/artwork/video-installation/ways-of-showing-up",
+    id: "Heat_Map_Winter_Solstice",
+    title: "Heat Maps: Winter Solstice.",
+    type: "vimeo",
+    vimeoId: "815927109",
+    startTime: 6,
+    link: "/artwork/video-installation/heat-map-winter-solstice",
   },
   {
-    id: "You_Were_Here",
-    title: "You Were Here",
-    type: "video",
-    src: youWereHereVideo,
-    link: "/artwork/video-installation/you-were-here",
+    id: "Heat_Map_Guwahati",
+    title: "Heat Maps: Guwahati vs Brooklyn",
+    type: "vimeo",
+    vimeoId: "893088230",
+    startTime: 140,
+    link: "/artwork/video-installation/heat-map-guwahati",
+  },
+  {
+    id: "Searise",
+    title: "Searise",
+    type: "vimeo",
+    vimeoId: "1180108088",
+    startTime: 543,
+    link: "/artwork/video-installation/searise",
+  },
+  {
+    id: "Blue_Lake",
+    title: "Blue Lake",
+    type: "vimeo",
+    vimeoId: "397023480",
+    startTime: 20,
+    link: "/artwork/video-installation/blue-lake",
+  },
+  {
+    id: "Super_Bloom",
+    title: "Super Bloom",
+    type: "youtube",
+    youtubeId: "CGZNp1TMp-U",
+    link: "/artwork/video-installation/super-bloom",
+  },
+  {
+    id: "Crater",
+    title: "Crater",
+    type: "vimeo",
+    vimeoId: "76923501",
+    startTime: 45,
+    link: "/artwork/video-installation/crater",
+  },
+  {
+    id: "Anemone",
+    title: "The Anemone is not My Enemy (Mandala Remix)",
+    type: "vimeo",
+    vimeoId: "786710160",
+    startTime: 0,
+    link: "/artwork/video-installation/anemone",
   },
 ];
 
@@ -37,7 +174,7 @@ const VideoInstallation = () => {
           <h1 className="font-display text-3xl md:text-5xl font-bold text-foreground tracking-wide mb-8 mt-4 text-center">
             What is durational painting?
           </h1>
-          <p className="font-body text-sm md:text-base text-foreground leading-relaxed text-left">
+          <p className="font-body text-sm md:text-base text-foreground leading-loose text-left">
             Durational painting is an immersive slow art experience that
             encourages participants to momentarily disconnect from the
             spectacles of social media and the like, in order to sync with a
@@ -82,8 +219,19 @@ const VideoInstallation = () => {
                       muted
                       loop
                       playsInline
+                      preload="auto"
                       className="w-full h-auto object-contain"
                     />
+                  ) : item.type === "youtube" ? (
+                    <YoutubePreview videoId={item.youtubeId} />
+                  ) : item.type === "vimeo" ? (
+                    <div className="relative w-full">
+                      <VimeoPreview
+                        videoId={item.vimeoId}
+                        startTime={item.startTime ?? 0}
+                      />
+                      <div className="absolute inset-0" />
+                    </div>
                   ) : (
                     <img
                       src={item.src}
