@@ -61,9 +61,9 @@ export const projects: Project[] = [
   },
   {
     id: "ways-of-showing-up",
-    title: "Ways of Showing Up / Slow Your Roll",
-    year: "2024",
-    location: "New York, NY",
+    title: "Nitin Mukul | Liz Philips: Flight Delay",
+    year: "September 2026",
+    location: "New York Hall of Science",
     image: installation1,
     description: "A collaborative exhibition and performance series exploring presence, community, and the politics of gathering. The project brings together visual artists, musicians, and performers in a series of events that unfold slowly, resisting the urgency of contemporary culture.",
     artists: ["Nitin Mukul", "Various collaborators"],

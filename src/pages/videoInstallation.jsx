@@ -164,6 +164,13 @@ const items = [
     startTime: 0,
     link: "/artwork/video-installation/anemone",
   },
+  {
+    id: "Cascade",
+    title: "Cascade",
+    type: "video",
+    src: "/videos/cascade.mp4",
+    link: "/artwork/video-installation/cascade",
+  },
 ];
 
 const VideoInstallation = () => {

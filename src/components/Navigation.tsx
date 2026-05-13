@@ -47,7 +47,6 @@ const MenuIcon = ({ isOpen }: { isOpen: boolean }) => (
 const artworkSubItems = [
   { label: "Painting", path: "/artwork/paintings" },
   { label: "Video and Installation", path: "/artwork/video-installation" },
-  { label: "Public Art", path: "/work?category=public-art" },
 ];
 
 const paperSubItems = [
@@ -59,11 +58,11 @@ const paperSubItems = [
 const navItems = [
   { label: "Now", path: "/" },
   { label: "Artwork", path: "/work", hasDropdown: true },
+  { label: "Curations", path: "/curations" },
   { label: "Being", path: "/being" },
   { label: "Epicenter", path: "/epicenter" },
   { label: "Essays", path: "/publication" },
   { label: "Press", path: "/press" },
-  { label: "Collect", path: "/collect" },
 ];
 
 const Navigation = () => {

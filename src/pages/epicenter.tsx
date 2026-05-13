@@ -1,6 +1,30 @@
 import Layout from "@/components/Layout";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
+
+import epicenter1 from "@/assets/Epicenter/IMG_0693.JPG";
+import epicenter2 from "@/assets/Epicenter/IMG_2210.JPG";
+import epicenter3 from "@/assets/Epicenter/IMG_9566.jpeg";
+import epicenter4 from "@/assets/Epicenter/hotm_flyer_nitin.jpg";
+
+const allImages = [epicenter1, epicenter2, epicenter3, epicenter4];
 
 const Epicenter = () => {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const openLightbox = (index: number) => setLightboxIndex(index);
+
+  const prev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setLightboxIndex((i) => (i !== null ? (i - 1 + allImages.length) % allImages.length : null));
+  };
+
+  const next = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setLightboxIndex((i) => (i !== null ? (i + 1) % allImages.length : null));
+  };
+
   return (
     <Layout>
       <div className="w-full mt-28 md:mt-52">
@@ -45,12 +69,80 @@ const Epicenter = () => {
             >
               SPREAD THE WORD
             </a>
-             <p className="font-body text-sm md:text-base text-foreground leading-loose md:text-center">
-            Please spread the word to artists and arts organizations in your orbit.  Epicenter could really use your support so that we can continue to support art and artists that are essential to the community. It’s been a tough year on many fronts but certainly the arts.
-          </p>
+            <p className="font-body text-sm md:text-base text-foreground leading-loose md:text-center">
+              Please spread the word to artists and arts organizations in your orbit. Epicenter could really use your support so that we can continue to support art and artists that are essential to the community. It's been a tough year on many fronts but certainly the arts.
+            </p>
+            <div className="grid grid-cols-2 gap-4 pt-8 w-full">
+              {allImages.map((src, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  className="cursor-pointer"
+                  onClick={() => openLightbox(i)}
+                >
+                  <img src={src} alt={`Epicenter NYC ${i + 1}`} className="w-full object-cover" />
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+            onClick={() => setLightboxIndex(null)}
+          >
+            <button
+              className="absolute top-6 right-6 text-white hover:opacity-60 transition-opacity"
+              onClick={() => setLightboxIndex(null)}
+              aria-label="Close"
+            >
+              <X size={28} strokeWidth={1.5} />
+            </button>
+
+            <button
+              className="absolute left-4 md:left-8 text-white hover:opacity-60 transition-opacity"
+              onClick={prev}
+              aria-label="Previous image"
+            >
+              <ChevronLeft size={40} strokeWidth={1.5} />
+            </button>
+
+            <motion.img
+              key={lightboxIndex}
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.97 }}
+              transition={{ duration: 0.2 }}
+              src={allImages[lightboxIndex]}
+              alt={`Epicenter NYC — image ${lightboxIndex + 1}`}
+              className="max-w-full max-h-full object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+
+            <button
+              className="absolute right-4 md:right-8 text-white hover:opacity-60 transition-opacity"
+              onClick={next}
+              aria-label="Next image"
+            >
+              <ChevronRight size={40} strokeWidth={1.5} />
+            </button>
+
+            <p className="absolute bottom-6 text-white/60 text-sm font-body">
+              {lightboxIndex + 1} / {allImages.length}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Layout>
   );
 };

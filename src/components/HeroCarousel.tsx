@@ -11,10 +11,9 @@ type Slide = {
 } & ({ type: "image"; image: string } | { type: "video"; video: string });
 
 const slides: Slide[] = [
-  { type: "image", image: "/avian_american_wide.jpg", title: "Avian American", year: "2024", medium: "Mixed media sculpture" },
-  { type: "image", image: artwork6, title: "Cease Fire", year: "2023", medium: "Acrylic on canvas", path: "/artwork/paintings/Cease_Fire" },
+{ type: "image", image: artwork6, title: "Cease Fire", year: "2023", medium: "Acrylic on canvas", path: "/artwork/paintings/Cease_Fire" },
   { type: "video", video: "/videos/anenome.mp4", title: "Anenome", year: "2022", medium: "Durational painting", path: "/artwork/video-installation/anemone" },
-  { type: "video", video: "/videos/cascade.mp4", title: "Cascade", year: "2024", medium: "Video art" },
+  { type: "video", video: "/videos/cascade.mp4", title: "Cascade", year: "February 22, 2020", medium: "Durational painting", path: "/artwork/video-installation/cascade" },
 ];
 
 const HeroCarousel = () => {

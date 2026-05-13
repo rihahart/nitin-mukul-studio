@@ -12,6 +12,7 @@ export const videoPages = [
   { id: "super-bloom", title: "Super Bloom", path: "/artwork/video-installation/super-bloom" },
   { id: "crater", title: "Crater", path: "/artwork/video-installation/crater" },
   { id: "anemone", title: "The Anemone is not My Enemy", path: "/artwork/video-installation/anemone" },
+  { id: "cascade", title: "Cascade", path: "/artwork/video-installation/cascade" },
 ];
 
 const VideoNav = ({ currentId }: { currentId: string }) => {

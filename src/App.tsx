@@ -18,6 +18,7 @@ import BlueLake from "./pages/blueLake";
 import SuperBloom from "./pages/superBloom";
 import Crater from "./pages/crater";
 import Anemone from "./pages/anemone";
+import Cascade from "./pages/cascade";
 import Drawings from "./pages/drawings";
 import DrawingDetail from "./pages/drawingDetail";
 import PhotoBased from "./pages/photoBased";
@@ -30,6 +31,9 @@ import Bio from "./pages/bio";
 import Epicenter from "./pages/epicenter";
 import News from "./pages/news";
 import Essay from "./pages/essay";
+import Curations from "./pages/curations";
+import MusicOfManyColors from "./pages/musicOfManyColors";
+import HeatOfTheMoment from "./pages/heatOfTheMoment";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -63,6 +67,7 @@ const App = () => (
           <Route path="/artwork/video-installation/super-bloom" element={<SuperBloom />} />
           <Route path="/artwork/video-installation/crater" element={<Crater />} />
           <Route path="/artwork/video-installation/anemone" element={<Anemone />} />
+          <Route path="/artwork/video-installation/cascade" element={<Cascade />} />
           <Route path="/artwork/drawings" element={<Drawings />} />
           <Route path="/artwork/drawings/:id" element={<DrawingDetail />} />
           <Route path="/artwork/photo-based" element={<PhotoBased />} />
@@ -73,6 +78,9 @@ const App = () => (
           <Route path="/epicenter" element={<Epicenter />} />
           <Route path="/press" element={<News />} />
           <Route path="/publication" element={<Essay />} />
+          <Route path="/curations" element={<Curations />} />
+          <Route path="/curation/music-of-many-colors" element={<MusicOfManyColors />} />
+          <Route path="/curation/heat-of-the-moment" element={<HeatOfTheMoment />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
