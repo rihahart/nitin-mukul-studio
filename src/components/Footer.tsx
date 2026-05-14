@@ -67,7 +67,7 @@ const Footer = () => {
         </h2>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-8">
-          <div className="flex gap-4">
+          <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 flex flex-col gap-1">
               <label className="font-body text-sm text-white mb-1">
                 First Name <span className="text-white/40 text-xs">(required)</span>
