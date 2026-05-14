@@ -61,7 +61,7 @@ export const projects: Project[] = [
   },
   {
     id: "ways-of-showing-up",
-    title: "Nitin Mukul | Liz Philips: Flight Delay",
+    title: "Nitin Mukul | Liz Phillips: Flight Delay",
     year: "September 2026",
     location: "New York Hall of Science",
     image: installation1,

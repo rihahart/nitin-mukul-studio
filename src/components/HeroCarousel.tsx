@@ -94,7 +94,7 @@ const HeroCarousel = () => {
               {slide.title}
             </h2>
             <p className="font-body text-xs md:text-sm tracking-widest uppercase text-primary-foreground/70 mt-2">
-              {slide.year} — {slide.medium}
+              {slide.medium}
             </p>
           </Link>
         ) : (
@@ -103,7 +103,7 @@ const HeroCarousel = () => {
               {slide.title}
             </h2>
             <p className="font-body text-xs md:text-sm tracking-widest uppercase text-primary-foreground/70 mt-2">
-              {slide.year} — {slide.medium}
+              {slide.medium}
             </p>
           </div>
         )}

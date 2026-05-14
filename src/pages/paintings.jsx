@@ -74,7 +74,7 @@ const paintings = [
   { id: "Levitate", title: "Levitate", image: _08_Levitate },
   { id: "Parasolipsism", title: "Parasolipsism", image: _08_Parasolipsism },
   { id: "Confluence", title: "Confluence", image: _09_confluence },
-  { id: "Mukul", title: "Mukul", image: _09_mukul },
+  { id: "Garuda1", title: "Garuda 1", image: _09_mukul },
   { id: "15_Views", title: "15 Views", image: _10_15views },
   {
     id: "Glacial_Harmony",
@@ -152,7 +152,7 @@ const paintings = [
   { id: "Road_Test", title: "Road Test", image: _48_road_test },
   { id: "Detonate", title: "Detonate", image: _49_detonate },
   { id: "Civil_Lines", title: "Civil Lines", image: Civil_Lines },
-  { id: "Unnamed_49", title: "Unnamed", image: O6_mukul_slide },
+  { id: "Playground", title: "Playground", image: O6_mukul_slide },
 ];
 
 const Paintings = () => {
