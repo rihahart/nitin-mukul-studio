@@ -46,12 +46,31 @@ const MusicOfManyColors = () => {
 
       <div className="w-full px-6 md:px-12 pt-8 pb-6 md:py-24">
         <div className="max-w-5xl mx-auto">
-          <h1 className="font-display text-2xl md:text-4xl font-bold text-foreground tracking-wide text-center mb-12">
-            Music of Many Colors
+          <h1 className="font-display text-2xl md:text-4xl font-bold text-foreground tracking-wide text-center mb-4">
+            Music of Many Colours: Art, Music, and the Cultural Imaginary
           </h1>
-          <p className="font-body text-sm md:text-base text-foreground leading-loose text-left">
-            On the occasion of Miami Art Week 2024, This presentation calls attention to the fragility of this coastal landmark that annually accommodates a global convergence of the art world. The artists, their works, and the ethos this show embraces and signals, among other things, the need to raise awareness of our climate crisis and act responsibly for a stable future. A selection of paintings, works on paper, and multimedia work allude to the turbulent and pivotal moments that are emerging at an alarming pace here and across the globe. The stakes are higher than ever it seems and artists have never been so vital in giving form to a paradigm shift that calls for a heightened sensitivity to our common challenges, the vulnerable among us, and our finite natural resources.
+          <p className="font-body uppercase text-sm md:text-base text-muted-foreground leading-loose text-center mb-1">
+            A group exhibition at The Local, LIC
           </p>
+          <p className="font-body uppercase text-sm md:text-base text-muted-foreground leading-loose text-center mb-1">
+            Nov. 7 - Dec 7, 2025
+          </p>
+          <p className="font-body uppercase text-sm md:text-base text-muted-foreground leading-loose text-center mb-12">
+            Opening reception Nov 7, 6-9pm
+          </p>
+          <p className="font-body text-sm md:text-base text-foreground leading-loose text-left">
+      
+This exhibition brings together artists exploring the enduring relationship between music and cultural identity. Across traditions and generations, music serves as both archive and amplifier—carrying ancestral memory, voicing resistance, and shaping collective belonging. The works presented here have a broad range of references connected to personal experience, memories, specific albums, songs, genres, subcultures and performances through which identities are shaped, contested, celebrated, and reimagined. The title Music of Many Colours takes its name from a collaborative album by Nigerian musician and political activist Fela Aníkúlápó Kútì and American jazz-funk pioneer Roy Ayers. Fela stands out globally as the influential innovator of Afro-beat who used his music to speak truth to power. By exploring the intersections of auditory and visual form, the artists foreground the ways music transcends language and borders while remaining rooted in lived experience. From references to folk traditions and diasporic soundscapes to reinterpretations of contemporary popular culture, these works invite viewers to consider how music shapes personal and communal narratives.
+
+          </p>
+
+          <p className="font-body text-sm md:text-base text-foreground font-semibold mt-6 uppercase leading-loose text-left">
+            Participating Artists:
+          </p>
+          <p className="font-body text-sm md:text-base text-foreground leading-loose text-left">
+            Anjali Kumar | Bayete Ross Smith | Christl Stringer | David McDonough | Franck de las Mercedes | Hema A Bharadwaj | Javaid Nayyar | Lisa Wilde | Mary Teresa Giancoli | Mathieu Josset | Michael Isaak | Nitin Mukul | Peter Stankiewicz | Qasim Ali Hussain | Roger Hsia | Seema Lisa Pandya | Shan Lyu | Shaun Ilahi | Sherwin Banfield | Smita Sen | Tanuja Desai Hidier | Tenzin Doma Lama | Total Binary Annihilation | Traci Johnson
+          </p>
+
         </div>
       </div>
 

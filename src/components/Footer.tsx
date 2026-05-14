@@ -63,7 +63,7 @@ const Footer = () => {
     <footer className="bg-neutral-900 px-4 md:px-12 py-16 md:py-24">
       <div className="max-w-xl mx-auto">
         <h2 className="font-display text-2xl md:text-4xl font-bold text-white mb-10">
-          Join Nitin Mukul Newsletter
+          Join Nitin Mukul's Newsletter
         </h2>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-8">
