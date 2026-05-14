@@ -7,16 +7,56 @@ const VimeoIcon = ({ size = 20 }: { size?: number }) => (
   </svg>
 );
 
+type Status = "idle" | "loading" | "success" | "error";
+
+const MAILCHIMP_URL =
+  "https://nitinmukul.us6.list-manage.com/subscribe/post-json?u=e2d97955a79ebd69d0eb0fe0b&id=9b5be20c82&f_id=00dc54e5f0";
+
 const Footer = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<Status>("idle");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setFirstName("");
-    setLastName("");
-    setEmail("");
+    setStatus("loading");
+
+    const callbackName = `mc_callback_${Date.now()}`;
+    const params = new URLSearchParams({
+      EMAIL: email,
+      FNAME: firstName,
+      LNAME: lastName,
+      b_e2d97955a79ebd69d0eb0fe0b_9b5be20c82: "",
+    });
+
+    const script = document.createElement("script");
+
+    (window as unknown as Record<string, unknown>)[callbackName] = (data: { result: string; msg: string }) => {
+      delete (window as unknown as Record<string, unknown>)[callbackName];
+      script.remove();
+
+      if (data.result === "success") {
+        setStatus("success");
+        setMessage("Thank you for subscribing!");
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+      } else {
+        setStatus("error");
+        setMessage(data.msg?.replace(/^\d+ - /, "") ?? "Something went wrong. Please try again.");
+      }
+    };
+
+    script.src = `${MAILCHIMP_URL}&${params.toString()}&c=${callbackName}`;
+    script.onerror = () => {
+      delete (window as unknown as Record<string, unknown>)[callbackName];
+      script.remove();
+      setStatus("error");
+      setMessage("Network error. Please try again.");
+    };
+    document.body.appendChild(script);
   };
 
   return (
@@ -37,7 +77,8 @@ const Footer = () => {
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
                 required
-                className="bg-white/10 border border-white/20 px-3 py-2 font-body text-sm text-white focus:outline-none focus:border-white transition-colors"
+                disabled={status === "loading" || status === "success"}
+                className="bg-white/10 border border-white/20 px-3 py-2 font-body text-sm text-white focus:outline-none focus:border-white transition-colors disabled:opacity-50"
               />
             </div>
             <div className="flex-1 flex flex-col gap-1">
@@ -49,7 +90,8 @@ const Footer = () => {
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
                 required
-                className="bg-white/10 border border-white/20 px-3 py-2 font-body text-sm text-white focus:outline-none focus:border-white transition-colors"
+                disabled={status === "loading" || status === "success"}
+                className="bg-white/10 border border-white/20 px-3 py-2 font-body text-sm text-white focus:outline-none focus:border-white transition-colors disabled:opacity-50"
               />
             </div>
           </div>
@@ -63,16 +105,24 @@ const Footer = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full bg-white/10 border border-white/20 px-3 py-2 font-body text-sm text-white focus:outline-none focus:border-white transition-colors"
+              disabled={status === "loading" || status === "success"}
+              className="w-full bg-white/10 border border-white/20 px-3 py-2 font-body text-sm text-white focus:outline-none focus:border-white transition-colors disabled:opacity-50"
             />
           </div>
+
+          {message && (
+            <p className={`font-body text-sm text-center ${status === "success" ? "text-white/80" : "text-red-400"}`}>
+              {message}
+            </p>
+          )}
 
           <div className="flex justify-center">
             <button
               type="submit"
-              className="font-body text-sm tracking-widest uppercase bg-transparent text-white border border-white hover:opacity-70 transition-opacity py-3 px-16"
+              disabled={status === "loading" || status === "success"}
+              className="font-body text-sm tracking-widest uppercase bg-transparent text-white border border-white hover:opacity-70 transition-opacity py-3 px-16 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Subscribe
+              {status === "loading" ? "Subscribing…" : "Subscribe"}
             </button>
           </div>
         </form>
