@@ -58,7 +58,7 @@ const paperSubItems = [
 const navItems = [
   { label: "Now", path: "/" },
   { label: "Artwork", path: "/work", hasDropdown: true },
-  { label: "Curations", path: "/curations" },
+  { label: "Curation", path: "/curations" },
   { label: "Being", path: "/being" },
   { label: "Epicenter", path: "/epicenter" },
   { label: "Essays", path: "/publication" },
