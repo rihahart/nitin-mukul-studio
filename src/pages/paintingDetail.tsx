@@ -109,8 +109,9 @@ const paintings = [
     image: _05_Garuda,
     detailCrop: { x: "25%", y: "10%", size: "50%" } },
 
-  { id: "Call_of_Kali", 
-    title: "Call of Kali (with Angela Dufresne and David Humphrey)", 
+  { id: "Call_of_Kali",
+    title: "Call of Kali",
+    subtitle: "with Angela Dufresne and David Humphrey",
     year: "2025", 
     collection: "", 
     gallery: "Available works", 
@@ -666,9 +667,12 @@ const PaintingDetail = () => {
         </div>
         {/* Artwork info */}
         <div className="text-center mb-10 max-w-3xl mx-auto">
-          <h1 className="font-display text-2xl text-foreground tracking-wide font-bold md:text-4xl mb-8">
+          <h1 className="font-display text-2xl text-foreground tracking-wide font-bold md:text-4xl mb-2">
             {painting.title}
           </h1>
+          {painting.subtitle && (
+            <p className="font-body text-sm text-muted-foreground mb-6">{painting.subtitle}</p>
+          )}
           <div className="flex flex-col items-center gap-0.5">
             {(painting.collection || painting.year) && (
               <p className="font-body text-base font-medium uppercase text-foreground underline mb-1">
