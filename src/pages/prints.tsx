@@ -54,7 +54,7 @@ const Prints = () => {
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-auto object-contain group-hover:opacity-80 transition-opacity"
+                    className="w-full h-auto object-contain"
                     loading="lazy"
                   />
                 </div>
