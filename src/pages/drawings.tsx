@@ -35,7 +35,7 @@ const Drawings = () => {
               transition={{ duration: 0.6, delay: i * 0.15 }}
               className="flex flex-col items-center"
             >
-              <Link to={`/artwork/drawings/${item.id}`} className="w-full group">
+              <Link to={`/artwork/drawings/${item.id}`} className="w-full group touch-manipulation">
                 <div className="w-full overflow-hidden">
                   <img
                     src={item.image}

@@ -170,7 +170,7 @@ const Paintings = () => {
             >
               <Link
                 to={`/artwork/paintings/${item.id}`}
-                className="w-full group"
+                className="w-full group touch-manipulation"
               >
                 <div className="w-full overflow-hidden">
                   <img
