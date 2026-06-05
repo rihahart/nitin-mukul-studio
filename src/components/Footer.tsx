@@ -60,8 +60,8 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-neutral-900 px-4 md:px-12 py-16 md:py-24 flex flex-col gap-12">
-      <div className="max-w-xl mx-auto w-full">
+    <footer className="bg-neutral-900 px-4 md:px-12 py-16 md:py-24">
+      <div className="max-w-xl mx-auto">
         <h2 className="font-display text-2xl md:text-4xl font-bold text-white mb-10">
           Join Nitin Mukul's Newsletter
         </h2>
@@ -127,23 +127,22 @@ const Footer = () => {
           </div>
         </form>
 
-      </div>
-
-      <div className="flex flex-col gap-4">
-        <div className="flex gap-5">
-          <a href="https://www.instagram.com/nitin_mukul_studio" target="_blank" rel="noreferrer" className="text-white hover:opacity-60 transition-opacity" aria-label="Instagram">
-            <Instagram size={20} strokeWidth={1.5} />
-          </a>
-          <a href="https://www.linkedin.com/in/nitinmukul/" target="_blank" rel="noreferrer" className="text-white hover:opacity-60 transition-opacity" aria-label="LinkedIn">
-            <Linkedin size={20} strokeWidth={1.5} />
-          </a>
-          <a href="https://vimeo.com/user5700465" target="_blank" rel="noreferrer" className="text-white hover:opacity-60 transition-opacity" aria-label="Vimeo">
-            <VimeoIcon size={20} />
+        <div className="flex flex-col items-center gap-4 mt-10">
+          <div className="flex gap-5">
+            <a href="https://www.instagram.com/nitin_mukul_studio" target="_blank" rel="noreferrer" className="text-white hover:opacity-60 transition-opacity" aria-label="Instagram">
+              <Instagram size={20} strokeWidth={1.5} />
+            </a>
+            <a href="https://www.linkedin.com/in/nitinmukul/" target="_blank" rel="noreferrer" className="text-white hover:opacity-60 transition-opacity" aria-label="LinkedIn">
+              <Linkedin size={20} strokeWidth={1.5} />
+            </a>
+            <a href="https://vimeo.com/user5700465" target="_blank" rel="noreferrer" className="text-white hover:opacity-60 transition-opacity" aria-label="Vimeo">
+              <VimeoIcon size={20} />
+            </a>
+          </div>
+          <a href="mailto:nmukul@gmail.com" className="font-body text-sm text-white/60 hover:text-white transition-colors">
+            nmukul@gmail.com
           </a>
         </div>
-        <a href="mailto:nmukul@gmail.com" className="font-body text-sm text-white/60 hover:text-white transition-colors">
-          nmukul@gmail.com
-        </a>
       </div>
     </footer>
   );
