@@ -427,9 +427,9 @@ const MobileMenu = ({
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
               transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="absolute inset-0 flex items-start justify-start px-6 py-6"
+              className="absolute inset-0 flex items-start justify-start px-6 py-2"
             >
-              <nav className="flex flex-col items-start gap-6">
+              <nav className="flex flex-col items-start gap-5">
                 {navItems.map((item, i) => {
                   const isActive = item.path === "/"
                     ? location.pathname === "/"
@@ -464,7 +464,7 @@ const MobileMenu = ({
                   );
                 })}
 
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="flex gap-6 mt-12 items-center">
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="flex gap-6 mt-6 items-center">
                   <a href="https://www.instagram.com/nitin_mukul_studio" target="_blank" rel="noreferrer" className="text-foreground hover:opacity-60 transition-opacity" aria-label="Instagram">
                     <Instagram size={20} strokeWidth={1.5} />
                   </a>
