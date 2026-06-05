@@ -63,6 +63,7 @@ const navItems = [
   { label: "Epicenter", path: "/epicenter" },
   { label: "Essays", path: "/publication" },
   { label: "Press", path: "/press" },
+  { label: "Collect", path: "/collect" },
 ];
 
 const Navigation = () => {

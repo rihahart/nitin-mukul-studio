@@ -685,6 +685,14 @@ const PaintingDetail = () => {
               {painting.gallery && (
                 <p className="font-body text-sm font-normal text-foreground">[{painting.gallery}]</p>
               )}
+            {painting.gallery?.toLowerCase() === "available works" && (
+              <a
+                href="mailto:nmukul@gmail.com"
+                className="mt-4 inline-block font-body text-sm tracking-widest uppercase border border-foreground text-foreground hover:opacity-60 transition-opacity py-2 px-8"
+              >
+                Inquire
+              </a>
+            )}
             </div>
           </div>
         </div>

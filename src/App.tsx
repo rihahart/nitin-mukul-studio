@@ -34,6 +34,7 @@ import Essay from "./pages/essay";
 import Curations from "./pages/curations";
 import MusicOfManyColors from "./pages/musicOfManyColors";
 import HeatOfTheMoment from "./pages/heatOfTheMoment";
+import Collect from "./pages/collect";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -81,6 +82,7 @@ const App = () => (
           <Route path="/curations" element={<Curations />} />
           <Route path="/curation/music-of-many-colors" element={<MusicOfManyColors />} />
           <Route path="/curation/heat-of-the-moment" element={<HeatOfTheMoment />} />
+          <Route path="/collect" element={<Collect />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
