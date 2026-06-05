@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import InquiryPanel from "@/components/InquiryPanel";
 import _01_Mother from "@/assets/Paintings/01_Mother.JPG";
 import _03_Fault_Lines from "@/assets/Paintings/03_Fault_Lines.jpg";
 import _04_Cease_Fire from "@/assets/Paintings/04_Cease_Fire.jpeg";
@@ -167,51 +168,126 @@ const availableWorks = [
   },
 ];
 
-const Collect = () => {
+type AvailableWork = typeof availableWorks[0];
+
+const crops = [
+  { position: "20% 20%" },
+  { position: "50% 50%" },
+  { position: "80% 80%" },
+];
+
+interface CollectItemProps {
+  item: AvailableWork;
+  i: number;
+  onInquire: (item: AvailableWork) => void;
+}
+
+const CollectItem = ({ item, i, onInquire }: CollectItemProps) => {
+  const [activeCrop, setActiveCrop] = useState<number | null>(null);
+
   return (
-    <Layout>
-      <div className="w-full px-[clamp(1.5rem,5vw,6rem)] py-[clamp(6rem,5vw+6rem,12rem)]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-          {availableWorks.map((item, i) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="flex flex-col items-center"
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: i * 0.08 }}
+      className="flex flex-col md:flex-row gap-8 md:gap-32 py-16"
+    >
+      {/* Image */}
+      <div className="md:w-2/5 shrink-0">
+        <div
+          className="relative w-full overflow-hidden cursor-zoom-in group"
+          style={{ height: "420px" }}
+          onClick={() => setActiveCrop(null)}
+        >
+          <img
+            src={item.image}
+            alt={item.title}
+            loading="lazy"
+            className="w-full h-full transition-all duration-500"
+            style={
+              activeCrop !== null
+                ? { objectFit: "cover", objectPosition: crops[activeCrop].position }
+                : { objectFit: "contain", objectPosition: "center" }
+            }
+          />
+          {activeCrop === null && (
+            <div className="absolute inset-0 flex items-end justify-center pb-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              <span className="font-body text-xs tracking-widest uppercase text-white bg-black/50 px-3 py-1">
+                Click to zoom in
+              </span>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Details */}
+      <div className="flex flex-col justify-center gap-1 md:w-3/5">
+        <h2 className="font-display text-xl md:text-2xl font-bold text-foreground mb-1">
+          {item.title}
+        </h2>
+        {item.year && (
+          <p className="font-body text-sm text-foreground/60">{item.year}</p>
+        )}
+        <p className="font-body text-sm text-foreground/60">{item.medium}</p>
+        {item.dimensions && (
+          <p className="font-body text-sm text-foreground/60">{item.dimensions}</p>
+        )}
+        <button
+          onClick={() => onInquire(item)}
+          className="mt-6 w-full md:w-48 bg-black text-white font-body text-sm tracking-widest uppercase hover:opacity-70 transition-opacity py-4 px-8"
+        >
+          Inquire
+        </button>
+
+        {/* Crop thumbnails */}
+        <div className="flex gap-3 mt-8">
+          <button
+            onClick={() => setActiveCrop(null)}
+            className={`w-16 h-16 overflow-hidden border-2 transition-colors ${activeCrop === null ? "border-foreground" : "border-transparent hover:border-foreground/40"}`}
+            aria-label="Full image"
+          >
+            <img src={item.image} alt="" className="w-full h-full object-cover object-center" />
+          </button>
+          {crops.map((crop, ci) => (
+            <button
+              key={ci}
+              onClick={() => setActiveCrop(ci)}
+              className={`w-16 h-16 overflow-hidden border-2 transition-colors ${activeCrop === ci ? "border-foreground" : "border-transparent hover:border-foreground/40"}`}
+              aria-label={`Zoom section ${ci + 1}`}
             >
-              <Link
-                to={`/artwork/paintings/${item.id}`}
-                className="w-full group touch-manipulation"
-              >
-                <div className="w-full overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-auto object-contain"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="mt-4 text-center">
-                  <h3 className="font-display text-lg md:text-xl text-foreground tracking-wide font-bold">
-                    {item.title}{item.year ? `, ${item.year}` : ""}
-                  </h3>
-                  <p className="font-body text-sm text-foreground/70 mt-1">{item.medium}</p>
-                  {item.dimensions && (
-                    <p className="font-body text-sm text-foreground/70">{item.dimensions}</p>
-                  )}
-                </div>
-              </Link>
-              <a
-                href="mailto:nmukul@gmail.com"
-                className="mt-4 font-body text-sm tracking-widest uppercase border border-foreground text-foreground hover:opacity-60 transition-opacity py-2 px-8"
-              >
-                Inquire
-              </a>
-            </motion.div>
+              <img
+                src={item.image}
+                alt=""
+                className="w-full h-full object-cover"
+                style={{ objectPosition: crop.position }}
+              />
+            </button>
           ))}
         </div>
       </div>
+    </motion.div>
+  );
+};
+
+const Collect = () => {
+  const [selectedWork, setSelectedWork] = useState<AvailableWork | null>(null);
+
+  return (
+    <Layout>
+      <div className="w-full px-[clamp(1.5rem,5vw,6rem)] py-[clamp(6rem,5vw+6rem,12rem)]">
+        <div className="flex flex-col divide-y divide-foreground/10">
+          {availableWorks.map((item, i) => (
+            <CollectItem key={item.id} item={item} i={i} onInquire={setSelectedWork} />
+          ))}
+        </div>
+      </div>
+
+
+<InquiryPanel
+        isOpen={selectedWork !== null}
+        onClose={() => setSelectedWork(null)}
+        painting={selectedWork ?? availableWorks[0]}
+      />
     </Layout>
   );
 };

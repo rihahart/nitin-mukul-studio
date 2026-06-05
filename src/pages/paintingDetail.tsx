@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import InquiryPanel from "@/components/InquiryPanel";
 import _02_The_Bestiary from "@/assets/Paintings/02_The_Bestiary.jpg";
 import _09_mukul from "@/assets/Paintings/09_mukul.jpg";
 import _05_Garuda from "@/assets/Paintings/05_Garuda.jpg";
@@ -602,6 +603,7 @@ const PaintingDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [inquiryOpen, setInquiryOpen] = useState(false);
 
   const paintingIndex = paintings.findIndex((p) => p.id === id);
   const painting = paintings[paintingIndex];
@@ -686,12 +688,12 @@ const PaintingDetail = () => {
                 <p className="font-body text-sm font-normal text-foreground">[{painting.gallery}]</p>
               )}
             {painting.gallery?.toLowerCase() === "available works" && (
-              <a
-                href="mailto:nmukul@gmail.com"
+              <button
+                onClick={() => setInquiryOpen(true)}
                 className="mt-4 inline-block font-body text-sm tracking-widest uppercase bg-black text-white border border-black hover:opacity-60 transition-opacity py-2 px-8"
               >
                 Inquire
-              </a>
+              </button>
             )}
             </div>
           </div>
@@ -717,6 +719,12 @@ const PaintingDetail = () => {
           </button>
         </div>
       </div>
+
+      <InquiryPanel
+        isOpen={inquiryOpen}
+        onClose={() => setInquiryOpen(false)}
+        painting={painting}
+      />
 
       {/* Lightbox */}
       <AnimatePresence>
