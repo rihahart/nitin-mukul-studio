@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Instagram, LinkedinIcon, ChevronDown, ArrowLeft, Search } from "lucide-react";
+import { Instagram, LinkedinIcon, ChevronDown, ArrowLeft, Search, Mail } from "lucide-react";
 
 const VimeoIcon = ({ size = 18 }: { size?: number }) => (
   <svg
@@ -180,6 +180,9 @@ const Navigation = () => {
         </a>
         <a href="https://vimeo.com/user5700465" target="_blank" rel="noreferrer" className="text-foreground hover:opacity-60 transition-opacity" aria-label="Vimeo">
           <VimeoIcon size={18} />
+        </a>
+        <a href="mailto:nmukul@gmail.com" className="text-foreground hover:opacity-60 transition-opacity" aria-label="Email">
+          <Mail size={18} strokeWidth={1.5} />
         </a>
       </div>
       {/* Search icon — to be designed */}
@@ -469,6 +472,9 @@ const MobileMenu = ({
                   </a>
                   <a href="https://vimeo.com/user5700465" target="_blank" rel="noreferrer" className="text-foreground hover:opacity-60 transition-opacity" aria-label="Vimeo">
                     <VimeoIcon size={20} />
+                  </a>
+                  <a href="mailto:nmukul@gmail.com" className="text-foreground hover:opacity-60 transition-opacity" aria-label="Email">
+                    <Mail size={20} strokeWidth={1.5} />
                   </a>
                 </motion.div>
               </nav>
