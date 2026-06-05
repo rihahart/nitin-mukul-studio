@@ -170,7 +170,8 @@ const Paintings = () => {
             >
               <Link
                 to={`/artwork/paintings/${item.id}`}
-                className="w-full group touch-manipulation"
+                className="w-full touch-manipulation"
+                onTouchStart={() => {}}
               >
                 <div className="w-full overflow-hidden">
                   <img
