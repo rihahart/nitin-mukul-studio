@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
@@ -27,36 +27,43 @@ const InquiryPanel = ({ isOpen, onClose, painting }: InquiryPanelProps) => {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<Status>("idle");
 
+  useEffect(() => {
+    if (isOpen) setStatus("idle");
+  }, [isOpen, painting.title]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
 
     const subject = `Inquiry: ${painting.title}${painting.year ? ` (${painting.year})` : ""}`;
-    const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Phone: ${phone}`,
-      country && `Country: ${country}`,
-      postcode && `Postcode / Zipcode: ${postcode}`,
-      message && `\nMessage:\n${message}`,
-      `\n---\nArtwork: ${painting.title}${painting.year ? `, ${painting.year}` : ""}`,
-      painting.medium && `Medium: ${painting.medium}`,
-      painting.dimensions && `Dimensions: ${painting.dimensions}`,
-    ]
-      .filter(Boolean)
-      .join("\n");
 
-    window.location.href = `mailto:nmukul@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    setTimeout(() => {
-      setStatus("success");
-      setName("");
-      setEmail("");
-      setPhone("");
-      setCountry("");
-      setPostcode("");
-      setMessage("");
-    }, 500);
+    fetch("https://formsubmit.co/ajax/nmukul@gmail.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        name,
+        email,
+        phone,
+        country: country || undefined,
+        postcode: postcode || undefined,
+        message: message || undefined,
+        artwork: `${painting.title}${painting.year ? `, ${painting.year}` : ""}`,
+        medium: painting.medium || undefined,
+        dimensions: painting.dimensions || undefined,
+        _subject: subject,
+        _replyto: email,
+      }),
+    })
+      .then(() => {
+        setStatus("success");
+        setName("");
+        setEmail("");
+        setPhone("");
+        setCountry("");
+        setPostcode("");
+        setMessage("");
+      })
+      .catch(() => setStatus("idle"));
   };
 
   const inputClass =
