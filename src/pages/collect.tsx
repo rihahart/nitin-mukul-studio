@@ -171,9 +171,8 @@ const availableWorks = [
 type AvailableWork = typeof availableWorks[0];
 
 const crops = [
-  { position: "20% 20%" },
-  { position: "50% 50%" },
-  { position: "80% 80%" },
+  { position: "25% 25%", scale: 1, prominent: false },
+  { position: "75% 75%", scale: 2.2, prominent: true },
 ];
 
 interface CollectItemProps {
@@ -207,7 +206,12 @@ const CollectItem = ({ item, i, onInquire }: CollectItemProps) => {
             className="w-full h-full transition-all duration-500"
             style={
               activeCrop !== null
-                ? { objectFit: "cover", objectPosition: crops[activeCrop].position }
+                ? {
+                    objectFit: "cover",
+                    objectPosition: crops[activeCrop].position,
+                    transform: `scale(${crops[activeCrop].scale})`,
+                    transformOrigin: crops[activeCrop].position,
+                  }
                 : { objectFit: "contain", objectPosition: "center" }
             }
           />
