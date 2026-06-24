@@ -53,11 +53,6 @@ const HeatOfTheMoment = () => {
             Heat of the Moment
           </h1>
           <p className="font-body text-sm md:text-base text-foreground leading-loose text-left">
-            <p className="font-body text-sm md:text-base text-foreground leading-loose text-left">
-            For the NYC version of Heat of the Moment, Epicenter NYC partnered with Thirstygallerina. The artists, their works, and the concept of the show embrace the need to raise awareness of the interconnectedness of numerous crises around the globe and act responsibly for a stable future. The multiplicity of cultures meeting in Queens is perhaps unmatched globally, which makes it an ideal setting. We are grateful to The Local for the exhibition space.
-          </p>
-          </p>
-          <p className="font-body text-sm md:text-base text-foreground leading-loose text-left mt-6">
             For the NYC version of Heat of the Moment, Epicenter NYC partnered with Thirstygallerina. The artists, their works, and the concept of the show embrace the need to raise awareness of the interconnectedness of numerous crises around the globe and act responsibly for a stable future. The multiplicity of cultures meeting in Queens is perhaps unmatched globally, which makes it an ideal setting. We are grateful to The Local for the exhibition space.
           </p>
           <p className="font-body text-sm md:text-base text-foreground leading-loose text-left mt-6">
