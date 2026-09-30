@@ -1,0 +1,2 @@
+- Keep exhibition detail pages under `/upcoming/<slug>` as client-side routes so homepage event links and direct navigation share a single page.
+- Define event-specific colors as semantic tokens in `src/index.css` so artwork-led pages remain consistent with the site theme.
