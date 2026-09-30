@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import HeroCarousel from "@/components/HeroCarousel";
 import { exhibitions, projects, artworks } from "@/lib/artworkData";
+import flightDelayFrames from "@/assets/flight-delay-frames.jpg.asset.json";
 import paintingImg from "@/assets/Paintings/02_The_Bestiary.jpg";
 import publicArtImg from "@/assets/Video&Installation/HeatMapsQueens/HeatMapsQueens/05_ArtonScreen.JPG";
 import printImg from "@/assets/Print/celebration2_silkscreenprint.jpg";
@@ -33,7 +34,7 @@ const Index = () => {
       React.createElement("div", { className: "flex flex-col md:flex-row md:items-center md:gap-12" },
           React.createElement("div", { className: "aspect-[4/3] overflow-hidden w-full md:w-[700px] md:shrink-0" },
             React.createElement("img", {
-              src: "/avian_american_wide.jpg",
+              src: flightDelayFrames.url,
               alt: currentlyShowing.title,
               className: "w-full h-full object-cover"
             })
