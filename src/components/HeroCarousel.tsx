@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import artwork6 from "@/assets/artwork-6.jpg";
+import flightDelay from "@/assets/flight-delay-title.jpg.asset.json";
 type Slide = {
   title: string;
   year: string;
@@ -11,7 +11,7 @@ type Slide = {
 } & ({ type: "image"; image: string } | { type: "video"; video: string });
 
 const slides: Slide[] = [
-{ type: "image", image: artwork6, title: "Cease Fire", year: "2023", medium: "Acrylic on canvas", path: "/artwork/paintings/Cease_Fire" },
+{ type: "image", image: flightDelay.url, title: "Flight Delay", year: "2025", medium: "Nitin Mukul • Liz Phillips" },
   { type: "video", video: "/videos/anenome.mp4", title: "Anenome", year: "2022", medium: "Durational painting", path: "/artwork/video-installation/anemone" },
   { type: "video", video: "/videos/cascade.mp4", title: "Cascade", year: "February 22, 2020", medium: "Durational painting", path: "/artwork/video-installation/cascade" },
 ];
