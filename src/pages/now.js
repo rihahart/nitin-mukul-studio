@@ -1,10 +1,9 @@
 import React, { useRef } from "react";
-import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import HeroCarousel from "@/components/HeroCarousel";
 import { exhibitions, projects, artworks } from "@/lib/artworkData";
-import flightDelayFrames from "@/assets/flight-delay-frames.jpg.asset.json";
+import flightDelayFrames from "@/assets/flight_delay_frames_title.jpg";
 import paintingImg from "@/assets/Paintings/02_The_Bestiary.jpg";
 import publicArtImg from "@/assets/Video&Installation/HeatMapsQueens/HeatMapsQueens/05_ArtonScreen.JPG";
 import printImg from "@/assets/Print/celebration2_silkscreenprint.jpg";
@@ -34,7 +33,7 @@ const Index = () => {
       React.createElement("div", { className: "flex flex-col md:flex-row md:items-center md:gap-12" },
           React.createElement("div", { className: "aspect-[4/3] overflow-hidden w-full md:w-[700px] md:shrink-0" },
             React.createElement("img", {
-              src: flightDelayFrames.url,
+              src: flightDelayFrames,
               alt: currentlyShowing.title,
               className: "w-full h-full object-cover"
             })
@@ -51,8 +50,8 @@ const Index = () => {
             ),
             React.createElement(Link, {
               to: "/upcoming/flight-delay",
-              className: "inline-flex items-center gap-2 mt-5 border-b border-foreground pb-1 font-body text-sm font-medium text-foreground hover:opacity-60 transition-opacity"
-            }, "Learn more", React.createElement(ChevronRight, { size: 16, "aria-hidden": true }))
+              className: "inline-block text-center mt-6 w-full md:w-48 bg-black text-white font-body text-sm tracking-widest uppercase hover:opacity-70 transition-opacity py-4 px-8"
+            }, "Learn more")
           )
         )
     ),
