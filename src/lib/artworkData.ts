@@ -61,8 +61,8 @@ export const projects: Project[] = [
   },
   {
     id: "ways-of-showing-up",
-    title: "Nitin Mukul | Liz Phillips: Flight Delay",
-    year: "September 2026",
+    title: "FLIGHT DELAY: NITIN MUKUL | LIZ PHILLIPS",
+    year: "October 10 - 16, 2026",
     location: "New York Hall of Science",
     image: installation1,
     description: "A collaborative exhibition and performance series exploring presence, community, and the politics of gathering. The project brings together visual artists, musicians, and performers in a series of events that unfold slowly, resisting the urgency of contemporary culture.",
