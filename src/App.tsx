@@ -35,6 +35,7 @@ import Curations from "./pages/curations";
 import MusicOfManyColors from "./pages/musicOfManyColors";
 import HeatOfTheMoment from "./pages/heatOfTheMoment";
 import Collect from "./pages/collect";
+import FlightDelay from "./pages/flightDelay";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -53,6 +54,7 @@ const App = () => (
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/upcoming/flight-delay" element={<FlightDelay />} />
           <Route path="/artwork/paintings" element={<Paintings />} />
           <Route path="/artwork/paintings/:id" element={<PaintingDetail />} />
           <Route path="/artwork/prints" element={<Prints />} />

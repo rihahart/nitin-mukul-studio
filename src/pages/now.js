@@ -48,7 +48,11 @@ const Index = () => {
             ),
             React.createElement("p", { className: "font-body text-sm text-muted-foreground mt-1" },
               currentlyShowing.location + " · " + currentlyShowing.year
-            )
+            ),
+            React.createElement(Link, {
+              to: "/upcoming/flight-delay",
+              className: "inline-flex items-center gap-2 mt-5 border-b border-foreground pb-1 font-body text-sm font-medium text-foreground hover:opacity-60 transition-opacity"
+            }, "Learn more", React.createElement(ChevronRight, { size: 16, "aria-hidden": true }))
           )
         )
     ),
