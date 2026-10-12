@@ -47,7 +47,7 @@ const ArtistBios = () => {
 
   return (
     <div>
-      <div role="tablist" aria-label="Artist biographies" className="grid w-full grid-cols-2 border-b border-border">
+      <div role="tablist" aria-label="Artist biographies" className="flex gap-8 md:gap-10 border-b border-border">
         {artistBios.map((artist) => {
           const isActive = artist.id === activeId;
           return (
@@ -65,7 +65,7 @@ const ArtistBios = () => {
               onClick={() => setActiveId(artist.id)}
               onKeyDown={handleKeyDown}
               className={cn(
-                "relative -mb-px py-4 text-left font-body text-base md:text-lg whitespace-nowrap transition-colors",
+                "relative -mb-px py-3 font-body text-sm md:text-base whitespace-nowrap transition-colors",
                 isActive
                   ? "font-bold text-foreground"
                   : "font-medium text-muted-foreground hover:text-foreground"
