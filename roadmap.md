@@ -10,4 +10,5 @@
 
 # Bio tabs as their own section
 - [x] Move the artist bio tabs out of the installation description into a standalone section.
+- [x] Make the tabs span the full width of the section, split evenly.
 - [x] Verify the new section on desktop and mobile.
