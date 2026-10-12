@@ -46,7 +46,7 @@ const ArtistBios = () => {
   };
 
   return (
-    <div className="mt-14">
+    <div className="mt-6 lg:mt-0">
       <div role="tablist" aria-label="Artist biographies" className="flex gap-8 md:gap-10 border-b border-border">
         {artistBios.map((artist) => {
           const isActive = artist.id === activeId;
@@ -118,7 +118,7 @@ const FlightDelay = () => (
         />
       </div>
 
-      <div className="px-4 md:px-12 pt-12 md:pt-24 pb-24 md:pb-40">
+      <div className="px-4 md:px-12 pt-12 md:pt-24 pb-16 md:pb-24">
         <div className="mx-auto max-w-[1240px]">
           <div className="grid lg:grid-cols-[minmax(200px,320px)_minmax(0,1fr)] lg:grid-rows-[auto_1fr] gap-6 lg:gap-x-16 lg:gap-y-10">
             <h2 className="font-display text-2xl md:text-3xl font-bold lg:col-start-1 lg:row-start-1">About the installation</h2>
@@ -142,11 +142,25 @@ const FlightDelay = () => (
               <p>Heat Maps: Flight Delay, is a new video installation that reflects on how climate change has altered patterns in the migration patterns of birds, which recently amplified the bird flu epidemic and wiped out the entire population of 100,000 ducks through forced euthanization at a local duck farm on Long Island.</p>
               <p>This project feels crucial in a moment when the erasure of scientific data about the effects of global warming has become a national priority. The Flight Delay series of durational paintings will register the conditions on location at sites known to be sanctuaries, refuges, and breeding grounds. Over the course of the last year we gathered sound and visuals at specific locations along migration paths, sanctuaries and park lands at times when bird activity and their sounds are especially active.</p>
               <p>This new body of work will serve as a poetic and expressive archive, manifesting in a video installation that combines the recorded video and sound which may have the effect of helping viewers build empathy and a visceral understanding of the role humans play in the alteration of our natural world. Through the disintegration of the durational paintings and shifts in sound we draw an analogy to how human activity is erasing and irreversibly altering the natural world.</p>
-              <ArtistBios />
             </div>
           </div>
         </div>
       </div>
+
+      <section
+        aria-labelledby="about-artists-heading"
+        className="border-t border-border px-4 md:px-12 pt-16 md:pt-24 pb-24 md:pb-40"
+      >
+        <div className="mx-auto max-w-[1240px] grid lg:grid-cols-[minmax(200px,320px)_minmax(0,1fr)] lg:gap-x-16">
+          <h2
+            id="about-artists-heading"
+            className="font-display text-2xl md:text-3xl font-bold"
+          >
+            About the artists
+          </h2>
+          <ArtistBios />
+        </div>
+      </section>
     </article>
   </Layout>
 );
