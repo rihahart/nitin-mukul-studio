@@ -1,6 +1,99 @@
+import { useRef, useState, type KeyboardEvent } from "react";
 import Layout from "@/components/Layout";
 import flightDelayFrames from "@/assets/flight_delay_frames_title.jpg";
 import { ArrowUpRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const artistBios = [
+  {
+    id: "nitin-mukul",
+    label: "Nitin Mukul",
+    paragraphs: [
+      "Nitin Mukul is an American visual artist of Indian descent mapping spaces where painting and video intersect as a durational experience. He has lived and worked in Massachusetts, India, Los Angeles, Washington DC, and currently is in New York City. In 2020 he was awarded an Artist Residency at the Caldera Arts Center in Sisters, Oregon, and is the recipient of 2020, 2023 and 2025 New Works Grant from NYFA. In 2019 he completed video installations at The Institute of Contemporary Art, Philadelphia, Pioneer Works, Brooklyn and Lincoln Center, NYC. His work was included in the 2013 Queens Biennial at the Queens Museum. Mukul was an assistant to the late artist Sol Lewitt, and a former creative director of the Indocenter of Art & Culture in Chelsea. His work was recently acquired by the Kiran Nadar Museum of Art in New Delhi. He has been showing with Aicon gallery in NYC since 2008.",
+      "Nitin\u2019s exhibitions on the impact of climate change such as Heat Maps: Queens and Heat of the Moment have brought together artists, neighbors, local government officials and organizations like the Nature Conservancy into meaningful dialogue. He led the curatorial effort of Queens largest public art project, an open street in Jackson Heights spanning 26 city blocks which has since become a permanent linear park recognized globally by urban planners. Nitin frequently collaborates with cultural institutions and city officials to drive awareness on issues and make art more accessible.",
+    ],
+  },
+  {
+    id: "liz-phillips",
+    label: "Liz Phillips",
+    paragraphs: [
+      "For more than 55 years, Queens-based pioneer artist Liz Phillips has been making interactive, often collaborative, multi-media installations. Creating responsive environments that sense wind, plants, fish, people, water and food, she uses sound as her primary descriptive material. In 2024 Phillips received an Anonymous was a Woman Award (Visual Arts) and in 2025 a United States Artists Fellowship (music). Phillips has exhibited at museums, galleries, festivals, and public spaces, including; Philadelphia\u2019s Academy of Natural Sciences, Milwaukee Art Museum, Queens Museum, Jewish Museum, Whitney Museum of American Art, San Francisco Museum of Modern Art, Spoleto Festival USA, Walker Art Museum, Ars Electronica, Lincoln Center, Jacob\u2019s Pillow, The Kitchen, Rene Block and Frederieke Taylor galleries. Work has been presented by Creative Time, the Cleveland Orchestra, IBM Japan, and the World Financial Center. Site-specific installations have transformed public spaces, as diverse as a wind turbine in an alternative energy site in a South Bronx, the Anchorage under the Brooklyn Bridge, Minneapolis\u2019s Peavy Plaza and Art Park in Lewiston NY.",
+      "Phillips\u2019 site-specific public sound installation plays continuously in and around the dovecote at Caramoor Center for Music and Art from May-November 2023-2026. In Philadelphia, with Annea Lockwood, Phillips created two installations \u201cThe River Feeds Back\u201d and \u201cInside the Watershed\u201d (2022-2023.) \u201cRelative Fields in a Garden,\u201d a 22-channel collaborative sound installation and mural with Heidi Howard was commissioned for the Queens Museum center atrium and extended to last a year and a half. Harvestworks and New York State Council on the Arts commissioned \u201cWaves Crossing,\u201d for Governors Island. Phillips often collaborates with the audience and other artists, among them; Merce Cunningham Dance Company, Simone Forti, Earl Howard, Alison Knowles, Mary Lucier, Nam June Paik, Paula Rabinowitz and Yoshimasa Wada. Phillips received a Guggenheim Fellowship (1987) and numerous Individual and collaborative commissions from New York State Council on the Arts and National Endowment for the Arts as a composer, video artist, audio artist and multi-media artist and curator.",
+    ],
+  },
+];
+
+const ArtistBios = () => {
+  const [activeId, setActiveId] = useState(artistBios[0].id);
+  const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const activeIndex = artistBios.findIndex((artist) => artist.id === activeId);
+  const active = artistBios[activeIndex];
+
+  const selectAdjacent = (direction: 1 | -1) => {
+    const next = artistBios[(activeIndex + direction + artistBios.length) % artistBios.length];
+    setActiveId(next.id);
+    tabRefs.current[next.id]?.focus();
+  };
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      selectAdjacent(1);
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      selectAdjacent(-1);
+    }
+  };
+
+  return (
+    <div className="mt-14">
+      <div role="tablist" aria-label="Artist biographies" className="flex gap-8 md:gap-10 border-b border-border">
+        {artistBios.map((artist) => {
+          const isActive = artist.id === activeId;
+          return (
+            <button
+              key={artist.id}
+              type="button"
+              role="tab"
+              id={`bio-tab-${artist.id}`}
+              ref={(node) => {
+                tabRefs.current[artist.id] = node;
+              }}
+              aria-selected={isActive}
+              aria-controls={`bio-panel-${artist.id}`}
+              tabIndex={isActive ? 0 : -1}
+              onClick={() => setActiveId(artist.id)}
+              onKeyDown={handleKeyDown}
+              className={cn(
+                "relative -mb-px py-3 font-body text-sm md:text-base whitespace-nowrap transition-colors",
+                isActive
+                  ? "font-bold text-foreground"
+                  : "font-medium text-muted-foreground hover:text-foreground"
+              )}
+            >
+              {artist.label}
+              {isActive && (
+                <span aria-hidden="true" className="absolute inset-x-0 -bottom-px h-[3px] bg-foreground" />
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      <div
+        role="tabpanel"
+        id={`bio-panel-${active.id}`}
+        aria-labelledby={`bio-tab-${active.id}`}
+        tabIndex={0}
+        className="pt-8 font-body text-sm md:text-base text-foreground space-y-7"
+      >
+        {active.paragraphs.map((paragraph) => (
+          <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const FlightDelay = () => (
   <Layout>
@@ -49,6 +142,7 @@ const FlightDelay = () => (
               <p>Heat Maps: Flight Delay, is a new video installation that reflects on how climate change has altered patterns in the migration patterns of birds, which recently amplified the bird flu epidemic and wiped out the entire population of 100,000 ducks through forced euthanization at a local duck farm on Long Island.</p>
               <p>This project feels crucial in a moment when the erasure of scientific data about the effects of global warming has become a national priority. The Flight Delay series of durational paintings will register the conditions on location at sites known to be sanctuaries, refuges, and breeding grounds. Over the course of the last year we gathered sound and visuals at specific locations along migration paths, sanctuaries and park lands at times when bird activity and their sounds are especially active.</p>
               <p>This new body of work will serve as a poetic and expressive archive, manifesting in a video installation that combines the recorded video and sound which may have the effect of helping viewers build empathy and a visceral understanding of the role humans play in the alteration of our natural world. Through the disintegration of the durational paintings and shifts in sound we draw an analogy to how human activity is erasing and irreversibly altering the natural world.</p>
+              <ArtistBios />
             </div>
           </div>
         </div>
