@@ -20,6 +20,11 @@ const Bio = () => {
             <p className="font-body text-sm md:text-base text-foreground leading-loose text-left">
               <strong>Nitin Mukul</strong> is an American visual artist of Indian descent mapping spaces where painting and video intersect as a durational experience. He has lived and worked in Massachusetts, India, Los Angeles, Washington DC, and currently New York City. In 2020 he was Artist in Residence at Caldera Arts in Sisters, Oregon, and is the recipient of 2020, 2023 and 2025 fellowships from NYFA. He was a nominee for the 2025 Creative Time fellowship. His work has been shown at The Institute of Contemporary Art, Philadelphia, Pioneer Works, The Queens Museum, Lincoln Center, Nature Morte Gallery, and The Rubin Museum, among others. His recent project Heat Maps was presented in 2024 as a solo exhibition at the New York Hall of Science. He has been showing with Aicon gallery in NYC since 2008. In 2020 Mukul co-founded Epicenter NYC, a community journalism multiplatform initiative that engages, connects and informs and empowers through the power of culture and community.
             </p>
+
+            <p className="font-body text-sm md:text-base text-foreground leading-loose text-left mt-6 md:mt-8">
+              Nitin&rsquo;s exhibitions on the impact of climate change such as Heat Maps: Queens and Heat of the Moment have brought together artists, neighbors, local government officials and organizations like the Nature Conservancy into meaningful dialogue. He led the curatorial effort of Queens largest public art project, an open street in Jackson Heights spanning 26 city blocks which has since become a permanent linear park recognized globally by urban planners. Nitin frequently collaborates with cultural institutions and city officials to drive awareness on issues and make art more accessible.
+            </p>
+      
       
         </div>
       </div>
