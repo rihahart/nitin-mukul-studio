@@ -5,5 +5,5 @@
 - [x] Verify the page and homepage link on desktop and mobile.
 
 # Artist bio tabs
-- [ ] Add Nitin Mukul and Liz Phillips bio tabs under the installation text on the Flight Delay page.
-- [ ] Verify tab switching on desktop and mobile.
+- [x] Add Nitin Mukul and Liz Phillips bio tabs under the installation text on the Flight Delay page.
+- [x] Verify tab switching on desktop and mobile.
