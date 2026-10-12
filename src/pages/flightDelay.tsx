@@ -148,16 +148,10 @@ const FlightDelay = () => (
       </div>
 
       <section
-        aria-labelledby="about-artists-heading"
+        aria-label="Artist biographies"
         className="border-t border-border px-4 md:px-12 pt-16 md:pt-24 pb-24 md:pb-40"
       >
         <div className="mx-auto max-w-[1240px]">
-          <h2
-            id="about-artists-heading"
-            className="font-display text-2xl md:text-3xl font-bold mb-8 md:mb-10"
-          >
-            About the artists
-          </h2>
           <ArtistBios />
         </div>
       </section>
