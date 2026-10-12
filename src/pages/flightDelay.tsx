@@ -46,8 +46,8 @@ const ArtistBios = () => {
   };
 
   return (
-    <div className="mt-6 lg:mt-0">
-      <div role="tablist" aria-label="Artist biographies" className="flex gap-8 md:gap-10 border-b border-border">
+    <div>
+      <div role="tablist" aria-label="Artist biographies" className="grid w-full grid-cols-2 border-b border-border">
         {artistBios.map((artist) => {
           const isActive = artist.id === activeId;
           return (
@@ -65,7 +65,7 @@ const ArtistBios = () => {
               onClick={() => setActiveId(artist.id)}
               onKeyDown={handleKeyDown}
               className={cn(
-                "relative -mb-px py-3 font-body text-sm md:text-base whitespace-nowrap transition-colors",
+                "relative -mb-px py-4 text-left font-body text-base md:text-lg whitespace-nowrap transition-colors",
                 isActive
                   ? "font-bold text-foreground"
                   : "font-medium text-muted-foreground hover:text-foreground"
@@ -151,10 +151,10 @@ const FlightDelay = () => (
         aria-labelledby="about-artists-heading"
         className="border-t border-border px-4 md:px-12 pt-16 md:pt-24 pb-24 md:pb-40"
       >
-        <div className="mx-auto max-w-[1240px] grid lg:grid-cols-[minmax(200px,320px)_minmax(0,1fr)] lg:gap-x-16">
+        <div className="mx-auto max-w-[1240px]">
           <h2
             id="about-artists-heading"
-            className="font-display text-2xl md:text-3xl font-bold"
+            className="font-display text-2xl md:text-3xl font-bold mb-8 md:mb-10"
           >
             About the artists
           </h2>
