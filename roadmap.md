@@ -3,3 +3,7 @@
 - [x] Add the Flight Delay event page with the supplied artwork, date, venue, and description.
 - [x] Link the homepage’s upcoming exhibition to the page.
 - [x] Verify the page and homepage link on desktop and mobile.
+
+# Artist bio tabs
+- [ ] Add Nitin Mukul and Liz Phillips bio tabs under the installation text on the Flight Delay page.
+- [ ] Verify tab switching on desktop and mobile.
