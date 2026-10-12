@@ -1,13 +1,33 @@
 import { useRef, useState, type KeyboardEvent } from "react";
 import Layout from "@/components/Layout";
 import flightDelayFrames from "@/assets/flight_delay_frames_title.jpg";
-import { ArrowUpRight } from "lucide-react";
+import nitinMukulPortrait from "@/assets/nitin-mukul-portrait.jpg";
+import lizPhillipsPortrait from "@/assets/liz-phillips-portrait.jpg";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { availableWorks } from "@/lib/availableWorks";
 import { cn } from "@/lib/utils";
 
-const artistBios = [
+type ArtistBio = {
+  id: string;
+  label: string;
+  photo?: { src: string; alt: string; width: number; height: number };
+  links?: { label: string; text: string; href: string }[];
+  showCollect?: boolean;
+  paragraphs: string[];
+};
+
+const artistBios: ArtistBio[] = [
   {
     id: "nitin-mukul",
     label: "Nitin Mukul",
+    photo: {
+      src: nitinMukulPortrait,
+      alt: "Nitin Mukul seated in his studio among canvases and paintings",
+      width: 862,
+      height: 1400,
+    },
+    showCollect: true,
     paragraphs: [
       "Nitin Mukul is an American visual artist of Indian descent mapping spaces where painting and video intersect as a durational experience. He has lived and worked in Massachusetts, India, Los Angeles, Washington DC, and currently is in New York City. In 2020 he was awarded an Artist Residency at the Caldera Arts Center in Sisters, Oregon, and is the recipient of 2020, 2023 and 2025 New Works Grant from NYFA. In 2019 he completed video installations at The Institute of Contemporary Art, Philadelphia, Pioneer Works, Brooklyn and Lincoln Center, NYC. His work was included in the 2013 Queens Biennial at the Queens Museum. Mukul was an assistant to the late artist Sol Lewitt, and a former creative director of the Indocenter of Art & Culture in Chelsea. His work was recently acquired by the Kiran Nadar Museum of Art in New Delhi. He has been showing with Aicon gallery in NYC since 2008.",
       "Nitin\u2019s exhibitions on the impact of climate change such as Heat Maps: Queens and Heat of the Moment have brought together artists, neighbors, local government officials and organizations like the Nature Conservancy into meaningful dialogue. He led the curatorial effort of Queens largest public art project, an open street in Jackson Heights spanning 26 city blocks which has since become a permanent linear park recognized globally by urban planners. Nitin frequently collaborates with cultural institutions and city officials to drive awareness on issues and make art more accessible.",
@@ -16,12 +36,89 @@ const artistBios = [
   {
     id: "liz-phillips",
     label: "Liz Phillips",
+    photo: {
+      src: lizPhillipsPortrait,
+      alt: "Liz Phillips standing in a museum atrium in front of a large floral mural",
+      width: 862,
+      height: 1400,
+    },
+    links: [
+      { label: "Website", text: "lizphillips.net", href: "https://lizphillips.net/w/" },
+      { label: "Instagram", text: "@lizphillipssoundart", href: "https://www.instagram.com/lizphillipssoundart/" },
+    ],
     paragraphs: [
       "For more than 55 years, Queens-based pioneer artist Liz Phillips has been making interactive, often collaborative, multi-media installations. Creating responsive environments that sense wind, plants, fish, people, water and food, she uses sound as her primary descriptive material. In 2024 Phillips received an Anonymous was a Woman Award (Visual Arts) and in 2025 a United States Artists Fellowship (music). Phillips has exhibited at museums, galleries, festivals, and public spaces, including; Philadelphia\u2019s Academy of Natural Sciences, Milwaukee Art Museum, Queens Museum, Jewish Museum, Whitney Museum of American Art, San Francisco Museum of Modern Art, Spoleto Festival USA, Walker Art Museum, Ars Electronica, Lincoln Center, Jacob\u2019s Pillow, The Kitchen, Rene Block and Frederieke Taylor galleries. Work has been presented by Creative Time, the Cleveland Orchestra, IBM Japan, and the World Financial Center. Site-specific installations have transformed public spaces, as diverse as a wind turbine in an alternative energy site in a South Bronx, the Anchorage under the Brooklyn Bridge, Minneapolis\u2019s Peavy Plaza and Art Park in Lewiston NY.",
       "Phillips\u2019 site-specific public sound installation plays continuously in and around the dovecote at Caramoor Center for Music and Art from May-November 2023-2026. In Philadelphia, with Annea Lockwood, Phillips created two installations \u201cThe River Feeds Back\u201d and \u201cInside the Watershed\u201d (2022-2023.) \u201cRelative Fields in a Garden,\u201d a 22-channel collaborative sound installation and mural with Heidi Howard was commissioned for the Queens Museum center atrium and extended to last a year and a half. Harvestworks and New York State Council on the Arts commissioned \u201cWaves Crossing,\u201d for Governors Island. Phillips often collaborates with the audience and other artists, among them; Merce Cunningham Dance Company, Simone Forti, Earl Howard, Alison Knowles, Mary Lucier, Nam June Paik, Paula Rabinowitz and Yoshimasa Wada. Phillips received a Guggenheim Fellowship (1987) and numerous Individual and collaborative commissions from New York State Council on the Arts and National Endowment for the Arts as a composer, video artist, audio artist and multi-media artist and curator.",
     ],
   },
 ];
+
+const CollectStrip = () => {
+  const scrollerRef = useRef<HTMLUListElement>(null);
+
+  const scrollByPage = (direction: 1 | -1) => {
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+    scroller.scrollBy({ left: direction * scroller.clientWidth * 0.8, behavior: "smooth" });
+  };
+
+  return (
+    <div className="md:col-span-2 min-w-0 mt-6 md:mt-14">
+      <div className="flex items-end justify-between gap-6 mb-6 md:mb-8">
+        <h3 className="font-display text-2xl md:text-3xl font-bold">Collect Nitin&rsquo;s Work</h3>
+        <div className="flex items-center gap-4 md:gap-6">
+          <Link
+            to="/collect"
+            className="hidden sm:inline-flex items-center gap-1 text-sm font-medium underline underline-offset-4 hover:opacity-60 transition-opacity"
+          >
+            View all
+          </Link>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => scrollByPage(-1)}
+              aria-label="Scroll to previous works"
+              className="p-2 border border-foreground/30 hover:border-foreground transition-colors"
+            >
+              <ChevronLeft size={18} aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollByPage(1)}
+              aria-label="Scroll to more works"
+              className="p-2 border border-foreground/30 hover:border-foreground transition-colors"
+            >
+              <ChevronRight size={18} aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul
+        ref={scrollerRef}
+        className="flex gap-5 md:gap-8 overflow-x-auto snap-x snap-mandatory pb-4"
+      >
+        {availableWorks.map((work) => (
+          <li key={work.id} className="snap-start shrink-0 w-[60vw] sm:w-[240px] md:w-[260px]">
+            <Link to={`/collect#${encodeURIComponent(work.id)}`} className="group block">
+              <div className="aspect-[4/5] overflow-hidden bg-muted">
+                <img
+                  src={work.image}
+                  alt={work.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <p className="mt-3 font-display text-base md:text-lg font-bold leading-snug text-foreground group-hover:opacity-60 transition-opacity">
+                {work.title}
+              </p>
+              {work.year && <p className="mt-1 font-body text-sm leading-snug text-muted-foreground">{work.year}</p>}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 const ArtistBios = () => {
   const [activeId, setActiveId] = useState(artistBios[0].id);
@@ -46,52 +143,100 @@ const ArtistBios = () => {
   };
 
   return (
-    <div>
-      <div role="tablist" aria-label="Artist biographies" className="flex gap-8 md:gap-10 border-b border-border">
-        {artistBios.map((artist) => {
-          const isActive = artist.id === activeId;
-          return (
-            <button
-              key={artist.id}
-              type="button"
-              role="tab"
-              id={`bio-tab-${artist.id}`}
-              ref={(node) => {
-                tabRefs.current[artist.id] = node;
-              }}
-              aria-selected={isActive}
-              aria-controls={`bio-panel-${artist.id}`}
-              tabIndex={isActive ? 0 : -1}
-              onClick={() => setActiveId(artist.id)}
-              onKeyDown={handleKeyDown}
-              className={cn(
-                "relative -mb-px py-3 font-body text-sm md:text-base whitespace-nowrap transition-colors",
-                isActive
-                  ? "font-bold text-foreground"
-                  : "font-medium text-muted-foreground hover:text-foreground"
-              )}
-            >
-              {artist.label}
-              {isActive && (
-                <span aria-hidden="true" className="absolute inset-x-0 -bottom-px h-[3px] bg-foreground" />
-              )}
-            </button>
-          );
-        })}
+    <section aria-labelledby="about-the-artist">
+      <div className="bg-muted px-4 md:px-12 pt-16 md:pt-24">
+        <div className="mx-auto max-w-[1240px]">
+          <h2 id="about-the-artist" className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-none tracking-tight uppercase text-foreground mb-10 md:mb-14">
+            About the <span className="text-muted-foreground">Artist</span>
+          </h2>
+          <div role="tablist" aria-label="Artist biographies" className="flex gap-8 md:gap-10 border-b border-border">
+            {artistBios.map((artist) => {
+              const isActive = artist.id === activeId;
+              return (
+                <button
+                  key={artist.id}
+                  type="button"
+                  role="tab"
+                  id={`bio-tab-${artist.id}`}
+                  ref={(node) => {
+                    tabRefs.current[artist.id] = node;
+                  }}
+                  aria-selected={isActive}
+                  aria-controls={`bio-panel-${artist.id}`}
+                  tabIndex={isActive ? 0 : -1}
+                  onClick={() => setActiveId(artist.id)}
+                  onKeyDown={handleKeyDown}
+                  className={cn(
+                    "relative -mb-px py-3 font-body text-lg md:text-2xl whitespace-nowrap transition-colors",
+                    isActive
+                      ? "font-bold text-foreground"
+                      : "font-medium text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  {artist.label}
+                  {isActive && (
+                    <span aria-hidden="true" className="absolute inset-x-0 -bottom-px h-[3px] bg-foreground" />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
       </div>
 
-      <div
-        role="tabpanel"
-        id={`bio-panel-${active.id}`}
-        aria-labelledby={`bio-tab-${active.id}`}
-        tabIndex={0}
-        className="pt-8 max-w-[760px] font-body text-base md:text-lg text-foreground space-y-7"
-      >
-        {active.paragraphs.map((paragraph) => (
-          <p key={paragraph.slice(0, 32)}>{paragraph}</p>
-        ))}
+      <div className="px-4 md:px-12 pb-24 md:pb-40">
+        <div className="mx-auto max-w-[1240px]">
+          <div
+            role="tabpanel"
+            id={`bio-panel-${active.id}`}
+            aria-labelledby={`bio-tab-${active.id}`}
+            tabIndex={0}
+            className="pt-8 grid md:grid-cols-[minmax(200px,32%)_minmax(0,1fr)] gap-10 md:gap-x-10 lg:gap-x-16 items-start"
+          >
+            {active.photo && (
+              <div>
+                <img
+                  src={active.photo.src}
+                  alt={active.photo.alt}
+                  width={active.photo.width}
+                  height={active.photo.height}
+                  loading="lazy"
+                  className="block w-full h-auto"
+                />
+                {active.links && (
+                  <ul className="mt-6 space-y-5">
+                    {active.links.map((link) => (
+                      <li key={link.href}>
+                        <p className="font-body text-xs uppercase text-muted-foreground font-medium mb-2">{link.label}</p>
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 font-body text-base md:text-lg font-medium underline underline-offset-4 hover:opacity-60 transition-opacity break-all"
+                        >
+                          {link.text} <ArrowUpRight aria-hidden="true" size={16} className="shrink-0" />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
+            <div
+              className={cn(
+                "max-w-[760px] font-body text-base md:text-lg text-foreground space-y-7",
+                !active.photo && "md:col-span-2"
+              )}
+            >
+              {active.paragraphs.map((paragraph) => (
+                <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+              ))}
+            </div>
+            {active.showCollect && <CollectStrip />}
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
@@ -118,7 +263,7 @@ const FlightDelay = () => (
         />
       </div>
 
-      <div className="px-4 md:px-12 pt-12 md:pt-24 pb-24 md:pb-40">
+      <div className="px-4 md:px-12 pt-12 md:pt-24 pb-16 md:pb-24">
         <div className="mx-auto max-w-[1240px]">
             <div className="grid md:grid-cols-[minmax(200px,32%)_minmax(0,1fr)] md:grid-rows-[auto_1fr] gap-6 md:gap-x-10 lg:gap-x-16 md:gap-y-10">
               <h2 className="font-display text-2xl md:text-3xl font-bold md:col-start-1 md:row-start-1">About the installation</h2>
@@ -147,14 +292,7 @@ const FlightDelay = () => (
         </div>
       </div>
 
-      <section
-        aria-label="Artist biographies"
-        className="border-t border-border px-4 md:px-12 pt-16 md:pt-24 pb-24 md:pb-40"
-      >
-        <div className="mx-auto max-w-[1240px]">
-          <ArtistBios />
-        </div>
-      </section>
+      <ArtistBios />
     </article>
   </Layout>
 );
