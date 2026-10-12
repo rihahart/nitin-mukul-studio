@@ -120,9 +120,9 @@ const FlightDelay = () => (
 
       <div className="px-4 md:px-12 pt-12 md:pt-24 pb-24 md:pb-40">
         <div className="mx-auto max-w-[1240px]">
-          <div className="grid lg:grid-cols-[minmax(200px,320px)_minmax(0,1fr)] lg:grid-rows-[auto_1fr] gap-6 lg:gap-x-16 lg:gap-y-10">
-            <h2 className="font-display text-2xl md:text-3xl font-bold lg:col-start-1 lg:row-start-1">About the installation</h2>
-            <div className="order-first lg:order-none lg:col-start-1 lg:row-start-2 self-start pb-10 mb-4 border-b border-border lg:pb-0 lg:mb-0 lg:border-b-0">
+            <div className="grid md:grid-cols-[minmax(200px,32%)_minmax(0,1fr)] md:grid-rows-[auto_1fr] gap-6 md:gap-x-10 lg:gap-x-16 md:gap-y-10">
+              <h2 className="font-display text-2xl md:text-3xl font-bold md:col-start-1 md:row-start-1">About the installation</h2>
+              <div className="order-first md:order-none md:col-start-1 md:row-start-2 self-start pb-10 mb-4 border-b border-border md:pb-0 md:mb-0 md:border-b-0">
               <p className="font-body text-xs uppercase text-muted-foreground font-medium mb-3">Hours</p>
               <p className="font-body text-lg md:text-xl font-medium leading-normal">10am-5pm | last entry at 4pm</p>
               <p className="font-body text-xs uppercase text-muted-foreground font-medium mt-8 mb-3">Free community hour admission</p>
@@ -138,7 +138,7 @@ const FlightDelay = () => (
                 Directions <ArrowUpRight aria-hidden="true" size={16} />
               </a>
             </div>
-            <div className="max-w-[760px] font-body text-base md:text-lg text-foreground space-y-7 lg:col-start-2 lg:row-start-1 lg:row-span-2">
+            <div className="max-w-[760px] font-body text-base md:text-lg text-foreground space-y-7 md:col-start-2 md:row-start-1 md:row-span-2">
               <p>Heat Maps: Flight Delay, is a new video installation that reflects on how climate change has altered patterns in the migration patterns of birds, which recently amplified the bird flu epidemic and wiped out the entire population of 100,000 ducks through forced euthanization at a local duck farm on Long Island.</p>
               <p>This project feels crucial in a moment when the erasure of scientific data about the effects of global warming has become a national priority. The Flight Delay series of durational paintings will register the conditions on location at sites known to be sanctuaries, refuges, and breeding grounds. Over the course of the last year we gathered sound and visuals at specific locations along migration paths, sanctuaries and park lands at times when bird activity and their sounds are especially active.</p>
               <p>This new body of work will serve as a poetic and expressive archive, manifesting in a video installation that combines the recorded video and sound which may have the effect of helping viewers build empathy and a visceral understanding of the role humans play in the alteration of our natural world. Through the disintegration of the durational paintings and shifts in sound we draw an analogy to how human activity is erasing and irreversibly altering the natural world.</p>
