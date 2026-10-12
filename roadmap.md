@@ -12,3 +12,7 @@
 - [x] Move the artist bio tabs out of the installation description into a standalone section.
 - [x] Make the tabs span the full width of the section, split evenly.
 - [x] Verify the new section on desktop and mobile.
+
+# Bio tabs styling
+- [x] Keep each tab only as wide as the artist's name.
+- [x] Remove the "About the artists" heading from the section.
