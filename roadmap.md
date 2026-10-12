@@ -17,3 +17,4 @@
 - [x] Keep each tab only as wide as the artist's name.
 - [x] Remove the "About the artists" heading from the section.
 - [x] Restore the "About the installation" section spacing to its earlier state.
+- [x] Show the "About the installation" two-column layout from the tablet width up.
