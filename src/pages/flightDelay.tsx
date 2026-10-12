@@ -118,7 +118,7 @@ const FlightDelay = () => (
         />
       </div>
 
-      <div className="px-4 md:px-12 pt-12 md:pt-24 pb-16 md:pb-24">
+      <div className="px-4 md:px-12 pt-12 md:pt-24 pb-24 md:pb-40">
         <div className="mx-auto max-w-[1240px]">
           <div className="grid lg:grid-cols-[minmax(200px,320px)_minmax(0,1fr)] lg:grid-rows-[auto_1fr] gap-6 lg:gap-x-16 lg:gap-y-10">
             <h2 className="font-display text-2xl md:text-3xl font-bold lg:col-start-1 lg:row-start-1">About the installation</h2>
