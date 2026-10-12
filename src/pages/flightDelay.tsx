@@ -85,7 +85,7 @@ const ArtistBios = () => {
         id={`bio-panel-${active.id}`}
         aria-labelledby={`bio-tab-${active.id}`}
         tabIndex={0}
-        className="pt-8 font-body text-sm md:text-base text-foreground space-y-7"
+        className="pt-8 max-w-[760px] font-body text-base md:text-lg text-foreground space-y-7"
       >
         {active.paragraphs.map((paragraph) => (
           <p key={paragraph.slice(0, 32)}>{paragraph}</p>
